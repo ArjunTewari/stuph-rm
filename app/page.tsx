@@ -91,17 +91,14 @@ export default function HomePage() {
           className="absolute inset-0 w-full h-full object-cover z-[-1]"
           autoPlay
           loop
-          muted
           playsInline
           preload="auto"
-          poster="/images/video-poster.png" // Fallback image if video fails to load
           onError={(e) => console.error("Video load error:", e)}
         >
           <source
-            src="/videos/stuph-showreel.mp4" // Changed to local path
+            src="/public/videos/stuph-showreel.mp4" // Changed to local path
             type="video/mp4"
           />
-          Your browser does not support this video.
         </video>
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/50 z-0"></div>
