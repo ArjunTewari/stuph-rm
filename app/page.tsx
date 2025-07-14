@@ -98,7 +98,7 @@ export default function HomePage() {
           onError={(e) => console.error("Video load error:", e)}
         >
           <source
-            src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" // Using the Vercel Blob URL
+            src="/videos/stuph-showreel.mp4" // Changed to local path
             type="video/mp4"
           />
           Your browser does not support this video.
