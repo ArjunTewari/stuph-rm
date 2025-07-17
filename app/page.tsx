@@ -85,16 +85,16 @@ export default function HomePage() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative w-full h-screen bg-black overflow-hidden">
+      <section className="relative w-full h-screen overflow-hidden">
         {/* Desktop / Tablet: video */}
-        <div className="hidden md:block absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
           <video
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" type="video/mp4" />
 
