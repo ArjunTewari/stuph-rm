@@ -94,11 +94,10 @@ export default function HomePage() {
             loop
             playsInline
             preload="auto"
-            poster="/images/hero-fallback.jpg" // static poster just in case
             className="w-full h-full object-cover"
           >
             <source src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" type="video/mp4" />
-            {/* fallback inside video tag */}
+
           </video>
         </div>
 
