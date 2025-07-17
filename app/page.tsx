@@ -102,17 +102,6 @@ export default function HomePage() {
           </video>
         </div>
 
-        {/* Mobile: static background image */}
-        <div
-          className="
-    md:hidden
-    absolute inset-0
-    bg-[url('/images/hero-fallback.jpg')]
-    bg-center
-    bg-cover
-  "
-        />
-
         {/* Semi‑transparent overlay */}
         <div className="absolute inset-0 bg-black/40" />
 
