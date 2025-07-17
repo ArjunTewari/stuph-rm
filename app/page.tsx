@@ -81,42 +81,64 @@ export default function HomePage() {
 
   return (
     <div className="overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden">
-        {/* Background Video Container */}
-        <div className="absolute inset-0 overflow-hidden">
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-            <source src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+{/* Hero Section */}
+<section className="relative w-full h-screen bg-black overflow-hidden">
+  {/* Desktop / Tablet: video */}
+  <div className="hidden md:block absolute inset-0 overflow-hidden">
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      poster="/images/hero-fallback.jpg"        // static poster just in case
+      className="w-full h-full object-cover"
+    >
+      <source
+        src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4"
+        type="video/mp4"
+      />
+      {/* fallback inside video tag */}
+    </video>
+  </div>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+  {/* Mobile: static background image */}
+  <div
+    className="
+      md:hidden
+      absolute inset-0
+      bg-[url('/images/hero-fallback.jpg')]
+      bg-center
+      bg-cover
+    "
+  />
 
-        {/* Content on top */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            We make good
-            <span className="gradient-text-white"> Stuph</span>
-          </h1>
-          <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-            Here for the brands that want to be remembered, not tolerated.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="btn-primary group">
-              Start Your Journey
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black transition-all duration-300 bg-transparent"
-            >
-              View Our Work
-            </Button>
-          </div>
-        </div>
-      </section>
+  {/* Semi‑transparent overlay */}
+  <div className="absolute inset-0 bg-black/40" />
+
+  {/* Content */}
+  <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+    <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
+      We make good
+      <span className="gradient-text-white"> Stuph</span>
+    </h1>
+    <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+      Here for the brands that want to be remembered, not tolerated.
+    </p>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <Button className="btn-primary group">
+        Start Your Journey
+        <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+      </Button>
+      <Button
+        variant="outline"
+        className="border-white text-white hover:bg-white hover:text-black transition-all duration-300 bg-transparent"
+      >
+        View Our Work
+      </Button>
+    </div>
+  </div>
+</section>
 
       {/* New wrapper for the rest of the page */}
       <div className="bg-white">
