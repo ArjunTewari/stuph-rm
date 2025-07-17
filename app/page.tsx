@@ -8,13 +8,13 @@ export default function HomePage() {
   const coFounders = [
     {
       name: "Raghav Sharma",
-      imageSrc: "/images/alice.jpg",
+      imageSrc: "/images/rdp.png",
       intro:
         "I was once asked if I were a brand, what would be my tagline. I replied - 'Getting things done since 1992. I derive some ungodly pleasure in building brands - the moreunknown they are, the better. Because that allows me to shape them exactly how they should be. Apart from Stuph, I run a Mental Fitness Startup - Whistl. In the past, I scaled up Yoga Bar as a Brand & Product Lead to their eventual acquisition by ITC. And created branded content for MTV India (ever heard of MTV Hustle?). I have also worked as Brand Manager in Real Estate where I was selling luxury residential properties in Tata Housing.",
     },
     {
       name: "Meghna Kundu",
-      imageSrc: "/images/bob.jpg",
+      imageSrc: "/images/mdp.png",
       intro:
         "Born to make weird art. Forced to sell soaps and shampoos to make a living. But since the world wants to force me to do things I don't want to. I try to infuse my weird art into everything I can as a sort of silent rebellion against conformation. When people point to something and say it's cool. I want to say I made that.Ex: Edelman, BBH, Pahadi Local.",
     },
@@ -84,54 +84,36 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden">
         {/* Background Video Container */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="
-    absolute top-1/2 left-1/2
-    w-auto h-auto min-w-full min-h-full object-cover
-    transform -translate-x-1/2 -translate-y-1/2 scale-90
-  "
-            style={{
-              position: "absolute",
-              top: "130%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          >
+        <div className="absolute inset-0 overflow-hidden">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
             <source src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
 
-        {/* Overlay for better text readability */}
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
 
-        {/* Content overlay */}
+        {/* Content on top */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-          <div className="animate-fade-in-up">
-            <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              We make good
-              <span className="gradient-text-white"> Stuph</span>
-            </h1>
-            <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-              Here for the brands that want to be remembered, not tolerated.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="btn-primary group">
-                Start Your Journey
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-black transition-all duration-300 hover:border-white bg-transparent"
-              >
-                View Our Work
-              </Button>
-            </div>
+          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            We make good
+            <span className="gradient-text-white"> Stuph</span>
+          </h1>
+          <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+            Here for the brands that want to be remembered, not tolerated.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button className="btn-primary group">
+              Start Your Journey
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-black transition-all duration-300 bg-transparent"
+            >
+              View Our Work
+            </Button>
           </div>
         </div>
       </section>
@@ -204,11 +186,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Co-Founders Section */}
+        {/* Co‑Founders Section */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Meet the Co-Founders</h2>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Meet the Co‑Founders</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 The visionaries behind our brand and technology.
               </p>
@@ -219,17 +201,27 @@ export default function HomePage() {
                   key={idx}
                   className={`bg-white border-gray-200 hover-lift animate-fade-in-up animate-delay-${(idx + 1) * 100}`}
                 >
-                  <div className="relative h-64">
-                    <Image
-                      src={founder.imageSrc || "/placeholder.svg"}
-                      alt={founder.name}
-                      fill
-                      className="object-cover rounded-t-2xl"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-2xl font-semibold text-black mb-2">{founder.name}</h3>
-                    <p className="text-gray-600 leading-relaxed">{founder.intro}</p>
+                  <CardContent className="p-6 flex flex-col items-center text-center">
+                    {/* ↳ center + cap the size */}
+                    <div
+                      className="
+                relative
+                w-32 h-32        /* base: 8rem */
+                sm:w-40 sm:h-40  /* ≥640px: 10rem */
+                md:w-48 md:h-48  /* ≥768px: 12rem */
+                overflow-hidden
+                rounded-full
+              "
+                    >
+                      <Image
+                        src={founder.imageSrc || "/placeholder.svg"}
+                        alt={founder.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3 className="mt-4 text-2xl font-semibold text-black">{founder.name}</h3>
+                    <p className="mt-2 text-gray-600 leading-relaxed">{founder.intro}</p>
                   </CardContent>
                 </Card>
               ))}

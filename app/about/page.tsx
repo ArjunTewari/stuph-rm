@@ -30,16 +30,16 @@ export default function AboutPage() {
 
   const team = [
     {
-      name: "Alex Chen",
+      name: "Raghav Sharma",
       role: "Creative Director & Founder",
       description: "Former agency creative with 12+ years of experience in brand storytelling and content strategy.",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/rdp.png", // Updated image path
     },
     {
-      name: "Maya Rodriguez",
+      name: "Meghna Kundu",
       role: "Strategy Lead",
       description: "Data-driven strategist specializing in content performance optimization and audience insights.",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/images/mdp.png", // Updated image path
     },
     {
       name: "Jordan Kim",
@@ -234,11 +234,18 @@ export default function AboutPage() {
                 key={index}
                 className={`bg-white border-gray-200 overflow-hidden hover-lift animate-fade-in-up animate-delay-${(index + 1) * 100}`}
               >
-                <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center">
-                      <Users className="h-10 w-10 text-white" />
-                    </div>
+                <div className="w-full aspect-square relative">
+                  {" "}
+                  {/* Changed to w-full aspect-square for responsive container */}
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto overflow-hidden rounded-full relative">
+                    {" "}
+                    {/* Added relative to this div */}
+                    <Image
+                      src={member.image || "/placeholder.svg"}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-center"
+                    />
                   </div>
                 </div>
                 <CardContent className="p-6 text-center">
