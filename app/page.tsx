@@ -67,18 +67,18 @@ export default function HomePage() {
       title: "ITC RIGHT SHIFT",
       description:
         "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
-      imageSrc: "/images/itc-right-shift-logo.png",
+      imageSrc: "/images/ITC_Limited-Logo.wine.png",
     },
     {
       title: "FLIPKART",
       description:
         "We launched Flipkart's influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
-      imageSrc: "/images/flipkart-logo.png",
+      imageSrc: "/images/Flipkart-Logo.wine.png",
     },
     {
-      title: "VOYAAH",
-      description: "We took this luxury holiday brand from 500 followers to 50k followers in a year!",
-      imageSrc: "/images/voyaah-logo.png",
+      title: "ONLY EARTH",
+      description: "We gave a new exciting look and re-branding to the company!",
+      imageSrc: "/images/Only-Earth-Logo-300-c.png",
     },
   ]
 
