@@ -288,7 +288,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-white">
+      <section id="pricing-section" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Choose Your Package</h2>
@@ -363,7 +363,7 @@ export default function ServicesPage() {
               </Button>
               <Button
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full font-semibold transition-all duration-300"
+                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full font-semibold transition-all duration-300 bg-transparent"
               >
                 View Portfolio
               </Button>

@@ -67,78 +67,78 @@ export default function HomePage() {
       title: "ITC RIGHT SHIFT",
       description:
         "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
+      imageSrc: "/images/itc-right-shift-logo.png",
     },
     {
       title: "FLIPKART",
       description:
         "We launched Flipkart's influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
+      imageSrc: "/images/flipkart-logo.png",
     },
     {
       title: "VOYAAH",
       description: "We took this luxury holiday brand from 500 followers to 50k followers in a year!",
+      imageSrc: "/images/voyaah-logo.png",
     },
   ]
 
   return (
     <div className="overflow-hidden">
-{/* Hero Section */}
-<section className="relative w-full h-screen bg-black overflow-hidden">
-  {/* Desktop / Tablet: video */}
-  <div className="hidden md:block absolute inset-0 overflow-hidden">
-    <video
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      poster="/images/hero-fallback.jpg"        // static poster just in case
-      className="w-full h-full object-cover"
-    >
-      <source
-        src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4"
-        type="video/mp4"
-      />
-      {/* fallback inside video tag */}
-    </video>
-  </div>
+      {/* Hero Section */}
+      <section className="relative w-full h-screen bg-black overflow-hidden">
+        {/* Desktop / Tablet: video */}
+        <div className="hidden md:block absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/images/hero-fallback.jpg" // static poster just in case
+            className="w-full h-full object-cover"
+          >
+            <source src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" type="video/mp4" />
+            {/* fallback inside video tag */}
+          </video>
+        </div>
 
-  {/* Mobile: static background image */}
-  <div
-    className="
-      md:hidden
-      absolute inset-0
-      bg-[url('/images/hero-fallback.jpg')]
-      bg-center
-      bg-cover
-    "
-  />
+        {/* Mobile: static background image */}
+        <div
+          className="
+    md:hidden
+    absolute inset-0
+    bg-[url('/images/hero-fallback.jpg')]
+    bg-center
+    bg-cover
+  "
+        />
 
-  {/* Semi‑transparent overlay */}
-  <div className="absolute inset-0 bg-black/40" />
+        {/* Semi‑transparent overlay */}
+        <div className="absolute inset-0 bg-black/40" />
 
-  {/* Content */}
-  <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-    <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
-      We make good
-      <span className="gradient-text-white"> Stuph</span>
-    </h1>
-    <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-      Here for the brands that want to be remembered, not tolerated.
-    </p>
-    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <Button className="btn-primary group">
-        Start Your Journey
-        <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-      </Button>
-      <Button
-        variant="outline"
-        className="border-white text-white hover:bg-white hover:text-black transition-all duration-300 bg-transparent"
-      >
-        View Our Work
-      </Button>
-    </div>
-  </div>
-</section>
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            We make good
+            <span className="gradient-text-white"> Stuph</span>
+          </h1>
+          <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+            Here for the brands that want to be remembered, not tolerated.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button className="btn-primary group">
+              Start Your Journey
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-black transition-all duration-300 bg-transparent"
+            >
+              View Our Work
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* New wrapper for the rest of the page */}
       <div className="bg-white">
@@ -197,12 +197,22 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white border-gray-200 p-6 rounded-lg hover-lift animate-fade-in-up animate-delay-{(idx + 1) * 100}"
-                >
-                  <p className="text-gray-600 leading-relaxed">{service}</p>
-                </div>
+                <Link key={idx} href="/services#pricing-section">
+                  {" "}
+                  {/* Added Link component */}
+                  <div
+                    className={`
+            bg-gray-900            /* light grey background */
+            border border-gray-400
+            p-6 rounded-lg
+            hover:shadow-lg hover:-translate-y-1 transition
+            animate-fade-in-up animate-delay-${(idx + 1) * 100}
+            cursor-pointer /* Add cursor-pointer to indicate it's clickable */
+          `}
+                  >
+                    <p className="text-gray-100 leading-relaxed">{service}</p>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -227,13 +237,13 @@ export default function HomePage() {
                     {/* ↳ center + cap the size */}
                     <div
                       className="
-                relative
-                w-32 h-32        /* base: 8rem */
-                sm:w-40 sm:h-40  /* ≥640px: 10rem */
-                md:w-48 md:h-48  /* ≥768px: 12rem */
-                overflow-hidden
-                rounded-full
-              "
+              relative
+              w-32 h-32        /* base: 8rem */
+              sm:w-40 sm:h-40  /* ≥640px: 10rem */
+              md:w-48 md:h-48  /* ≥768px: 12rem */
+              overflow-hidden
+              rounded-full
+            "
                     >
                       <Image
                         src={founder.imageSrc || "/placeholder.svg"}
@@ -265,14 +275,15 @@ export default function HomePage() {
                 <Card
                   key={card.title}
                   className={`bg-white border-gray-200 overflow-hidden hover-lift 
-        animate-fade-in-up animate-delay-${(idx + 1) * 200}`}
+      animate-fade-in-up animate-delay-${(idx + 1) * 200}`}
                 >
                   <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center">
-                        <Sparkles className="h-8 w-8 text-white" />
-                      </div>
-                    </div>
+                    <Image
+                      src={card.imageSrc || "/placeholder.svg"}
+                      alt={`${card.title} logo`}
+                      fill
+                      className="object-contain p-4" // Use object-contain to fit the logo without cropping
+                    />
                   </div>
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold text-black mb-2">{card.title}</h3>
