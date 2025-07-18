@@ -2,7 +2,19 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Target, Sparkles, Zap, Heart } from "lucide-react"
+import {
+  ArrowRight,
+  Target,
+  Sparkles,
+  Zap,
+  Heart,
+  Briefcase,
+  MessageCircle,
+  PenTool,
+  BarChart3,
+  Video,
+  Mail,
+} from "lucide-react"
 
 export default function HomePage() {
   const coFounders = [
@@ -47,12 +59,12 @@ export default function HomePage() {
   ]
 
   const services = [
-    "Content Strategy & Planning",
-    "Brand Storytelling & Voice",
-    "Social Media Content",
-    "SEO-Optimized Writing",
-    "Video Content Creation",
-    "Email Marketing Campaigns",
+    { title: "Content Strategy & Planning", icon: Briefcase },
+    { title: "Brand Storytelling & Voice", icon: MessageCircle },
+    { title: "Social Media Content", icon: PenTool },
+    { title: "SEO-Optimized Writing", icon: BarChart3 },
+    { title: "Video Content Creation", icon: Video },
+    { title: "Email Marketing Campaigns", icon: Mail },
   ]
 
   const cards = [
@@ -160,17 +172,7 @@ export default function HomePage() {
                   className={`bg-white border-gray-200 hover-lift animate-fade-in-up animate-delay-${(idx + 1) * 100}`}
                 >
                   <CardContent className="p-6 flex flex-col items-center text-center">
-                    {/* ↳ center + cap the size */}
-                    <div
-                      className="
-              relative
-              w-32 h-32        /* base: 8rem */
-              sm:w-40 sm:h-40  /* ≥640px: 10rem */
-              md:w-48 md:h-48  /* ≥768px: 12rem */
-              overflow-hidden
-              rounded-full
-            "
-                    >
+                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 overflow-hidden rounded-full">
                       <Image
                         src={founder.imageSrc || "/placeholder.svg"}
                         alt={founder.name}
@@ -200,15 +202,14 @@ export default function HomePage() {
               {cards.map((card, idx) => (
                 <Card
                   key={card.title}
-                  className={`bg-white border-gray-200 overflow-hidden hover-lift 
-      animate-fade-in-up animate-delay-${(idx + 1) * 200}`}
+                  className={`bg-white border-gray-200 overflow-hidden hover-lift animate-fade-in-up animate-delay-${(idx + 1) * 200}`}
                 >
                   <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
                     <Image
                       src={card.imageSrc || "/placeholder.svg"}
                       alt={`${card.title} logo`}
                       fill
-                      className="object-contain p-4" // Use object-contain to fit the logo without cropping
+                      className="object-contain p-4"
                     />
                   </div>
                   <CardContent className="p-6">
@@ -232,29 +233,27 @@ export default function HomePage() {
         {/* Services Preview */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Our Services</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Services</h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
                 Explore the range of services we offer to help your brand thrive.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, idx) => (
-                <Link key={idx} href="/services#pricing-section">
-                  {" "}
-                  {/* Added Link component */}
-                  <div
-                    className={`
-            bg-gray-900            /* light grey background */
-            border border-gray-400
-            p-6 rounded-lg
-            shadow-md // Add this for subtle shadow
-            hover:shadow-lg hover:-translate-y-1 transition
-            animate-fade-in-up animate-delay-${(idx + 1) * 100}
-            cursor-pointer /* Add cursor-pointer to indicate it's clickable */
-          `}
-                  >
-                    <p className="text-gray-100 leading-relaxed">{service}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map(({ title, icon: Icon }, idx) => (
+                <Link
+                  key={idx}
+                  href="/services#pricing-section"
+                  className="group block transform transition hover:-translate-y-1"
+                >
+                  <div className="relative bg-gradient-to-tr from-blue-600 to-indigo-600 p-6 pt-12 rounded-2xl shadow-lg">
+                    {/* Accent circle */}
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white rounded-full p-3 shadow-md group-hover:scale-110 transition">
+                      <Icon className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <h3 className="mt-4 text-xl font-semibold text-white text-center">{title}</h3>
+                    {/* Subtle hover overlay */}
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition" />
                   </div>
                 </Link>
               ))}
