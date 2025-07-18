@@ -46,13 +46,6 @@ export default function HomePage() {
     },
   ]
 
-  const stats = [
-    { number: "300+", label: "Projects Delivered" },
-    { number: "120+", label: "Happy Clients" },
-    { number: "98%", label: "Client Satisfaction" },
-    { number: "4.2x", label: "Average ROI" },
-  ]
-
   const services = [
     "Content Strategy & Planning",
     "Brand Storytelling & Voice",
@@ -88,16 +81,8 @@ export default function HomePage() {
       <section className="relative w-full h-screen overflow-hidden">
         {/* Desktop / Tablet: video */}
         <div className="absolute inset-0 overflow-hidden">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
+          <video autoPlay muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover">
             <source src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" type="video/mp4" />
-
           </video>
         </div>
 
@@ -159,58 +144,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-black text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-900"></div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className={`text-center animate-scale-in animate-delay-${(index + 1) * 100}`}>
-                  <div className="text-4xl md:text-6xl font-bold mb-2 gradient-text">{stat.number}</div>
-                  <div className="text-gray-300 font-medium">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services Preview */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Our Services</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Explore the range of services we offer to help your brand thrive.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, idx) => (
-                <Link key={idx} href="/services#pricing-section">
-                  {" "}
-                  {/* Added Link component */}
-                  <div
-                    className={`
-            bg-gray-900            /* light grey background */
-            border border-gray-400
-            p-6 rounded-lg
-            hover:shadow-lg hover:-translate-y-1 transition
-            animate-fade-in-up animate-delay-${(idx + 1) * 100}
-            cursor-pointer /* Add cursor-pointer to indicate it's clickable */
-          `}
-                  >
-                    <p className="text-gray-100 leading-relaxed">{service}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Co‑Founders Section */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Meet the Co‑Founders</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Meet the Co‑founders</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 The visionaries behind our brand and technology.
               </p>
@@ -287,6 +225,39 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Preview */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Our Services</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Explore the range of services we offer to help your brand thrive.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, idx) => (
+                <Link key={idx} href="/services#pricing-section">
+                  {" "}
+                  {/* Added Link component */}
+                  <div
+                    className={`
+            bg-gray-900            /* light grey background */
+            border border-gray-400
+            p-6 rounded-lg
+            shadow-md // Add this for subtle shadow
+            hover:shadow-lg hover:-translate-y-1 transition
+            animate-fade-in-up animate-delay-${(idx + 1) * 100}
+            cursor-pointer /* Add cursor-pointer to indicate it's clickable */
+          `}
+                  >
+                    <p className="text-gray-100 leading-relaxed">{service}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
