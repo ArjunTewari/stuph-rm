@@ -15,6 +15,7 @@ import {
   Video,
   Mail,
 } from "lucide-react"
+import LogoCarousel from "@/components/logo-carousel"
 
 export default function HomePage() {
   const coFounders = [
@@ -229,6 +230,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Logo Carousel */}
+        <LogoCarousel />
 
         {/* Services Preview */}
         <section className="py-20 bg-white">
