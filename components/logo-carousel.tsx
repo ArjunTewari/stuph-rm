@@ -114,13 +114,9 @@ const LogoCarousel = () => {
 
         {/* Logo Carousel */}
         <div className="relative">
-          {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
           {/* Scrolling container */}
           <div
-            className={`flex space-x-12 md:space-x-16 lg:space-x-20 ${isPaused ? "animation-paused" : ""}`}
+            className={`flex space-x-16 md:space-x-20 lg:space-x-24 ${isPaused ? "animation-paused" : ""}`}
             style={{
               animation: "scroll 90s linear infinite",
               width: "fit-content",
@@ -131,7 +127,7 @@ const LogoCarousel = () => {
             {duplicatedLogos.map((logo, index) => (
               <div
                 key={`${logo.name}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center w-32 md:w-40 lg:w-48 h-16 md:h-20 lg:h-24 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                className="flex-shrink-0 flex items-center justify-center w-40 md:w-48 lg:w-56 h-20 md:h-24 lg:h-28 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
               >
                 <div className="relative w-full h-full p-2 md:p-3">
                   <Image
@@ -139,7 +135,7 @@ const LogoCarousel = () => {
                     alt={logo.alt}
                     fill
                     className="object-contain transition-all duration-300 group-hover:scale-105"
-                    sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
+                    sizes="(max-width: 768px) 160px, (max-width: 1024px) 192px, 224px"
                   />
                 </div>
               </div>
