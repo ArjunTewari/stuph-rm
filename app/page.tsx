@@ -94,7 +94,17 @@ export default function HomePage() {
       <section className="relative w-full h-screen overflow-hidden">
         {/* Desktop / Tablet: video */}
         <div className="absolute inset-0 overflow-hidden">
-          <video autoPlay muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            controls={false}
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
             <source src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" type="video/mp4" />
           </video>
         </div>
