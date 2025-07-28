@@ -111,18 +111,6 @@ export default function HomePage() {
           <p className="text-xl text-gray-200 mb-8 leading-relaxed">
             Here for the brands that want to be remembered, not tolerated.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="btn-primary group">
-              Start Your Journey
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black transition-all duration-300 bg-transparent"
-            >
-              View Our Work
-            </Button>
-          </div>
         </div>
       </section>
 

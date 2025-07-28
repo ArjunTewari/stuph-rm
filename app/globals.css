@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-poppins: "Poppins", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
 }
 
 * {
@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  font-family: var(--font-poppins);
+  font-family: var(--font-montserrat);
   line-height: 1.6;
   color: #1a1a1a;
   background-color: #ffffff;

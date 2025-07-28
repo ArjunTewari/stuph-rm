@@ -37,12 +37,12 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative w-12 h-12 mr-3 transition-transform duration-300 group-hover:scale-110">
+          <Link href="/" className="flex items-center group bg-white text-center gap-x-2 justify-start mx-0 px-2">
+            <div className="relative w-10 h-10 mr-2 transition-transform duration-300 group-hover:scale-110">
               <Image src="/images/stuph-logo.png" alt="stuph studio" fill className="object-contain" />
             </div>
-            <span className="text-xl font-semibold text-black group-hover:text-gray-600 transition-colors duration-300">
-              stuph studio
+            <span className="text-lg font-semibold text-black group-hover:text-gray-600 transition-colors duration-300 text-left">
+              STUPH STUDIO
             </span>
           </Link>
 
