@@ -181,7 +181,7 @@ export default function HomePage() {
           </div>
         </section>
 
-         {/* Logo Carousel */}
+        {/* Logo Carousel */}
         <LogoCarousel />
 
         {/* Portfolio Teaser */}
@@ -225,7 +225,6 @@ export default function HomePage() {
           </div>
         </section>
 
-
         {/* Co‑Founders Section */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -254,37 +253,6 @@ export default function HomePage() {
                     <p className="mt-2 text-gray-600 leading-relaxed">{founder.intro}</p>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services Preview */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Services</h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-                Explore the range of services we offer to help your brand thrive.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map(({ title, icon: Icon }, idx) => (
-                <Link
-                  key={idx}
-                  href="/services#pricing-section"
-                  className="group block transform transition hover:-translate-y-1"
-                >
-                  <div className="relative bg-gradient-to-tr from-blue-600 to-indigo-600 p-6 pt-12 rounded-2xl shadow-lg">
-                    {/* Accent circle */}
-                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white rounded-full p-3 shadow-md group-hover:scale-110 transition">
-                      <Icon className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <h3 className="mt-4 text-xl font-semibold text-white text-center">{title}</h3>
-                    {/* Subtle hover overlay */}
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition" />
-                  </div>
-                </Link>
               ))}
             </div>
           </div>

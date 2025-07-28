@@ -68,12 +68,10 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-3">
               {[
-                "Content Strategy",
-                "Brand Storytelling",
-                "Social Media",
-                "SEO Content",
-                "Video Production",
-                "Email Marketing",
+                "Content and Brand studio",
+                "AI lab ",
+                "Venture Builder",
+                "Performance Marketing",
               ].map((service) => (
                 <li key={service}>
                   <span className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer">
