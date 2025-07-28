@@ -91,36 +91,62 @@ export default function HomePage() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden">
-        {/* Desktop / Tablet: video */}
-        <div className="absolute inset-0 overflow-hidden">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            controls={false}
-            disablePictureInPicture
-            controlsList="nodownload nofullscreen noremoteplayback"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4" type="video/mp4" />
-          </video>
-        </div>
+      <section className="relative w-full min-h-screen bg-white pt-20 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 h-full items-center">
+            {/* Left side - Text Content */}
+            <div className="flex flex-col justify-center space-y-8 animate-fade-in-left order-1 lg:order-1">
+              <div>
+                <h1 className="text-black text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                  We make good
+                  <span className="gradient-text"> Stuph</span>
+                </h1>
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                  Here for the brands that want to be remembered, not tolerated.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contact">
+                  <Button className="btn-primary group">
+                    Start Your Project
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <Link href="/portfolio">
+                  <Button
+                    variant="outline"
+                    className="border-black text-black hover:bg-black hover:text-white transition-all duration-300 bg-transparent"
+                  >
+                    View Our Work
+                  </Button>
+                </Link>
+              </div>
+            </div>
 
-        {/* Semi‑transparent overlay */}
-        <div className="absolute inset-0 bg-black/40" />
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            We make good
-            <span className="gradient-text-white"> Stuph</span>
-          </h1>
-          <p className="text-xl text-gray-200 mb-8 leading-relaxed bg-slate-700">
-            Here for the brands that want to be remembered, not tolerated.
-          </p>
+            {/* Right side - Video */}
+            <div className="relative h-64 sm:h-80 md:h-96 lg:h-full lg:min-h-[600px] animate-fade-in-right order-2 lg:order-2 mt-8 lg:mt-0">
+              <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  controls={false}
+                  disablePictureInPicture
+                  controlsList="nodownload nofullscreen noremoteplayback"
+                  className="w-full h-full object-cover"
+                >
+                  <source
+                    src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+                {/* Subtle overlay for better video presentation */}
+                <div className="absolute inset-0 bg-black/10 rounded-2xl"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -155,38 +181,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Co‑Founders Section */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Meet the Co‑founders</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                The visionaries behind our brand and technology.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {coFounders.map((founder, idx) => (
-                <Card
-                  key={idx}
-                  className={`bg-white border-gray-200 hover-lift animate-fade-in-up animate-delay-${(idx + 1) * 100}`}
-                >
-                  <CardContent className="p-6 flex flex-col items-center text-center">
-                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 overflow-hidden rounded-full">
-                      <Image
-                        src={founder.imageSrc || "/placeholder.svg"}
-                        alt={founder.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <h3 className="mt-4 text-2xl font-semibold text-black">{founder.name}</h3>
-                    <p className="mt-2 text-gray-600 leading-relaxed">{founder.intro}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+         {/* Logo Carousel */}
+        <LogoCarousel />
 
         {/* Portfolio Teaser */}
         <section className="py-20 bg-gray-50">
@@ -229,8 +225,39 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Logo Carousel */}
-        <LogoCarousel />
+
+        {/* Co‑Founders Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Meet the Co‑founders</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                The visionaries behind our brand and technology.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {coFounders.map((founder, idx) => (
+                <Card
+                  key={idx}
+                  className={`bg-white border-gray-200 hover-lift animate-fade-in-up animate-delay-${(idx + 1) * 100}`}
+                >
+                  <CardContent className="p-6 flex flex-col items-center text-center">
+                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 overflow-hidden rounded-full">
+                      <Image
+                        src={founder.imageSrc || "/placeholder.svg"}
+                        alt={founder.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3 className="mt-4 text-2xl font-semibold text-black">{founder.name}</h3>
+                    <p className="mt-2 text-gray-600 leading-relaxed">{founder.intro}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Services Preview */}
         <section className="py-20 bg-white">
