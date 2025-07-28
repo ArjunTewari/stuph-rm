@@ -108,7 +108,7 @@ export default function HomePage() {
             We make good
             <span className="gradient-text-white"> Stuph</span>
           </h1>
-          <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+          <p className="text-xl text-gray-200 mb-8 leading-relaxed bg-slate-700">
             Here for the brands that want to be remembered, not tolerated.
           </p>
         </div>
