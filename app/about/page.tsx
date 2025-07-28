@@ -45,14 +45,14 @@ export default function AboutPage() {
       name: "Jordan Kim",
       role: "Content Manager",
       description: "Multi-platform content creator with expertise in video production and social media storytelling.",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/placeholder-user.jpg", // Changed from /placeholder.svg?height=300&width=300
     },
     {
       name: "Sam Taylor",
       role: "Brand Strategist",
       description:
         "Brand voice specialist helping companies develop authentic, consistent messaging across all channels.",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/placeholder-user.jpg", // Changed from /placeholder.svg?height=300&width=300
     },
   ]
 

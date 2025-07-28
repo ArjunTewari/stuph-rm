@@ -15,7 +15,7 @@ export default function PortfolioPage() {
         { metric: "Community Growth", value: "+220%" },
         { metric: "Brand Awareness", value: "+180%" },
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/placeholder.jpg",
       tags: ["Brand Storytelling", "Social Media", "Community Building"],
       color: "from-green-100 to-green-200",
     },
@@ -29,7 +29,7 @@ export default function PortfolioPage() {
         { metric: "Organic Traffic", value: "+195%" },
         { metric: "Conversion Rate", value: "+85%" },
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/placeholder.jpg",
       tags: ["Content Strategy", "SEO", "Lead Generation"],
       color: "from-blue-100 to-blue-200",
     },
@@ -43,7 +43,7 @@ export default function PortfolioPage() {
         { metric: "Store Visits", value: "+160%" },
         { metric: "Online Sales", value: "+240%" },
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/placeholder.jpg",
       tags: ["Brand Story", "Social Media", "Local Marketing"],
       color: "from-amber-100 to-amber-200",
     },
@@ -57,7 +57,7 @@ export default function PortfolioPage() {
         { metric: "App Downloads", value: "+210%" },
         { metric: "User Retention", value: "+95%" },
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/placeholder.jpg",
       tags: ["Video Content", "Email Marketing", "Community"],
       color: "from-purple-100 to-purple-200",
     },
@@ -71,7 +71,7 @@ export default function PortfolioPage() {
         { metric: "Client Inquiries", value: "+150%" },
         { metric: "Industry Recognition", value: "5 Awards" },
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/placeholder.jpg",
       tags: ["Visual Storytelling", "Portfolio", "Industry PR"],
       color: "from-gray-100 to-gray-200",
     },
@@ -85,7 +85,7 @@ export default function PortfolioPage() {
         { metric: "Content Engagement", value: "+190%" },
         { metric: "Platform Usage", value: "+140%" },
       ],
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/placeholder.jpg",
       tags: ["Educational Content", "Success Stories", "Community"],
       color: "from-indigo-100 to-indigo-200",
     },
@@ -107,21 +107,21 @@ export default function PortfolioPage() {
         "stuph studio didn't just create content for us – they helped us discover our authentic brand voice. The results have been transformational.",
       author: "Sarah Chen",
       role: "Founder, EcoVibe Lifestyle",
-      avatar: "/placeholder.svg?height=60&width=60",
+      avatar: "/placeholder-user.jpg",
     },
     {
       quote:
         "The strategic approach and creative execution from stuph studio exceeded all our expectations. Our engagement rates have never been higher.",
       author: "Marcus Rodriguez",
       role: "CMO, TechFlow Solutions",
-      avatar: "/placeholder.svg?height=60&width=60",
+      avatar: "/placeholder-user.jpg",
     },
     {
       quote:
         "Working with stuph studio was like having a creative partner who truly understood our vision. They brought our story to life beautifully.",
       author: "Emma Thompson",
       role: "Creative Director, Urban Design Studio",
-      avatar: "/placeholder.svg?height=60&width=60",
+      avatar: "/placeholder-user.jpg",
     },
   ]
 
@@ -324,7 +324,7 @@ export default function PortfolioPage() {
               </Button>
               <Button
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full font-semibold transition-all duration-300"
+                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full font-semibold transition-all duration-300 bg-transparent"
               >
                 Schedule a Call
               </Button>

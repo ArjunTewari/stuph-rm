@@ -303,69 +303,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Service, Budget, Timeline */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="animate-fade-in-up animate-delay-700">
-                    <Label htmlFor="service" className="text-black font-medium mb-2 block">
-                      Service Needed *
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("service", value)}>
-                      <SelectTrigger className="border-gray-300 focus:border-black focus:ring-black rounded-xl">
-                        <SelectValue placeholder="Select service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="content-strategy">Content Strategy</SelectItem>
-                        <SelectItem value="brand-storytelling">Brand Storytelling</SelectItem>
-                        <SelectItem value="social-media">Social Media</SelectItem>
-                        <SelectItem value="seo-content">SEO Content</SelectItem>
-                        <SelectItem value="video-content">Video Content</SelectItem>
-                        <SelectItem value="email-marketing">Email Marketing</SelectItem>
-                        <SelectItem value="multiple">Multiple Services</SelectItem>
-                        <SelectItem value="not-sure">Not Sure Yet</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="animate-fade-in-up animate-delay-800">
-                    <Label htmlFor="budget" className="text-black font-medium mb-2 block">
-                      Budget Range
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("budget", value)}>
-                      <SelectTrigger className="border-gray-300 focus:border-black focus:ring-black rounded-xl">
-                        <SelectValue placeholder="Select budget" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="under-5k">Under $5,000</SelectItem>
-                        <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                        <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
-                        <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
-                        <SelectItem value="over-50k">Over $50,000</SelectItem>
-                        <SelectItem value="discuss">Let's Discuss</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="animate-fade-in-up animate-delay-900">
-                    <Label htmlFor="timeline" className="text-black font-medium mb-2 block">
-                      Timeline
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("timeline", value)}>
-                      <SelectTrigger className="border-gray-300 focus:border-black focus:ring-black rounded-xl">
-                        <SelectValue placeholder="When to start?" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="asap">ASAP</SelectItem>
-                        <SelectItem value="1-month">Within 1 month</SelectItem>
-                        <SelectItem value="2-3-months">2-3 months</SelectItem>
-                        <SelectItem value="flexible">Flexible</SelectItem>
-                        <SelectItem value="just-exploring">Just exploring</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div className="animate-fade-in-up animate-delay-1000">
-                  <Label htmlFor="message" className="text-black font-medium mb-2 block">
-                    Tell Us About Your Project *
-                  </Label>
+                <Label htmlFor="website" className="text-black font-medium mb-2 block">Tell us about your project</Label>
                   <Textarea
                     id="message"
                     required
@@ -375,7 +313,6 @@ export default function ContactPage() {
                     onChange={(e) => handleInputChange("message", e.target.value)}
                     className="border-gray-300 focus:border-black focus:ring-black rounded-xl transition-all duration-300"
                   />
-                </div>
 
                 {/* Newsletter Checkbox */}
                 <div className="flex items-center space-x-3 animate-fade-in-up animate-delay-1100">
