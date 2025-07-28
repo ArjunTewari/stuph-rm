@@ -103,7 +103,7 @@ const LogoCarousel = () => {
   const duplicatedLogos = [...logos, ...logos]
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="bg-white overflow-hidden my-0 py-0.5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">Companies We've Worked With</h2>
@@ -116,7 +116,7 @@ const LogoCarousel = () => {
         <div className="relative">
           {/* Scrolling container */}
           <div
-            className={`flex space-x-16 md:space-x-20 lg:space-x-24 ${isPaused ? "animation-paused" : ""}`}
+            className={`flex lg:space-x-[9px] gap-x-2.5 flex-row leading-7 ${isPaused ? "animation-paused" : ""}`}
             style={{
               animation: "scroll 90s linear infinite",
               width: "fit-content",
@@ -127,7 +127,7 @@ const LogoCarousel = () => {
             {duplicatedLogos.map((logo, index) => (
               <div
                 key={`${logo.name}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center w-40 md:w-48 lg:w-56 h-20 md:h-24 lg:h-28 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
+                className="flex-shrink-0 flex items-center justify-center w-56 md:w-48 lg:w-56 h-28 md:h-24 lg:h-28 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
               >
                 <div className="relative w-full h-full p-2 md:p-3">
                   <Image
@@ -145,19 +145,19 @@ const LogoCarousel = () => {
       </div>
 
       <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
         }
-        
-        .animation-paused {
-          animation-play-state: paused !important;
+        100% {
+          transform: translateX(-50%);
         }
-      `}</style>
+      }
+      
+      .animation-paused {
+        animation-play-state: paused !important;
+      }
+    `}</style>
     </section>
   )
 }

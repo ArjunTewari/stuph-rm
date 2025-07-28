@@ -73,7 +73,7 @@ export default function HomePage() {
       title: "ITC RIGHT SHIFT",
       description:
         "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
-      imageSrc: "/images/ITC_Limited-Logo.wine.png",
+      imageSrc: "/images/ITC_Right_Shift_Logo.png", // Updated image path
     },
     {
       title: "FLIPKART",
