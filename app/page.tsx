@@ -52,7 +52,7 @@ export default function HomePage() {
         "Have a great idea? Let's build it together. We go beyond marketing: helping you shape the product, test the market, and grow your business from scratch. We specialize in 0 to 1.",
     },
     {
-      icon: IndianRupee, // Changed from Heart to IndianRupee
+      icon: IndianRupee,
       title: "Performance Marketing",
       description:
         "Stop burning budgets. Start driving results. We manage paid media across Google, Meta, Amazon, and more with one goal: ROI that makes sense.",
@@ -123,7 +123,7 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 >
                   <source
-                    src="https://qjutt1eqzqjulne5.public.blob.vercel-storage.com/stuph_showreel.mp4"
+                    src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/stuph%20showreel.mp4?alt=media&token=d13f7604-d4fc-4ec5-9ae4-8f789c05785f" // Updated video source
                     type="video/mp4"
                   />
                 </video>

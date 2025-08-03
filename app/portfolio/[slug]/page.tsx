@@ -167,6 +167,41 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   </div>
                 </div>
               </div>
+              {/* Social Media Videos */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">Social Media Videos</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2F50%20Strong%20Series.MP4?alt=media&token=33f98570-377c-47d1-bf76-9f3e1f2c3da1"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="ITC Right Shift Social Media Content 1"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2FTrend%20-%20RS_Thumka.mp4?alt=media&token=4d7a96ff-5b5c-4799-8d1c-137c4c23cc51"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="ITC Right Shift Social Media Content 2"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* E-Commerce Section */}
@@ -189,6 +224,42 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 direct-to-consumer channels. Our approach combines festival marketing, seasonal promotions, and
                 platform-specific optimization to drive online sales and brand visibility.
               </p>
+
+              {/* E-Commerce Videos */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">E-Commerce Videos</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC_E-COMMERCE%2FRS_SBV_ATTA_2025_May15.mp4?alt=media&token=58120bf8-07a7-4fd8-94b7-dcb1fb6c48fc"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="ITC Right Shift E-commerce Content 1"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC_E-COMMERCE%2FRS_PCA_Namkeen_9x16_June06%2010.36.10%E2%80%AFAM.mp4?alt=media&token=b2148ef1-a9e7-40b6-9ba6-3efd8828d94b"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="ITC Right Shift E-commerce Content 2"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               {/* Festival & Seasonal Campaigns */}
               <div className="mb-12">
@@ -732,6 +803,155 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 </div>
               </div>
             </section>
+            {/* Social Media Videos */}
+            <div className="mb-12">
+              <h3 className="text-xl font-bold text-gray-800 mb-6">Social Media Videos</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                    <video
+                      src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2FA%20things%20indian%20moms%20say.mp4?alt=media&token=cc116fe2-915d-4fd4-a3da-cc14812ec164"
+                      controls
+                      loop
+                      muted
+                      className="w-full h-full object-cover"
+                      aria-label="Tify Social Media Content 1"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+
+                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                    <video
+                      src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2FInfluencer%20Collab.mp4?alt=media&token=3df65395-3471-4b49-8acb-4611a0068b3a"
+                      controls
+                      loop
+                      muted
+                      className="w-full h-full object-cover"
+                      aria-label="Tify Social Media Content 2"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+
+                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                    <video
+                      src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2FProfile%20visit%20ad.mp4?alt=media&token=4041835c-7cce-4fb7-b2f7-3e916e1a1e42"
+                      controls
+                      loop
+                      muted
+                      className="w-full h-full object-cover"
+                      aria-label="Tify Social Media Content 3"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Voyaah specific sections */}
+        {study.slug === "voyaah" && (
+          <>
+            {/* Videos Section */}
+            <section className="animate-fade-in-up animate-delay-600">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 10l4-4m0 0l3 3.5M19 6l-3 3.5m0 0L12 15l-4-4 6-6 4 4Z"
+                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-black">Content & Videos</h2>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-lg mb-8">
+                Explore our video content showcasing Voyaah's travel experiences, aviation insights, and destination
+                highlights. Our content strategy focuses on inspiring wanderlust while providing valuable travel
+                information and cultural experiences.
+              </p>
+
+              {/* Video Grid - Mobile First Approach */}
+              <div className="space-y-6 md:space-y-8">
+                {/* First Row - Single video on mobile, 2 on desktop */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Voyaah%2F26250D88-276C-47B1-B81F-F6346542A71D%202.MP4?alt=media&token=d7bd1309-5e7c-4f88-b1ff-ecf194f4f8ca"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="Voyaah Aviation Content"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Voyaah%2F341FE2E7-F43A-4C5B-B2B3-75EC2D3E0D2F%202.MP4?alt=media&token=90f75826-f28c-4c73-8db0-55efcd8d27fe"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="Voyaah Norway Travel Experience"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Second Row - Single video on mobile, 2 on desktop */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Voyaah%2F834C1460-47E4-424E-B8D3-EC8297B4D864%202.MP4?alt=media&token=5cc4caa9-108e-42da-bf49-a44904f52f80"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="Voyaah Airline Experience"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Voyaah%2FE181347C-A1F4-4641-B404-AE1FF3FB3A5B%202.MP4?alt=media&token=3c327ffe-1c0a-4315-b562-2b34d4e90ba3"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="Voyaah Beyond Travel Content"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content Strategy Overview */}
+            </section>
           </>
         )}
 
@@ -798,6 +1018,72 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   </div>
                 </div>
               </div>
+
+              {/* Nippu Kodi Videos */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">Nippu Kodi Videos</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2F0DE99943-5779-4B82-8BBE-5A8581737F8B.MP4?alt=media&token=3147c70d-5b6a-4a15-a229-b3cf3c7edf4e?height=800&width=450"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="Nippu Kodi Content 1"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2F14300974-0DB2-4FE0-B966-AD87013A873F.MP4?alt=media&token=50cf090e-91dd-439f-862a-60fb8ba0366a?height=800&width=450"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="Nippu Kodi Content 2"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2FC490FC2A-271B-4656-8191-ABE08CF2E192.MP4?alt=media&token=c6e4ec2b-95aa-41ed-9a8a-d73cb1ec743d?height=800&width=450"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="Nippu Kodi Content 3"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2FF86D0082-6DD8-492B-B410-8C0955ECC3DB.MP4?alt=media&token=283d3c97-dbf3-4090-b562-59f74c55f9d7?height=800&width=450"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="Nippu Kodi Content 4"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* El Chaapo Section */}
@@ -820,10 +1106,59 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 branding strategy focused on creating a fun, accessible Mexican-inspired food experience that appeals to
                 budget-conscious food lovers without sacrificing the authentic flavors and vibrant atmosphere.
               </p>
+              {/* El Chaapo Videos */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">El Chaapo Videos</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/el_chaapo%2FFeku%20Friend.MP4?alt=media&token=555c14e0-0305-4c62-90a1-f2b8e07ee99e?height=800&width=450"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="El Chaapo Content 1"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/el_chaapo%2FProduct%20Post.MP4?alt=media&token=15ac2d84-2ea1-4726-8ba7-2d0b88c7799c?height=800&width=450"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="El Chaapo Content 2"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative w-full" style={{ aspectRatio: "9/16" }}>
+                      <video
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/el_chaapo%2FTrend%20-%20Gopi%20Bahu.MP4?alt=media&token=4bd7546c-1594-422f-8597-7d5b045cf940?height=800&width=450"
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label="El Chaapo Content 3"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
           </>
         )}
-        {/* End of Gastronomix specific sections */}
       </div>
     </div>
   )
