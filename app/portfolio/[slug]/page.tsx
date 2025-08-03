@@ -169,8 +169,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </div>
             </section>
 
-            {/* Promotion Section */}
-            <section className="animate-fade-in-up animate-delay-700">
+            {/* E-Commerce Section */}
+            <section className="animate-fade-in-up animate-delay-900">
               <div className="flex items-center space-x-3 mb-8">
                 <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
                   <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,119 +178,84 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                     />
                   </svg>
                 </div>
-                <h2 className="text-3xl font-bold text-black">Promotion</h2>
+                <h2 className="text-3xl font-bold text-black">E-Commerce</h2>
               </div>
               <p className="text-gray-700 leading-relaxed text-lg mb-8">
-                Strategic promotional campaigns highlighting the nutritional benefits and unique positioning of ITC
-                Right Shift products. Our messaging focused on the "Softer, Stronger, Smarter" proposition with
-                compelling health benefits.
+                Strategic e-commerce campaigns designed for major online platforms including Amazon, Flipkart, and
+                direct-to-consumer channels. Our approach combines festival marketing, seasonal promotions, and
+                platform-specific optimization to drive online sales and brand visibility.
               </p>
 
-              {/* Main Product Positioning */}
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-8 mb-8">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-green-800 mb-2">Who knew Healthier could be</h3>
-                  <h2 className="text-4xl font-bold text-green-900">ATTA</h2>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6 text-center">
-                      <h4 className="text-xl font-bold text-green-800 mb-2">SOFTER</h4>
-                      <p className="text-sm text-gray-700">No compromise on taste</p>
-                      <p className="text-sm text-gray-700">As soft as regular rotis</p>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6 text-center">
-                      <h4 className="text-xl font-bold text-green-800 mb-2">STRONGER</h4>
-                      <p className="text-sm text-gray-700 mb-2">30% MORE PROTEIN THAN REGULAR ATTA</p>
-                      <div className="space-y-1">
-                        <p className="text-lg font-semibold text-green-700">18g PROTEIN</p>
-                        <p className="text-lg font-semibold text-green-700">15g FIBRE</p>
-                        <p className="text-xs text-gray-600">*RDA per serve (4 rotis)</p>
+              {/* Festival & Seasonal Campaigns */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">Festival & Seasonal Campaigns</h3>
+                <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
+                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <Image
+                      src="/images/itc-ecommerce-holi-banner.png"
+                      alt="Holi Festival E-commerce Campaign - Right Shift"
+                      width={800}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                    />
+                    <div className="p-6">
+                      <h4 className="font-semibold text-gray-800 mb-2">Holi Festival Campaign</h4>
+                      <p className="text-sm text-gray-600 mb-3">
+                        "Rang Barse, Junk Na Barse" - Creative festival campaign promoting healthy alternatives during
+                        celebrations
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">
+                          Festival Marketing
+                        </span>
+                        <span className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full">
+                          15% OFF Promotion
+                        </span>
+                        <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
+                          Multi-Product Display
+                        </span>
                       </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6 text-center">
-                      <h4 className="text-xl font-bold text-green-800 mb-2">SMARTER</h4>
-                      <p className="text-sm text-gray-700 mb-2">Low GI Food</p>
-                      <p className="text-xs text-gray-600">Tested for low GI</p>
-                      <p className="text-xs text-gray-600">Regulates blood sugar levels</p>
-                      <p className="text-xs text-gray-600">Keeps you active for longer</p>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                <div className="text-center">
-                  <p className="text-sm font-semibold text-green-800 mb-2">CURATED BY CHEFS AND NUTRITION EXPERTS</p>
-                  <p className="text-xs text-gray-600">SCAN TO BUY OUR PRODUCT RANGE</p>
-                </div>
-              </div>
-
-              {/* Nutritional Benefits */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <Card className="bg-blue-50">
-                  <CardContent className="p-6">
-                    <h4 className="text-lg font-bold text-blue-800 mb-4">Daily Nutrition in 4 Rotis</h4>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span className="text-blue-700">Daily Protein</span>
-                        <span className="text-xl font-bold text-blue-800">33%</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-blue-700">Daily Fibre</span>
-                        <span className="text-xl font-bold text-blue-800">50%</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-orange-50">
-                  <CardContent className="p-6">
-                    <h4 className="text-lg font-bold text-orange-800 mb-4">Low GI Benefits</h4>
-                    <div className="space-y-2">
-                      <p className="text-sm text-orange-700">• Regulates blood sugar levels</p>
-                      <p className="text-sm text-orange-700">• Keeps you active for longer</p>
-                      <p className="text-sm text-orange-700">• Tested for low GI</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Product Range */}
-              <Card className="bg-purple-50">
-                <CardContent className="p-6">
-                  <h4 className="text-lg font-bold text-purple-800 mb-4">ALSO TRY - Complete Product Range</h4>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="text-center">
-                      <h5 className="font-semibold text-purple-700">HIGH PROTEIN OATS</h5>
-                      <p className="text-xs text-gray-600">Goodness of millets and seeds</p>
-                      <p className="text-xs text-gray-600">0% maida, 0% refined sugar</p>
-                    </div>
-                    <div className="text-center">
-                      <h5 className="font-semibold text-purple-700">JAGGERY COOKIES</h5>
-                      <p className="text-xs text-gray-600">Natural sweetness</p>
-                    </div>
-                    <div className="text-center">
-                      <h5 className="font-semibold text-purple-700">ROASTED NAMKEEN</h5>
-                      <p className="text-xs text-gray-600">70% less sat fat*</p>
-                      <p className="text-xs text-gray-500">*than regular fried namkeens</p>
-                    </div>
-                    <div className="text-center">
-                      <h5 className="font-semibold text-purple-700">COMPLETE RANGE</h5>
-                      <p className="text-xs text-gray-600">Scan to buy our product range</p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
+
+              {/* Marketplace Banners */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">Marketplace Optimization</h3>
+                <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
+                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <Image
+                      src="/images/itc-ecommerce-amazon-banner.png"
+                      alt="Amazon Store Banner - Right Shift Multigrain Atta"
+                      width={800}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                    />
+                    <div className="p-6">
+                      <h4 className="font-semibold text-gray-800 mb-2">Amazon Store Banner</h4>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Platform-optimized banner highlighting key product benefits with visual strength metaphors
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">
+                          Amazon Optimization
+                        </span>
+                        <span className="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">
+                          Product Focus
+                        </span>
+                        <span className="px-3 py-1 bg-red-100 text-red-700 text-xs rounded-full">
+                          Benefit Highlighting
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* Packaging Section */}
@@ -478,185 +443,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 </div>
               </div>
             </section>
-
-            {/* E-Commerce Section */}
-            <section className="animate-fade-in-up animate-delay-900">
-              <div className="flex items-center space-x-3 mb-8">
-                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                    />
-                  </svg>
-                </div>
-                <h2 className="text-3xl font-bold text-black">E-Commerce</h2>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-lg mb-8">
-                Strategic e-commerce campaigns designed for major online platforms including Amazon, Flipkart, and
-                direct-to-consumer channels. Our approach combines festival marketing, seasonal promotions, and
-                platform-specific optimization to drive online sales and brand visibility.
-              </p>
-
-              {/* Festival & Seasonal Campaigns */}
-              <div className="mb-12">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Festival & Seasonal Campaigns</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
-                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <Image
-                      src="/images/itc-ecommerce-holi-banner.png"
-                      alt="Holi Festival E-commerce Campaign - Right Shift"
-                      width={800}
-                      height={400}
-                      className="w-full h-auto object-cover"
-                    />
-                    <div className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-2">Holi Festival Campaign</h4>
-                      <p className="text-sm text-gray-600 mb-3">
-                        "Rang Barse, Junk Na Barse" - Creative festival campaign promoting healthy alternatives during
-                        celebrations
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">
-                          Festival Marketing
-                        </span>
-                        <span className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full">
-                          15% OFF Promotion
-                        </span>
-                        <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
-                          Multi-Product Display
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Marketplace Banners */}
-              <div className="mb-12">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Marketplace Optimization</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
-                  <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <Image
-                      src="/images/itc-ecommerce-amazon-banner.png"
-                      alt="Amazon Store Banner - Right Shift Multigrain Atta"
-                      width={800}
-                      height={400}
-                      className="w-full h-auto object-cover"
-                    />
-                    <div className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-2">Amazon Store Banner</h4>
-                      <p className="text-sm text-gray-600 mb-3">
-                        Platform-optimized banner highlighting key product benefits with visual strength metaphors
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">
-                          Amazon Optimization
-                        </span>
-                        <span className="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">
-                          Product Focus
-                        </span>
-                        <span className="px-3 py-1 bg-red-100 text-red-700 text-xs rounded-full">
-                          Benefit Highlighting
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* E-commerce Strategy Overview */}
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">E-Commerce Strategy</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Platform Optimization</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Amazon storefront design</li>
-                        <li>• Flipkart marketplace banners</li>
-                        <li>• Platform-specific sizing</li>
-                        <li>• SEO-optimized content</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Seasonal Campaigns</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Festival-themed promotions</li>
-                        <li>• Seasonal discount campaigns</li>
-                        <li>• Cultural relevance</li>
-                        <li>• Limited-time offers</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Conversion Focus</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Clear call-to-action</li>
-                        <li>• Benefit-driven messaging</li>
-                        <li>• Visual product showcase</li>
-                        <li>• Trust indicators</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </section>
           </>
         )}
 
         {/* Tify specific sections */}
         {study.slug === "tify" && (
           <>
-            {/* Social Section */}
-            <section className="animate-fade-in-up animate-delay-600">
-              <div className="flex items-center space-x-3 mb-8">
-                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                </div>
-                <h2 className="text-3xl font-bold text-black">Social</h2>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-lg mb-8">
-                Our social media strategy for Tify focused on educating consumers about western pickles and their
-                culinary applications. We created engaging content that balanced food humor with educational value,
-                making consumers aware of the versatility and unique taste profiles of western pickles.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="bg-gray-100 rounded-lg p-8 text-center border-2 border-dashed border-gray-300">
-                  <p className="text-gray-500">Educational Content</p>
-                  <p className="text-sm text-gray-400 mt-2">Recipe videos and usage tips</p>
-                </div>
-                <div className="bg-gray-100 rounded-lg p-8 text-center border-2 border-dashed border-gray-300">
-                  <p className="text-gray-500">Food Humor</p>
-                  <p className="text-sm text-gray-400 mt-2">Relatable food memes and content</p>
-                </div>
-                <div className="bg-gray-100 rounded-lg p-8 text-center border-2 border-dashed border-gray-300">
-                  <p className="text-gray-500">Product Showcase</p>
-                  <p className="text-sm text-gray-400 mt-2">Visual storytelling of pickle varieties</p>
-                </div>
-              </div>
-            </section>
-
             {/* Retail Branding Section */}
             <section className="animate-fade-in-up animate-delay-700">
               <div className="flex items-center space-x-3 mb-8">
@@ -852,48 +644,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   </div>
                 </div>
               </div>
-
-              {/* Strategy Overview */}
-              <div className="bg-gradient-to-br from-orange-50 to-yellow-100 rounded-xl p-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Retail Branding Strategy</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Mobile Activation</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Food truck campaigns</li>
-                        <li>• QR code integration</li>
-                        <li>• Location-based marketing</li>
-                        <li>• Instant promotional offers</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Trade Show Presence</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Interactive stall design</li>
-                        <li>• Live chef demonstrations</li>
-                        <li>• Product sampling programs</li>
-                        <li>• Customer engagement zones</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Consumer Education</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Recipe demonstration posters</li>
-                        <li>• Product usage guides</li>
-                        <li>• Visual learning materials</li>
-                        <li>• Brand storytelling</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
             </section>
 
             {/* Packaging Section */}
@@ -916,8 +666,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 emphasized the natural, nutritious qualities while ensuring strong shelf appeal and easy product
                 navigation across different SKUs.
               </p>
-
-              {/* Packaging Design Principles */}
 
               {/* Product Showcase */}
               <div className="mb-12">
@@ -983,35 +731,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   </div>
                 </div>
               </div>
-
-              {/* Packaging Features */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Card className="bg-gradient-to-br from-green-50 to-green-100">
-                  <CardContent className="p-6">
-                    <h4 className="text-lg font-bold text-green-800 mb-4">Functional Benefits</h4>
-                    <ul className="text-sm text-gray-700 space-y-2">
-                      <li>• Tamper-evident sealing</li>
-                      <li>• Extended shelf life protection</li>
-                      <li>• Easy-open mechanisms</li>
-                      <li>• Portion control sizing</li>
-                      <li>• Stackable design</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-br from-blue-50 to-blue-100">
-                  <CardContent className="p-6">
-                    <h4 className="text-lg font-bold text-blue-800 mb-4">Brand Communication</h4>
-                    <ul className="text-sm text-gray-700 space-y-2">
-                      <li>• Clean-label messaging</li>
-                      <li>• Ingredient transparency</li>
-                      <li>• Usage suggestions</li>
-                      <li>• Brand story integration</li>
-                      <li>• Quality certifications</li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
             </section>
           </>
         )}
@@ -1045,108 +764,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 Indian flavors with contemporary presentation. Our campaign focused on the authentic taste experience
                 while appealing to modern food enthusiasts who crave bold, spicy flavors.
               </p>
-
-              {/* Brand Identity */}
-              <div className="mb-12">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Brand Identity & Visual Language</h3>
-                <div className="bg-gradient-to-br from-red-50 to-orange-100 rounded-xl p-8 mb-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <Card className="bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-6 text-center">
-                        <h4 className="text-lg font-bold text-red-800 mb-2">Fiery Aesthetics</h4>
-                        <p className="text-sm text-gray-700">
-                          Bold red and orange color palette representing heat and spice
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-6 text-center">
-                        <h4 className="text-lg font-bold text-orange-800 mb-2">Authentic Typography</h4>
-                        <p className="text-sm text-gray-700">
-                          Traditional Telugu script elements with modern readability
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-6 text-center">
-                        <h4 className="text-lg font-bold text-yellow-800 mb-2">Spice Iconography</h4>
-                        <p className="text-sm text-gray-700">
-                          Visual elements inspired by chilies and traditional spices
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              </div>
-
-              {/* Menu Design */}
-              <div className="mb-12">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Menu Design & Food Photography</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="bg-gradient-to-br from-red-50 to-red-100">
-                    <CardContent className="p-6">
-                      <h4 className="text-lg font-bold text-red-800 mb-4">Signature Dishes</h4>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• Guntur Kodi Fry - Traditional spicy chicken fry</li>
-                        <li>• Nippu Biryani - Fiery chicken biryani</li>
-                        <li>• Kodi Iguru - Spicy chicken curry</li>
-                        <li>• Pepper Chicken - Black pepper specialty</li>
-                        <li>• Chili Chicken - Indo-Chinese fusion</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-gradient-to-br from-orange-50 to-orange-100">
-                    <CardContent className="p-6">
-                      <h4 className="text-lg font-bold text-orange-800 mb-4">Photography Style</h4>
-                      <ul className="text-sm text-gray-700 space-y-2">
-                        <li>• High-contrast lighting to emphasize texture</li>
-                        <li>• Steam and smoke effects for heat visualization</li>
-                        <li>• Traditional serving vessels and garnishes</li>
-                        <li>• Close-up shots highlighting spice coating</li>
-                        <li>• Action shots of cooking process</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Marketing Campaigns */}
-              <div className="bg-gradient-to-br from-yellow-50 to-red-50 rounded-xl p-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Marketing Campaigns</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-3">"Challenge Your Taste Buds"</h4>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Interactive social media campaign encouraging customers to share their spice tolerance levels and
-                      reactions to our fiery dishes.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-red-100 text-red-700 text-xs rounded-full">Social Engagement</span>
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">
-                        User Generated Content
-                      </span>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-3">"Authentic Andhra Flavors"</h4>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Educational content series highlighting the traditional cooking methods and spice blends used in
-                      authentic Andhra cuisine.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">
-                        Educational Content
-                      </span>
-                      <span className="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full">
-                        Cultural Heritage
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               {/* Social Media Content */}
               <div className="mb-12">
@@ -1203,169 +820,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 branding strategy focused on creating a fun, accessible Mexican-inspired food experience that appeals to
                 budget-conscious food lovers without sacrificing the authentic flavors and vibrant atmosphere.
               </p>
-
-              {/* Brand Positioning */}
-              <div className="mb-12">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Brand Positioning & Identity</h3>
-                <div className="bg-gradient-to-br from-green-50 to-yellow-100 rounded-xl p-8 mb-8">
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-green-800 mb-2">¡Sabor Auténtico, Precio Increíble!</h3>
-                    <p className="text-lg text-gray-700">Authentic Flavor, Incredible Price!</p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <Card className="bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-6 text-center">
-                        <h4 className="text-xl font-bold text-green-800 mb-2">AFFORDABLE</h4>
-                        <p className="text-sm text-gray-700">Quality Mexican food at unbeatable prices</p>
-                        <p className="text-sm text-gray-700">Student-friendly portions and pricing</p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-6 text-center">
-                        <h4 className="text-xl font-bold text-yellow-800 mb-2">AUTHENTIC</h4>
-                        <p className="text-sm text-gray-700">Traditional Mexican recipes and ingredients</p>
-                        <p className="text-sm text-gray-700">Fresh salsas and handmade tortillas</p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="bg-white/80 backdrop-blur-sm">
-                      <CardContent className="p-6 text-center">
-                        <h4 className="text-xl font-bold text-red-800 mb-2">ACCESSIBLE</h4>
-                        <p className="text-sm text-gray-700">Casual dining atmosphere</p>
-                        <p className="text-sm text-gray-700">Quick service for busy lifestyles</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              </div>
-
-              {/* Menu Categories */}
-              <div className="mb-12">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Menu Design & Categories</h3>
-
-                {/* Tacos & Burritos */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-semibold text-gray-700 mb-4">Tacos & Burritos</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <Card className="bg-gradient-to-br from-red-50 to-red-100">
-                      <CardContent className="p-6">
-                        <h5 className="font-semibold text-red-800 mb-2">Street Tacos</h5>
-                        <p className="text-sm text-gray-600 mb-2">₹49 - ₹79</p>
-                        <ul className="text-xs text-gray-600 space-y-1">
-                          <li>• Carnitas (Slow-cooked pork)</li>
-                          <li>• Pollo Asado (Grilled chicken)</li>
-                          <li>• Carne Asada (Grilled beef)</li>
-                          <li>• Vegetariano (Grilled vegetables)</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="bg-gradient-to-br from-yellow-50 to-yellow-100">
-                      <CardContent className="p-6">
-                        <h5 className="font-semibold text-yellow-800 mb-2">Burritos</h5>
-                        <p className="text-sm text-gray-600 mb-2">₹99 - ₹149</p>
-                        <ul className="text-xs text-gray-600 space-y-1">
-                          <li>• El Chaapo Special</li>
-                          <li>• Bean & Rice Burrito</li>
-                          <li>• Chicken Fajita Burrito</li>
-                          <li>• Breakfast Burrito</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="bg-gradient-to-br from-green-50 to-green-100">
-                      <CardContent className="p-6">
-                        <h5 className="font-semibold text-green-800 mb-2">Quesadillas</h5>
-                        <p className="text-sm text-gray-600 mb-2">₹79 - ₹119</p>
-                        <ul className="text-xs text-gray-600 space-y-1">
-                          <li>• Cheese Quesadilla</li>
-                          <li>• Chicken Quesadilla</li>
-                          <li>• Veggie Quesadilla</li>
-                          <li>• Spicy Jalapeño</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-
-                {/* Sides & Beverages */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-semibold text-gray-700 mb-4">Sides & Beverages</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Card className="bg-gradient-to-br from-orange-50 to-orange-100">
-                      <CardContent className="p-6">
-                        <h5 className="font-semibold text-orange-800 mb-3">Sides & Appetizers</h5>
-                        <div className="grid grid-cols-2 gap-2 text-xs text-gray-600">
-                          <div>• Guacamole & Chips</div>
-                          <div>• Mexican Rice</div>
-                          <div>• Refried Beans</div>
-                          <div>• Jalapeño Poppers</div>
-                          <div>• Nachos Supreme</div>
-                          <div>• Elote (Mexican Corn)</div>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="bg-gradient-to-br from-blue-50 to-blue-100">
-                      <CardContent className="p-6">
-                        <h5 className="font-semibold text-blue-800 mb-3">Beverages</h5>
-                        <div className="grid grid-cols-2 gap-2 text-xs text-gray-600">
-                          <div>• Horchata</div>
-                          <div>• Agua Fresca</div>
-                          <div>• Mexican Coke</div>
-                          <div>• Fresh Lime Soda</div>
-                          <div>• Iced Tea</div>
-                          <div>• Coffee de Olla</div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              </div>
-
-              {/* Marketing Strategy */}
-              <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl p-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Marketing Strategy</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Student Outreach</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Campus food festivals</li>
-                        <li>• Student discount programs</li>
-                        <li>• Late-night delivery specials</li>
-                        <li>• Group meal deals</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Social Media Presence</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Instagram food photography</li>
-                        <li>• TikTok recipe videos</li>
-                        <li>• Customer review features</li>
-                        <li>• Daily specials announcements</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-white/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Community Engagement</h4>
-                      <ul className="text-sm text-gray-600 space-y-2">
-                        <li>• Local event catering</li>
-                        <li>• Taco Tuesday promotions</li>
-                        <li>• Loyalty reward programs</li>
-                        <li>• Cultural celebration menus</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
             </section>
           </>
         )}

@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import {
   ArrowRight,
   Target,
-  Sparkles,
   Zap,
   Heart,
   Briefcase,
@@ -14,6 +13,7 @@ import {
   BarChart3,
   Video,
   Mail,
+  IndianRupee,
 } from "lucide-react"
 import LogoCarousel from "@/components/logo-carousel"
 
@@ -34,7 +34,7 @@ export default function HomePage() {
   ]
   const features = [
     {
-      icon: Sparkles,
+      icon: Heart,
       title: "Brand & Content Studio",
       description:
         "Build a brand people actually care about. From campaigns to content, we craft stories that stick and scale.",
@@ -52,7 +52,7 @@ export default function HomePage() {
         "Have a great idea? Let's build it together. We go beyond marketing: helping you shape the product, test the market, and grow your business from scratch. We specialize in 0 to 1.",
     },
     {
-      icon: Heart,
+      icon: IndianRupee, // Changed from Heart to IndianRupee
       title: "Performance Marketing",
       description:
         "Stop burning budgets. Start driving results. We manage paid media across Google, Meta, Amazon, and more with one goal: ROI that makes sense.",
@@ -105,8 +105,7 @@ export default function HomePage() {
                   Here for the brands that want to be remembered, not tolerated.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-              </div>
+              <div className="flex flex-col sm:flex-row gap-4"></div>
             </div>
 
             {/* Right side - Video */}
