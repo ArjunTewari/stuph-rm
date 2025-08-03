@@ -27,15 +27,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center text-gray-300 hover:text-white transition-colors duration-300">
                 <Mail className="h-4 w-4 mr-3" />
-                <span>hello@stuphstudio.com</span>
+                <span>raghav@stuph.co</span>
               </div>
               <div className="flex items-center text-gray-300 hover:text-white transition-colors duration-300">
                 <Phone className="h-4 w-4 mr-3" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 7600920359</span>
               </div>
               <div className="flex items-center text-gray-300 hover:text-white transition-colors duration-300">
                 <MapPin className="h-4 w-4 mr-3" />
-                <span>New York, NY</span>
+                <span>Bangalore, India</span>
               </div>
             </div>
           </div>
@@ -46,8 +46,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { href: "/", label: "Home" },
-                { href: "/about", label: "About" },
-                { href: "/services", label: "Services" },
+                /*{ href: "/about", label: "About" }*/,
+                /*{ href: "/services", label: "Services" }*/,
                 { href: "/portfolio", label: "Portfolio" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (

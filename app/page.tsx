@@ -23,7 +23,7 @@ export default function HomePage() {
       name: "Raghav Sharma",
       imageSrc: "/images/rdp.png",
       intro:
-        "I was once asked if I were a brand, what would be my tagline. I replied - 'Getting things done since 1992. I derive some ungodly pleasure in building brands - the moreunknown they are, the better. Because that allows me to shape them exactly how they should be. Apart from Stuph, I run a Mental Fitness Startup - Whistl. In the past, I scaled up Yoga Bar as a Brand & Product Lead to their eventual acquisition by ITC. And created branded content for MTV India (ever heard of MTV Hustle?). I have also worked as Brand Manager in Real Estate where I was selling luxury residential properties in Tata Housing.",
+        "I was once asked if I were a brand, what would be my tagline. I replied - 'Getting things done since 1992. I derive some ungodly pleasure in building brands - the moreunknown they are, the better. In the past, I scaled up Yoga Bar as a Brand & Product Lead to their eventual acquisition by ITC. And created branded content for MTV India (ever heard of MTV Hustle?). I have also worked as Brand Manager in Real Estate where I was selling luxury residential properties in Tata Housing.",
     },
     {
       name: "Meghna Kundu",
@@ -215,7 +215,7 @@ export default function HomePage() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Meet the Co‑founders</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Meet the Founders</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 The visionaries behind our brand and technology.
               </p>

@@ -1,96 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, TrendingUp, Users, Eye, Heart, Sparkles, Target } from "lucide-react"
+import { TrendingUp, Users, Eye, Heart, Target } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { caseStudies } from "@/lib/case-studies"
 
 export default function PortfolioPage() {
-  const projects = [
-    {
-      title: "EcoVibe Lifestyle",
-      category: "Sustainable Living",
-      description:
-        "Complete brand storytelling transformation for a sustainable lifestyle brand, focusing on authentic environmental messaging and community building.",
-      results: [
-        { metric: "Engagement", value: "+340%" },
-        { metric: "Community Growth", value: "+220%" },
-        { metric: "Brand Awareness", value: "+180%" },
-      ],
-      image: "/placeholder.jpg",
-      tags: ["Brand Storytelling", "Social Media", "Community Building"],
-      color: "from-green-100 to-green-200",
-    },
-    {
-      title: "TechFlow Solutions",
-      category: "B2B SaaS",
-      description:
-        "Strategic content marketing campaign for a B2B SaaS platform, including thought leadership content and lead generation strategies.",
-      results: [
-        { metric: "Lead Generation", value: "+280%" },
-        { metric: "Organic Traffic", value: "+195%" },
-        { metric: "Conversion Rate", value: "+85%" },
-      ],
-      image: "/placeholder.jpg",
-      tags: ["Content Strategy", "SEO", "Lead Generation"],
-      color: "from-blue-100 to-blue-200",
-    },
-    {
-      title: "Artisan Coffee Co.",
-      category: "Food & Beverage",
-      description:
-        "Brand storytelling and social media strategy for a local coffee roaster expanding nationally, focusing on craft and community values.",
-      results: [
-        { metric: "Social Engagement", value: "+420%" },
-        { metric: "Store Visits", value: "+160%" },
-        { metric: "Online Sales", value: "+240%" },
-      ],
-      image: "/placeholder.jpg",
-      tags: ["Brand Story", "Social Media", "Local Marketing"],
-      color: "from-amber-100 to-amber-200",
-    },
-    {
-      title: "FitLife Wellness",
-      category: "Health & Fitness",
-      description:
-        "Comprehensive content marketing strategy for a wellness platform, including video content, email campaigns, and community engagement.",
-      results: [
-        { metric: "Video Views", value: "+380%" },
-        { metric: "App Downloads", value: "+210%" },
-        { metric: "User Retention", value: "+95%" },
-      ],
-      image: "/placeholder.jpg",
-      tags: ["Video Content", "Email Marketing", "Community"],
-      color: "from-purple-100 to-purple-200",
-    },
-    {
-      title: "Urban Design Studio",
-      category: "Architecture & Design",
-      description:
-        "Visual storytelling and portfolio presentation for an architecture firm, showcasing their unique design philosophy and project outcomes.",
-      results: [
-        { metric: "Portfolio Views", value: "+300%" },
-        { metric: "Client Inquiries", value: "+150%" },
-        { metric: "Industry Recognition", value: "5 Awards" },
-      ],
-      image: "/placeholder.jpg",
-      tags: ["Visual Storytelling", "Portfolio", "Industry PR"],
-      color: "from-gray-100 to-gray-200",
-    },
-    {
-      title: "NextGen EdTech",
-      category: "Education Technology",
-      description:
-        "Content marketing strategy for an educational technology platform, focusing on educator engagement and student success stories.",
-      results: [
-        { metric: "Educator Signups", value: "+260%" },
-        { metric: "Content Engagement", value: "+190%" },
-        { metric: "Platform Usage", value: "+140%" },
-      ],
-      image: "/placeholder.jpg",
-      tags: ["Educational Content", "Success Stories", "Community"],
-      color: "from-indigo-100 to-indigo-200",
-    },
-  ]
-
   const categories = [
     "All Projects",
     "Brand Storytelling",
@@ -152,16 +67,12 @@ export default function PortfolioPage() {
       {/* Filter Section */}
       <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up">
+          <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in-up">
             {categories.map((category, index) => (
               <Button
                 key={index}
-                variant={index === 0 ? "default" : "outline"}
-                className={`transition-all duration-300 ${
-                  index === 0
-                    ? "bg-black text-white hover:bg-gray-800"
-                    : "bg-white text-black border-gray-300 hover:bg-gray-50 hover:border-gray-400"
-                }`}
+                variant="outline"
+                className="rounded-full px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-black transition-all duration-300 bg-transparent"
               >
                 {category}
               </Button>
@@ -170,58 +81,48 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Portfolio Grid */}
+      {/* Projects Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {caseStudies.map((project, index) => (
               <Card
-                key={index}
-                className={`bg-white border-gray-200 overflow-hidden hover-lift animate-fade-in-up animate-delay-${(index + 1) * 100}`}
+                key={project.slug}
+                className={`bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group animate-fade-in-up animate-delay-${(index + 1) * 100}`}
               >
-                <div className={`aspect-video bg-gradient-to-br ${project.color} relative`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-black/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <Sparkles className="h-10 w-10 text-black/60" />
+                <Link href={`/portfolio/${project.slug}`} className="block" scroll={true}>
+                  <div className="aspect-w-4 aspect-h-3 bg-gray-100 relative">
+                    <Image
+                      src={project.mainImage || "/placeholder.svg"}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    {/* Logo above title - enlarged */}
+                    {project.logoImage && (
+                      <div className="flex justify-center mb-4">
+                        <div className="relative w-32 h-16">
+                          <Image
+                            src={project.logoImage || "/placeholder.svg"}
+                            alt={`${project.title} logo`}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    <h3 className="text-xl font-bold text-black mb-2 text-center">{project.title}</h3>
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.brief}</p>
+                    <p className="text-pink-500 font-semibold text-sm mb-6">{project.category}</p>
+                    <div className="text-center">
+                      <span className="inline-block text-sm font-semibold text-purple-600 border border-purple-300 rounded-full px-6 py-2 transition-all duration-300 group-hover:bg-purple-600 group-hover:text-white">
+                        View case study
+                      </span>
                     </div>
                   </div>
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-black mb-2">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
-
-                  {/* Results */}
-                  <div className="grid grid-cols-3 gap-2 mb-4">
-                    {project.results.map((result, resultIndex) => (
-                      <div key={resultIndex} className="text-center">
-                        <div className="text-lg font-bold text-black">{result.value}</div>
-                        <div className="text-xs text-gray-500">{result.metric}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="bg-gray-100 text-gray-700 px-2 py-1 rounded-lg text-xs font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <Button className="w-full btn-primary group">
-                    View Case Study
-                    <ExternalLink className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                  </Button>
-                </CardContent>
+                </Link>
               </Card>
             ))}
           </div>

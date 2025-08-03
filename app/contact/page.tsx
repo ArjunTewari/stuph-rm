@@ -65,21 +65,21 @@ export default function ContactPage() {
     {
       icon: MessageCircle,
       title: "Let's Chat",
-      details: "hello@stuphstudio.com",
+      details: "raghav@stuph.co",
       description: "Drop us a line anytime",
       color: "from-blue-100 to-blue-200",
     },
     {
       icon: Phone,
       title: "Give Us a Call",
-      details: "+1 (555) 123-4567",
+      details: "+91 7600920359",
       description: "Mon-Fri, 9am-6pm EST",
       color: "from-green-100 to-green-200",
     },
     {
       icon: MapPin,
       title: "Visit Our Studio",
-      details: "Brooklyn, New York",
+      details: "Bangalore, India",
       description: "Coffee meetings welcome",
       color: "from-purple-100 to-purple-200",
     },
@@ -378,34 +378,7 @@ export default function ContactPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black"></div>
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-fade-in-up">
-            <div className="flex justify-center mb-6">
-              <Coffee className="h-16 w-16 text-white" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Coffee's On Us</h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Whether virtual or in-person, we'd love to chat about your project over coffee. Great stories start with
-              great conversations.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-black hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105">
-                <Calendar className="mr-2 h-4 w-4" />
-                Schedule a Call
-              </Button>
-              <Button
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 rounded-full font-semibold transition-all duration-300"
-              >
-                <Mail className="mr-2 h-4 w-4" />
-                Send an Email
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
   )
 }
