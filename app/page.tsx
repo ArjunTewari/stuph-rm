@@ -2,19 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  ArrowRight,
-  Target,
-  Zap,
-  Heart,
-  Briefcase,
-  MessageCircle,
-  PenTool,
-  BarChart3,
-  Video,
-  Mail,
-  IndianRupee,
-} from "lucide-react"
+import { ArrowRight, Target, Zap, Heart, Briefcase, MessageCircle, PenTool, BarChart3, Video, Mail, IndianRupee } from 'lucide-react'
 import LogoCarousel from "@/components/logo-carousel"
 
 export default function HomePage() {
@@ -109,7 +97,7 @@ export default function HomePage() {
             </div>
 
             {/* Right side - Video */}
-            <div className="relative h-64 sm:h-80 md:h-96 lg:h-full lg:min-h-[600px] animate-fade-in-right order-2 lg:order-2 mt-8 lg:mt-0">
+            <div className="relative w-full aspect-video sm:h-80 md:h-96 lg:h-full lg:min-h-[600px] animate-fade-in-right order-2 lg:order-2 mt-8 lg:mt-0">
               <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
                 <video
                   autoPlay

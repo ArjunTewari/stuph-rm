@@ -18,7 +18,7 @@ export default function Footer() {
               <div className="relative w-12 h-12 mr-3">
                 <Image src="/images/stuph-logo.png" alt="stuph studio" fill className="object-contain filter invert" />
               </div>
-              <span className="text-2xl font-semibold">stuph studio</span>
+              <span className="text-2xl font-semibold"> STUPH STUDIO </span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
               We craft compelling content marketing strategies that tell your story, engage your audience, and drive
