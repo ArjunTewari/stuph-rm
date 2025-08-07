@@ -97,7 +97,7 @@ export default function HomePage() {
             </div>
 
             {/* Right side - Video */}
-            <div className="relative w-full aspect-video lg:h-full lg:min-h-[600px] animate-fade-in-right order-2 lg:order-2 mt-8 lg:mt-0">
+            <div className="relative w-full aspect-video lg:h-full lg:min-h-[600px] animate-fade-in-right order-2 lg:order-2 mt-8 lg:mt-0 pt-[56.25%] relative">
               <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
                 <video
                   autoPlay
