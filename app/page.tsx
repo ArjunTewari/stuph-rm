@@ -61,7 +61,7 @@ export default function HomePage() {
       title: "ITC RIGHT SHIFT",
       description:
         "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
-      imageSrc: "/images/ITC_Right_Shift_Logo.png", // Updated image path
+      imageSrc: "/images/ITC_Right_Shift_Logo.png",
     },
     {
       title: "FLIPKART",
@@ -97,8 +97,8 @@ export default function HomePage() {
             </div>
 
             {/* Right side - Video */}
-            <div className="relative w-full aspect-[18/9] lg:h-full lg:min-h-[600px] animate-fade-in-right order-2 lg:order-2 mt-8 lg:mt-0">
-              <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="relative w-full aspect-[9/16]">
                 <video
                   autoPlay
                   muted
@@ -111,7 +111,7 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 >
                   <source
-                    src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/stuph%20showreel.mp4?alt=media&token=d13f7604-d4fc-4ec5-9ae4-8f789c05785f" // Updated video source
+                    src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/stuph%20showreel.mp4?alt=media&token=d13f7604-d4fc-4ec5-9ae4-8f789c05785f"
                     type="video/mp4"
                   />
                 </video>
