@@ -98,8 +98,22 @@ export default function HomePage() {
       <section className="relative w-full min-h-screen bg-white pt-20 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 h-full items-center">
-            {/* Left side - Video */}
-            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 order-2 lg:order-1">
+            {/* Left side - Text Content */}
+            <div className="flex flex-col justify-center space-y-8 animate-fade-in-left order-1 lg:order-1">
+              <div>
+                <h1 className="text-black text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                  We make good
+                  <span className="gradient-text"> Stuph</span>
+                </h1>
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                  Here for the brands that want to be remembered, not tolerated.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4"></div>
+            </div>
+
+            {/* Right side - Video */}
+            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 order-2 lg:order-2">
               <div className="relative w-full aspect-[9/16]">
                 <video
                   autoPlay
@@ -120,20 +134,6 @@ export default function HomePage() {
                 {/* Subtle overlay for better video presentation */}
                 <div className="absolute inset-0 bg-black/10 rounded-2xl"></div>
               </div>
-            </div>
-
-            {/* Right side - Text Content */}
-            <div className="flex flex-col justify-center space-y-8 animate-fade-in-left order-1 lg:order-2">
-              <div>
-                <h1 className="text-black text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                  We make good
-                  <span className="gradient-text"> Stuph</span>
-                </h1>
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Here for the brands that want to be remembered, not tolerated.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4"></div>
             </div>
           </div>
         </div>
