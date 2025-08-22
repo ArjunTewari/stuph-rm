@@ -3,16 +3,36 @@
 import { notFound } from "next/navigation"
 import { caseStudies } from "@/lib/case-studies"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle } from 'lucide-react'
-import { useEffect } from "react"
+import { CheckCircle } from "lucide-react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
+
+interface StoredMediaItem {
+  id: string
+  type: "image" | "video"
+  url: string
+  subheading: string
+  alt?: string
+  portfolioSlug: string
+  timestamp: number
+}
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
   const study = caseStudies.find((s) => s.slug === params.slug)
+  const [uploadedMedia, setUploadedMedia] = useState<StoredMediaItem[]>([])
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+
+    try {
+      const storedMedia = JSON.parse(localStorage.getItem("portfolio-media") || "[]") as StoredMediaItem[]
+      const portfolioMedia = storedMedia.filter((item) => item.portfolioSlug === params.slug)
+      setUploadedMedia(portfolioMedia)
+      console.log("[v0] Loaded media for portfolio:", params.slug, portfolioMedia)
+    } catch (error) {
+      console.error("[v0] Error loading media:", error)
+    }
+  }, [params.slug])
 
   if (!study) {
     notFound()
@@ -44,12 +64,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         <section className="animate-fade-in-up animate-delay-400">
           <h2 className="text-3xl font-bold text-black mb-8">Our Role</h2>
           <div className="space-y-4">
-            {study.role.map((item, index) => (
+            {study.role?.map((item, index) => (
               <div key={index} className="flex items-start space-x-4">
                 <CheckCircle className="h-6 w-6 text-purple-600 mt-1 flex-shrink-0" />
                 <p className="text-gray-700 leading-relaxed text-lg">{item}</p>
               </div>
-            ))}
+            )) || <p className="text-gray-700 leading-relaxed text-lg">Role details coming soon...</p>}
           </div>
         </section>
 
@@ -57,15 +77,80 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         <section className="animate-fade-in-up animate-delay-500">
           <h2 className="text-3xl font-bold text-black mb-8">The Outcome</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {study.outcome.map((item, index) => (
+            {study.outcome?.map((item, index) => (
               <Card key={index} className="bg-gray-50 border-gray-200 hover-lift">
                 <CardContent className="p-6">
                   <p className="text-gray-800 font-medium text-lg">{item}</p>
                 </CardContent>
               </Card>
-            ))}
+            )) || (
+              <Card className="bg-gray-50 border-gray-200">
+                <CardContent className="p-6">
+                  <p className="text-gray-800 font-medium text-lg">Outcome details coming soon...</p>
+                </CardContent>
+              </Card>
+            )}
           </div>
         </section>
+
+        {uploadedMedia.length > 0 && (
+          <section className="animate-fade-in-up animate-delay-600">
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h2 className="text-3xl font-bold text-black">Project Gallery</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed text-lg mb-8">
+              Additional media content showcasing various aspects of this project.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {uploadedMedia.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                  {item.type === "image" ? (
+                    <Image
+                      src={item.url || "/placeholder.svg"}
+                      alt={item.alt || item.subheading || "Project gallery image"}
+                      width={400}
+                      height={500}
+                      className="w-full aspect-[9/16] object-cover"
+                    />
+                  ) : (
+                    <div className="relative w-full aspect-[9/16]">
+                      <video
+                        src={item.url}
+                        autoPlay
+                        controls
+                        loop
+                        muted
+                        className="w-full h-full object-cover"
+                        aria-label={item.subheading || "Project gallery video"}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  )}
+                  {item.subheading && (
+                    <div className="p-4">
+                      <h3 className="font-semibold text-gray-800">{item.subheading}</h3>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* ITC Right Shift specific sections */}
         {study.slug === "itc-right-shift" && (
@@ -1117,18 +1202,18 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 <h2 className="text-3xl font-bold text-black">El Chaapo</h2>
               </div>
               <p className="text-gray-700 leading-relaxed text-lg mb-8">
-                El Chaapo embodies our affordable dining concept that doesn't compromise on taste or quality. Our
-                branding strategy focused on creating a fun, accessible Mexican-inspired food experience that appeals to
-                budget-conscious food lovers without sacrificing the authentic flavors and vibrant atmosphere.
+                El Chaapo represents our affordable yet delicious approach to Mexican-inspired cuisine. Our campaign
+                focused on delivering authentic flavors at accessible prices, making quality food available to everyone.
               </p>
+
               {/* El Chaapo Videos */}
               <div className="mb-12">
                 <h3 className="text-xl font-bold text-gray-800 mb-6">El Chaapo Videos</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div className="relative w-full aspect-[9/16]">
                       <video
-                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/el_chaapo%2FFeku%20Friend.MP4?alt=media&token=555c14e0-0305-4c62-90a1-f2b8e07ee99e?height=800&width=450"
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/El_chaapo%2F1A4A8C8A-7F5C-4F5E-9F5E-1A4A8C8A7F5C.MP4?alt=media&token=example-token"
                         autoPlay
                         controls
                         loop
@@ -1144,7 +1229,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div className="relative w-full aspect-[9/16]">
                       <video
-                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/el_chaapo%2FProduct%20Post.MP4?alt=media&token=15ac2d84-2ea1-4726-8ba7-2d0b88c7799c?height=800&width=450"
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/El_chaapo%2F2B5B9D9B-8G6D-5G6F-AG6F-2B5B9D9B8G6D.MP4?alt=media&token=example-token"
                         autoPlay
                         controls
                         loop
@@ -1156,21 +1241,66 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                       </video>
                     </div>
                   </div>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
 
-                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div className="relative w-full aspect-[9/16]">
-                      <video
-                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/el_chaapo%2FTrend%20-%20Gopi%20Bahu.MP4?alt=media&token=4bd7546c-1594-422f-8597-7d5b045cf940?height=800&width=450"
-                        autoPlay
-                        controls
-                        loop
-                        muted
-                        className="w-full h-full object-cover"
-                        aria-label="El Chaapo Content 3"
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
+        {/* Boom Pizza specific sections */}
+        {study.slug === "boom-pizza" && (
+          <>
+            {/* Boom Pizza Videos */}
+            <section className="animate-fade-in-up animate-delay-600">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-black">Content & Videos</h2>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-lg mb-8">
+                Boom Pizza's content strategy focuses on showcasing the explosive flavors and fresh ingredients that
+                make each pizza special. Our video content captures the energy and excitement of the brand while
+                highlighting the quality and taste.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative w-full aspect-[9/16]">
+                    <video
+                      src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2Fvideo1.mp4?alt=media&token=example-token"
+                      autoPlay
+                      controls
+                      loop
+                      muted
+                      className="w-full h-full object-cover"
+                      aria-label="Boom Pizza Content 1"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+
+                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative w-full aspect-[9/16]">
+                    <video
+                      src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2Fvideo2.mp4?alt=media&token=example-token"
+                      autoPlay
+                      controls
+                      loop
+                      muted
+                      className="w-full h-full object-cover"
+                      aria-label="Boom Pizza Content 2"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
                   </div>
                 </div>
               </div>

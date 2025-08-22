@@ -84,8 +84,10 @@ export const caseStudies = [
     category: "Cloud Kitchens",
     brief:
       "Great Food but Low Budgets. We made them viral in Bengaluru..organically! (yes, it still happens) Also, co-built their new brand - Boom Pizza.",
-    mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "/placeholder-logo.svg",
+    mainImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/gastronomix%2Fgastronomix%20logo.png?alt=media&token=babb5cad-3118-4462-8196-9a0cd273db6b?height=300&width=400",
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/gastronomix%2Fgastronomix%20logo.png?alt=media&token=babb5cad-3118-4462-8196-9a0cd273db6b",
     problem:
       "Three new food brands under the same parent company were launching in a crowded cloud kitchen space- with zero awareness, no legacy, and tight marketing budgets. The challenge? Build cult-like love, fast.",
     role: [
@@ -103,8 +105,10 @@ export const caseStudies = [
     category: "Clean-Label Food",
     brief:
       "A legacy food business was looking to enter the D2C game. We crafted their new identity, new packaging and on the way to making them a household name.",
-    mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "/placeholder-logo.svg",
+    mainImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2Ftify%20logo.jpg?alt=media&token=c76c7f3b-71e3-44cd-a789-b59d0a965176?height=300&width=400",
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2Ftify%20logo.jpg?alt=media&token=c76c7f3b-71e3-44cd-a789-b59d0a965176",
     problem:
       "Tify, a clean-label food brand, needed to go from idea to shelf-ready product and then to retail. It lacked a compelling identity that would stand out in the natural foods space.",
     role: [
@@ -233,43 +237,38 @@ export const caseStudies = [
     ],
   },
   {
-    slug: "raising-superstars",
-    title: "RAISING SUPERSTARS",
-    category: "Education Technology",
-    brief:
-      "Website Design & Development - Designed and built a user-first website that reflected the brand's authority in early childhood learning.",
-    mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%203-Txi3x7bZhZ2qOKKNFNiipsJxWxfBrP.png",
-    problem:
-      "Raising Superstars needed a website that would establish their authority in early childhood learning while providing an intuitive user experience for parents and educators.",
+    slug: "boom-pizza",
+    title: "BOOM PIZZA",
+    category: "Food & Beverage",
+    brief: "Created the brand identity from the scratch.",
+    mainImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2FBoom%20Pizza_Logo_2000x2000.png?alt=media&token=c92f3517-25af-4cc3-b2fd-46a0cf7fe639?height=300&width=400",
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2FBoom%20Pizza_Logo_2000x2000.png?alt=media&token=c92f3517-25af-4cc3-b2fd-46a0cf7fe639",
     role: [
-      "Designed and built a user-first website that reflected the brand's authority in early childhood learning.",
-      "Created simplified UX that made it easy for parents to understand and access educational content.",
-      "Implemented mobile-first performance optimization for better accessibility.",
-      "Developed content architecture that showcased educational expertise and program benefits.",
-    ],
-    outcome: [
-      "Launched a website that significantly improved user engagement and conversion rates.",
-      "Established a strong digital presence that supported business growth and credibility.",
+      "Created the brand identity from the scratch.",
+      "Designed the Menu, the Pizza box and all launch collaterals",
+      "Executed Photoshoots of each of the Pizzas and the new outlets.",
+      "Launched Social Media marketing with a quirky yet effective campaign",
     ],
   },
   {
-    slug: "prana-ventures",
-    title: "PRANA VENTURES",
-    category: "Venture Capital",
-    brief: "Brand Identity - Created a sophisticated brand identity for a venture capital firm.",
+    slug: "boldfit",
+    title: "BOLDFIT",
+    category: "Food & Beverage",
+    brief: "Boldfit saw a 120% followers growth during IPL 2025",
     mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "/placeholder-logo.svg",
+    logoImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2Flogo%2011.png?alt=media&token=5d68591a-5e31-4b73-a54c-2bd8cacdf397",
     problem:
-      "Prana Ventures needed a professional brand identity that would establish credibility in the competitive venture capital space and appeal to both startups and investors.",
+      "Boldfit wanted to amp up their social content game during IPL 2025. They were the official merchandize sponsor for RCB, MI and CSK teams.",
     role: [
-      "Developed a sophisticated brand identity that conveyed trust and expertise in venture capital.",
-      "Created visual elements that balanced approachability for startups with professionalism for investors.",
-      "Established brand guidelines that could be applied across various touchpoints and communications.",
+      "We created team-specific high engagement viral content during the IPL.",
+      "We created daily topical content during the IPL matches.",
+      "Created the launch video for the official CSK Jersey launch.",
     ],
     outcome: [
-      "Successfully positioned Prana Ventures as a credible player in the VC ecosystem.",
-      "Created brand assets that enhanced their ability to attract quality deal flow and investor interest.",
+      "Gave the startup a professional appearance that helped in investor presentations and retail partnerships.",
+      "Created brand assets that scaled effectively across different product launches.",
     ],
   },
 ]

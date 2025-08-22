@@ -2,7 +2,19 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Target, Zap, Heart, Briefcase, MessageCircle, PenTool, BarChart3, Video, Mail, IndianRupee } from 'lucide-react'
+import {
+  ArrowRight,
+  Target,
+  Zap,
+  Heart,
+  Briefcase,
+  MessageCircle,
+  PenTool,
+  BarChart3,
+  Video,
+  Mail,
+  IndianRupee,
+} from "lucide-react"
 import LogoCarousel from "@/components/logo-carousel"
 
 export default function HomePage() {
@@ -61,18 +73,22 @@ export default function HomePage() {
       title: "ITC RIGHT SHIFT",
       description:
         "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
-      imageSrc: "/images/ITC_Right_Shift_Logo.png",
+      imageSrc: "/images/ITC_Right_Shift_Logo.png", // Updated image path
+      slug: "itc-right-shift",
     },
     {
       title: "FLIPKART",
       description:
         "We launched Flipkart's influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
       imageSrc: "/images/Flipkart-Logo.wine.png",
+      slug: "flipkart",
     },
     {
-      title: "ONLY EARTH",
-      description: "We gave a new exciting look and re-branding to the company!",
-      imageSrc: "/images/Only-Earth-Logo-300-c.png",
+      title: "HDFC Sky",
+      description: "Akshaya Tritiya Print Ad but make it sexy. Stuph: Hold my beer..",
+      imageSrc:
+        "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Hdfc%20sky%2Flogo%2015.png?alt=media&token=be92ada7-8222-4cf5-8761-6eec88ba9c8f",
+      slug: "hdfc-sky",
     },
   ]
 
@@ -82,22 +98,8 @@ export default function HomePage() {
       <section className="relative w-full min-h-screen bg-white pt-20 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 h-full items-center">
-            {/* Left side - Text Content */}
-            <div className="flex flex-col justify-center space-y-8 animate-fade-in-left order-1 lg:order-1">
-              <div>
-                <h1 className="text-black text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                  We make good
-                  <span className="gradient-text"> Stuph</span>
-                </h1>
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Here for the brands that want to be remembered, not tolerated.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4"></div>
-            </div>
-
-            {/* Right side - Video */}
-            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+            {/* Left side - Video */}
+            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 order-2 lg:order-1">
               <div className="relative w-full aspect-[9/16]">
                 <video
                   autoPlay
@@ -111,13 +113,27 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 >
                   <source
-                    src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/stuph%20showreel.mp4?alt=media&token=d13f7604-d4fc-4ec5-9ae4-8f789c05785f"
+                    src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/stuph%20showreel.mp4?alt=media&token=d13f7604-d4fc-4ec5-9ae4-8f789c05785f" // Updated video source
                     type="video/mp4"
                   />
                 </video>
                 {/* Subtle overlay for better video presentation */}
                 <div className="absolute inset-0 bg-black/10 rounded-2xl"></div>
               </div>
+            </div>
+
+            {/* Right side - Text Content */}
+            <div className="flex flex-col justify-center space-y-8 animate-fade-in-left order-1 lg:order-2">
+              <div>
+                <h1 className="text-black text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                  We make good
+                  <span className="gradient-text"> Stuph</span>
+                </h1>
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                  Here for the brands that want to be remembered, not tolerated.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4"></div>
             </div>
           </div>
         </div>
@@ -168,23 +184,24 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {cards.map((card, idx) => (
-                <Card
-                  key={card.title}
-                  className={`bg-white border-gray-200 overflow-hidden hover-lift animate-fade-in-up animate-delay-${(idx + 1) * 200}`}
-                >
-                  <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
-                    <Image
-                      src={card.imageSrc || "/placeholder.svg"}
-                      alt={`${card.title} logo`}
-                      fill
-                      className="object-contain p-4"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-black mb-2">{card.title}</h3>
-                    <p className="text-gray-600 mb-4">{card.description}</p>
-                  </CardContent>
-                </Card>
+                <Link key={card.title} href={`/portfolio/${card.slug}`}>
+                  <Card
+                    className={`bg-white border-gray-200 overflow-hidden hover-lift animate-fade-in-up animate-delay-${(idx + 1) * 200} cursor-pointer transition-all duration-300 hover:shadow-lg`}
+                  >
+                    <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
+                      <Image
+                        src={card.imageSrc || "/placeholder.svg"}
+                        alt={`${card.title} logo`}
+                        fill
+                        className="object-contain p-4"
+                      />
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-semibold text-black mb-2">{card.title}</h3>
+                      <p className="text-gray-600 mb-4">{card.description}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
             <div className="text-center mt-12 animate-fade-in-up animate-delay-800">
