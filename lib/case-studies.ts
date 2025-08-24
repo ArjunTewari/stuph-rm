@@ -267,8 +267,7 @@ export const caseStudies = [
       "Created the launch video for the official CSK Jersey launch.",
     ],
     outcome: [
-      "Gave the startup a professional appearance that helped in investor presentations and retail partnerships.",
-      "Created brand assets that scaled effectively across different product launches.",
+      "Boldfit saw a 120% followers growth during IPL 2025",
     ],
   },
 ]

@@ -315,17 +315,7 @@ export default function ContactPage() {
                   />
 
                 {/* Newsletter Checkbox */}
-                <div className="flex items-center space-x-3 animate-fade-in-up animate-delay-1100">
-                  <Checkbox
-                    id="newsletter"
-                    checked={formData.newsletter}
-                    onCheckedChange={(checked) => handleInputChange("newsletter", checked as boolean)}
-                    className="border-gray-300"
-                  />
-                  <Label htmlFor="newsletter" className="text-gray-600 text-sm leading-relaxed">
-                    Yes, I'd love to receive content marketing tips and insights from stuph studio
-                  </Label>
-                </div>
+                
 
                 {/* Submit Button */}
                 <div className="text-center pt-4 animate-fade-in-up animate-delay-1200">

@@ -23,7 +23,7 @@ export default function HomePage() {
       name: "Raghav Sharma",
       imageSrc: "/images/rdp.png",
       intro:
-        "I was once asked if I were a brand, what would be my tagline. I replied - 'Getting things done since 1992. I derive some ungodly pleasure in building brands - the moreunknown they are, the better. In the past, I scaled up Yoga Bar as a Brand & Product Lead to their eventual acquisition by ITC. And created branded content for MTV India (ever heard of MTV Hustle?). I have also worked as Brand Manager in Real Estate where I was selling luxury residential properties in Tata Housing.",
+        "I was once asked if I were a brand, what would be my tagline. I replied - 'Getting things done since 1992'. I derive some ungodly pleasure in building brands - the more unknown they are, the better. In the past, I scaled up Yoga Bar as a Brand & Product Lead to their eventual acquisition by ITC. And created branded content for MTV India (ever heard of MTV Hustle?). I have also worked as Brand Manager in Real Estate where I was selling luxury residential properties in Tata Housing.",
     },
     {
       name: "Meghna Kundu",

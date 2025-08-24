@@ -129,40 +129,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Results That Matter</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our portfolio demonstrates consistent success across industries and campaign types.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center animate-scale-in animate-delay-100">
-              <TrendingUp className="h-12 w-12 mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">280%</div>
-              <div className="text-gray-300">Average Growth</div>
-            </div>
-            <div className="text-center animate-scale-in animate-delay-200">
-              <Users className="h-12 w-12 mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">120+</div>
-              <div className="text-gray-300">Happy Clients</div>
-            </div>
-            <div className="text-center animate-scale-in animate-delay-300">
-              <Eye className="h-12 w-12 mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">340%</div>
-              <div className="text-gray-300">Engagement Boost</div>
-            </div>
-            <div className="text-center animate-scale-in animate-delay-400">
-              <Heart className="h-12 w-12 mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">98%</div>
-              <div className="text-gray-300">Satisfaction Rate</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials Section */}
       <section className="py-20 bg-gray-50 relative overflow-hidden">
