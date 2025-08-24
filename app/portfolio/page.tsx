@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { TrendingUp, Users, Eye, Heart, Target } from "lucide-react"
+import { Users, Heart, Target } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { caseStudies } from "@/lib/case-studies"
@@ -19,23 +19,23 @@ export default function PortfolioPage() {
   const testimonials = [
     {
       quote:
-        "stuph studio didn't just create content for us – they helped us discover our authentic brand voice. The results have been transformational.",
-      author: "Sarah Chen",
-      role: "Founder, EcoVibe Lifestyle",
+        "We regularly collaborate with Stuph for our Sale events. They understand the urgency and give us an amazing turnaround, every time. They've delivered a Brand Film in 72 hours, a Print Ad with a unique concept in 24 hours. And all our Sale assets exactly when we need them.",
+      author: "Gaurav Deshpande",
+      role: "Senior Brand Manager, Flipkart",
       avatar: "/placeholder-user.jpg",
     },
     {
       quote:
-        "The strategic approach and creative execution from stuph studio exceeded all our expectations. Our engagement rates have never been higher.",
-      author: "Marcus Rodriguez",
-      role: "CMO, TechFlow Solutions",
+        "Raghav & team Stuph helped us with the brand strategy, packaging & content marketing for our brand, Renue Minerals. While most agency have we will give you x number of iterations for an amount of money, Raghav’s approach is let’s collaborate on this until both he & the client are satisfied with the outcome. The team also has an amazing turnaround time without any compromises on attention to detail or quality of work.",
+      author: "Rahul Jawahrani",
+      role: "Co-founder & CEO - Renue Minerals",
       avatar: "/placeholder-user.jpg",
     },
     {
       quote:
-        "Working with stuph studio was like having a creative partner who truly understood our vision. They brought our story to life beautifully.",
-      author: "Emma Thompson",
-      role: "Creative Director, Urban Design Studio",
+        "We are a family-VC firm and Stuph handles Creatives & Content for our portfolio companies from various sectors. They've been able to give a boost to a consumer-facing Fintech brand as well as a legacy B2B brand. Highly recommend them.",
+      author: "Manisha Nayak",
+      role: "1707 Capital",
       avatar: "/placeholder-user.jpg",
     },
   ]
@@ -88,10 +88,10 @@ export default function PortfolioPage() {
             {caseStudies.map((project, index) => (
               <Card
                 key={project.slug}
-                className={`bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group animate-fade-in-up animate-delay-${(index + 1) * 100}`}
+                className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group"
               >
                 <Link href={`/portfolio/${project.slug}`} className="block" scroll={true}>
-                  <div className="aspect-w-4 aspect-h-3 bg-gray-100 relative">
+                  <div className="aspect-[4/3] bg-gray-100 relative">
                     <Image
                       src={project.mainImage || "/placeholder.svg"}
                       alt={project.title}
@@ -129,7 +129,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-
       {/* Testimonials Section */}
       <section className="py-20 bg-gray-50 relative overflow-hidden">
         {/* Background design elements */}
@@ -137,7 +136,7 @@ export default function PortfolioPage() {
           <Image src="/images/design-elements.png" alt="" fill className="object-cover object-center" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Client Love</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Don't just take our word for it – hear what our clients have to say about working with stuph studio.
@@ -145,10 +144,7 @@ export default function PortfolioPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                className={`bg-white border-gray-200 hover-lift animate-fade-in-up animate-delay-${(index + 1) * 200}`}
-              >
+              <Card key={index} className="bg-white border-gray-200 hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="mb-6">
                     <div className="flex text-black mb-4">
