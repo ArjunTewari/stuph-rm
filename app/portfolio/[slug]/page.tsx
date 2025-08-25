@@ -191,40 +191,39 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                           controls
                           loop
                           muted
-                          className="w-full h-full object-cover"
-                          aria-label={item.subheading || "Project gallery video"}
-                          onError={(e) => {
-                            console.error("[v0] Video failed to load:", item.url)
-                            console.error("[v0] Video error details:", e.currentTarget.error)
-                            e.currentTarget.style.display = "none"
-                            const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
-                            if (fallback) {
-                              fallback.classList.remove("hidden")
-                            }
-                          }}
-                          onLoadStart={(e) => {
-                            console.log("[v0] Video loading started:", e.currentTarget.src)
-                          }}
-                          onCanPlay={(e) => {
-                            console.log("[v0] Video can play:", item.url)
-                            e.currentTarget.style.display = "block"
-                            const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
-                            if (fallback) {
-                              fallback.classList.add("hidden")
-                            }
+                          className="w-full h-full object-cover rounded-lg"
+                          onLoadStart={() => {
+                            console.log("[v0] Video loading started:", item.url)
                           }}
                           onLoadedData={(e) => {
                             console.log("[v0] Video loaded successfully:", item.url)
                             e.currentTarget.style.display = "block"
                           }}
-                        >
-                          Your browser does not support the video tag.
-                        </video>
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
-                          <div className="text-center">
-                            <div className="mb-2">🎥</div>
-                            <div>Video unavailable</div>
-                            <div className="text-xs mt-1">Check network connection</div>
+                          onCanPlay={(e) => {
+                            console.log("[v0] Video can play:", item.url)
+                            e.currentTarget.style.display = "block"
+                          }}
+                          onError={(e) => {
+                            console.error("[v0] Video failed to load:", item.url)
+                            const errorDiv = e.currentTarget.nextElementSibling
+                            if (errorDiv && errorDiv.classList.contains("error-fallback")) {
+                              errorDiv.classList.remove("hidden")
+                            }
+                          }}
+                          crossOrigin="anonymous"
+                        />
+                        <div className="error-fallback hidden absolute inset-0 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <div className="text-center p-4">
+                            <p className="text-sm text-gray-600 mb-2">Video unavailable</p>
+                            <p className="text-xs text-gray-500">Check Firebase Storage configuration</p>
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs text-blue-500 hover:underline mt-2 block"
+                            >
+                              Open direct link
+                            </a>
                           </div>
                         </div>
                       </div>
