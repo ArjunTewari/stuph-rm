@@ -24,23 +24,40 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   useEffect(() => {
     window.scrollTo(0, 0)
 
+    console.log("[v0] Portfolio page mounted for slug:", params.slug)
+    console.log("[v0] Checking localStorage...")
+
     try {
-      const storedMedia = JSON.parse(localStorage.getItem("portfolio-media") || "[]") as StoredMediaItem[]
-      const portfolioMedia = storedMedia.filter((item) => item.portfolioSlug === params.slug)
+      const rawData = localStorage.getItem("portfolio-media")
+      console.log("[v0] Raw localStorage data:", rawData)
+
+      if (!rawData) {
+        console.log("[v0] No portfolio-media found in localStorage")
+        return
+      }
+
+      const storedMedia = JSON.parse(rawData) as StoredMediaItem[]
+      console.log("[v0] Parsed stored media:", storedMedia)
+      console.log("[v0] Looking for portfolio slug:", params.slug)
+
+      const portfolioMedia = storedMedia.filter((item) => {
+        console.log("[v0] Checking item:", item.portfolioSlug, "against", params.slug)
+        return item.portfolioSlug === params.slug
+      })
+
+      console.log("[v0] Filtered portfolio media:", portfolioMedia)
       setUploadedMedia(portfolioMedia)
-      console.log("[v0] Loaded media for portfolio:", params.slug, portfolioMedia)
+      console.log("[v0] Set uploadedMedia state with", portfolioMedia.length, "items")
 
       if (portfolioMedia.length === 0) {
         console.log("[v0] No media found for portfolio:", params.slug)
-        console.log("[v0] All stored media:", storedMedia)
-      } else {
         console.log(
-          "[v0] Media URLs to load:",
-          portfolioMedia.map((item) => ({ type: item.type, url: item.url })),
+          "[v0] Available portfolio slugs:",
+          storedMedia.map((item) => item.portfolioSlug),
         )
       }
     } catch (error) {
-      console.error("[v0] Error loading media:", error)
+      console.error("[v0] Error loading media from localStorage:", error)
     }
   }, [params.slug])
 
