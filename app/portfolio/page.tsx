@@ -91,14 +91,6 @@ export default function PortfolioPage() {
                 className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group"
               >
                 <Link href={`/portfolio/${project.slug}`} className="block" scroll={true}>
-                  <div className="aspect-[4/3] bg-gray-100 relative">
-                    <Image
-                      src={project.mainImage || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
                   <div className="p-6">
                     {/* Logo above title - enlarged */}
                     {project.logoImage && (
