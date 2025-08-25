@@ -174,11 +174,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         onLoadStart={(e) => {
                           console.log("[v0] Video loading started:", e.currentTarget.src)
                         }}
-                        onCanPlay={() => {
+                        onCanPlay={(e) => {
                           console.log("[v0] Video can play:", item.url)
+                          e.currentTarget.style.display = "block"
+                          const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
+                          if (fallback) {
+                            fallback.classList.add("hidden")
+                          }
                         }}
-                        onLoadedData={() => {
+                        onLoadedData={(e) => {
                           console.log("[v0] Video loaded successfully:", item.url)
+                          e.currentTarget.style.display = "block"
                         }}
                       >
                         Your browser does not support the video tag.
