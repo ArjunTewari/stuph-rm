@@ -30,6 +30,8 @@ export default function MediaUploadPage() {
   const [mediaItems, setMediaItems] = useState<MediaItem[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [uploadSuccess, setUploadSuccess] = useState(false)
+  const [existingMedia, setExistingMedia] = useState<StoredMediaItem[]>([])
+  const [selectedPortfolioForManagement, setSelectedPortfolioForManagement] = useState<string>("")
 
   // Portfolio options from existing case studies
   const portfolioOptions = caseStudies.map((study) => ({
@@ -37,6 +39,35 @@ export default function MediaUploadPage() {
     label: study.title,
     category: study.category,
   }))
+
+  const loadExistingMedia = (portfolioSlug: string) => {
+    try {
+      const existingMedia = JSON.parse(localStorage.getItem("portfolio-media") || "[]") as StoredMediaItem[]
+      const portfolioMedia = existingMedia.filter((item) => item.portfolioSlug === portfolioSlug)
+      setExistingMedia(portfolioMedia)
+      console.log("[v0] Loaded existing media for", portfolioSlug, ":", portfolioMedia)
+    } catch (error) {
+      console.error("[v0] Error loading existing media:", error)
+      setExistingMedia([])
+    }
+  }
+
+  const removeExistingMedia = (mediaId: string) => {
+    try {
+      const allMedia = JSON.parse(localStorage.getItem("portfolio-media") || "[]") as StoredMediaItem[]
+      const updatedMedia = allMedia.filter((item) => item.id !== mediaId)
+      localStorage.setItem("portfolio-media", JSON.stringify(updatedMedia))
+
+      // Reload existing media for current portfolio
+      if (selectedPortfolioForManagement) {
+        loadExistingMedia(selectedPortfolioForManagement)
+      }
+
+      console.log("[v0] Removed media item:", mediaId)
+    } catch (error) {
+      console.error("[v0] Error removing media:", error)
+    }
+  }
 
   const addMediaItem = () => {
     const newItem: MediaItem = {
@@ -104,6 +135,10 @@ export default function MediaUploadPage() {
         setMediaItems([])
         setSelectedPortfolio("")
         setUploadSuccess(true)
+
+        if (selectedPortfolioForManagement) {
+          loadExistingMedia(selectedPortfolioForManagement)
+        }
 
         // Hide success message after 3 seconds
         setTimeout(() => setUploadSuccess(false), 3000)
@@ -375,6 +410,125 @@ export default function MediaUploadPage() {
             </CardContent>
           </Card>
         </form>
+
+        {/* Media Management Section */}
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Trash2 className="h-5 w-5" />
+              Manage Existing Media
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="management-portfolio-select">Select Portfolio to Manage</Label>
+                <Select
+                  value={selectedPortfolioForManagement}
+                  onValueChange={(value) => {
+                    setSelectedPortfolioForManagement(value)
+                    if (value) {
+                      loadExistingMedia(value)
+                    } else {
+                      setExistingMedia([])
+                    }
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Choose a portfolio to manage media..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {portfolioOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        <div className="flex items-center justify-between w-full">
+                          <span>{option.label}</span>
+                          <Badge variant="secondary" className="ml-2 text-xs">
+                            {option.category}
+                          </Badge>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {selectedPortfolioForManagement && (
+                <div className="mt-6">
+                  <h3 className="font-medium text-gray-900 mb-4">Existing Media ({existingMedia.length} items)</h3>
+
+                  {existingMedia.length === 0 ? (
+                    <div className="text-center py-8 text-gray-500 bg-gray-50 rounded-lg">
+                      <ImageIcon className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                      <p>No media found for this portfolio.</p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {existingMedia.map((item) => (
+                        <div key={item.id} className="border rounded-lg p-4 bg-white">
+                          <div className="flex items-center justify-between mb-2">
+                            <Badge variant={item.type === "video" ? "default" : "secondary"}>
+                              {item.type === "video" ? (
+                                <>
+                                  <Video className="h-3 w-3 mr-1" /> Video
+                                </>
+                              ) : (
+                                <>
+                                  <ImageIcon className="h-3 w-3 mr-1" /> Image
+                                </>
+                              )}
+                            </Badge>
+                            <Button
+                              onClick={() => {
+                                if (confirm("Are you sure you want to remove this media item?")) {
+                                  removeExistingMedia(item.id)
+                                }
+                              }}
+                              variant="ghost"
+                              size="sm"
+                              className="text-red-500 hover:text-red-700"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
+
+                          <div className="mb-2">
+                            {item.type === "image" ? (
+                              <img
+                                src={item.url || "/placeholder.svg"}
+                                alt={item.alt || item.subheading || "Media item"}
+                                className="w-full h-24 object-cover rounded border"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = "none"
+                                }}
+                              />
+                            ) : (
+                              <video
+                                src={item.url}
+                                className="w-full h-24 object-cover rounded border"
+                                controls={false}
+                                muted
+                                onError={(e) => {
+                                  e.currentTarget.style.display = "none"
+                                }}
+                              />
+                            )}
+                          </div>
+
+                          <div className="text-sm">
+                            <p className="font-medium text-gray-900 truncate">{item.subheading || "No caption"}</p>
+                            <p className="text-gray-500 text-xs mt-1">
+                              Added: {new Date(item.timestamp).toLocaleDateString()}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Instructions */}
         <Card className="mt-8">
