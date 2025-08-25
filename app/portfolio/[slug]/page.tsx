@@ -137,13 +137,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         muted
                         className="w-full h-full object-cover"
                         aria-label={item.subheading || "Project gallery video"}
-                        onError={(e) => {
-                          console.log("[v0] Video failed to load:", item.url)
-                          e.currentTarget.style.display = "none"
-                        }}
-                        onLoadStart={() => {
-                          console.log("[v0] Video loading started:", item.url)
-                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -275,10 +268,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         muted
                         className="w-full h-full object-cover"
                         aria-label="ITC Right Shift Social Media Content 1"
-                        onError={(e) => {
-                          console.log("[v0] Static video failed to load")
-                          e.currentTarget.style.display = "none"
-                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -296,10 +285,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         muted
                         className="w-full h-full object-cover"
                         aria-label="ITC Right Shift Social Media Content 2"
-                        onError={(e) => {
-                          console.log("[v0] Static video failed to load")
-                          e.currentTarget.style.display = "none"
-                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -338,7 +323,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC_E-COMMERCE%2FRS_SBV_ATTA_2025_May15.mp4?alt=media&token=58120bf8-07a7-4fd8-94b7-dcb1fb6c48fc"
-                        autoPlay
+                        playsInline
+                        preload="metadata"
                         controls
                         loop
                         muted
@@ -354,7 +340,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC_E-COMMERCE%2FRS_PCA_Namkeen_9x16_June06%2010.36.10%E2%80%AFAM.mp4?alt=media&token=b2148ef1-a9e7-40b6-9ba6-3efd8828d94b"
-                        autoPlay
+                        playsInline
+                        preload="metadata"
                         controls
                         loop
                         muted
@@ -925,10 +912,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                       muted
                       className="w-full h-full object-cover"
                       aria-label="Tify Social Media Content 1"
-                      onError={(e) => {
-                        console.log("[v0] Static video failed to load")
-                        e.currentTarget.style.display = "none"
-                      }}
                     >
                       Your browser does not support the video tag.
                     </video>
