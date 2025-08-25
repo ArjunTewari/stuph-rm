@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { TrendingUp, Users, Eye, Heart, Target } from "lucide-react"
+import { Users, Heart, Target } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { caseStudies } from "@/lib/case-studies"
@@ -33,7 +33,7 @@ export default function PortfolioPage() {
     },
     {
       quote:
-        "Working with stuph studio was like having a creative partner who truly understood our vision. They brought our story to life beautifully.",
+        "We are a family-VC firm and Stuph handles Creatives & Content for our portfolio companies from various sectors. They've been able to give a boost to a consumer-facing Fintech brand as well as a legacy B2B brand. Highly recommend them.",
       author: "Manisha Nayak",
       role: "1707 Capital",
       avatar: "/placeholder-user.jpg",
@@ -88,17 +88,9 @@ export default function PortfolioPage() {
             {caseStudies.map((project, index) => (
               <Card
                 key={project.slug}
-                className={`bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group animate-fade-in-up animate-delay-${(index + 1) * 100}`}
+                className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group"
               >
                 <Link href={`/portfolio/${project.slug}`} className="block" scroll={true}>
-                  <div className="aspect-w-4 aspect-h-3 bg-gray-100 relative">
-                    <Image
-                      src={project.mainImage || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
                   <div className="p-6">
                     {/* Logo above title - enlarged */}
                     {project.logoImage && (
@@ -129,7 +121,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-
       {/* Testimonials Section */}
       <section className="py-20 bg-gray-50 relative overflow-hidden">
         {/* Background design elements */}
@@ -137,7 +128,7 @@ export default function PortfolioPage() {
           <Image src="/images/design-elements.png" alt="" fill className="object-cover object-center" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Client Love</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Don't just take our word for it – hear what our clients have to say about working with stuph studio.
@@ -145,10 +136,7 @@ export default function PortfolioPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                className={`bg-white border-gray-200 hover-lift animate-fade-in-up animate-delay-${(index + 1) * 200}`}
-              >
+              <Card key={index} className="bg-white border-gray-200 hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="mb-6">
                     <div className="flex text-black mb-4">

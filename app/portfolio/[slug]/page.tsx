@@ -130,12 +130,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src={item.url}
-                        autoPlay
+                        playsInline
+                        preload="metadata"
                         controls
                         loop
                         muted
                         className="w-full h-full object-cover"
                         aria-label={item.subheading || "Project gallery video"}
+                        onError={(e) => {
+                          console.log("[v0] Video failed to load:", item.url)
+                          e.currentTarget.style.display = "none"
+                        }}
+                        onLoadStart={() => {
+                          console.log("[v0] Video loading started:", item.url)
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -260,12 +268,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2F50%20Strong%20Series.MP4?alt=media&token=33f98570-377c-47d1-bf76-9f3e1f2c3da1"
-                        autoPlay
+                        playsInline
+                        preload="metadata"
                         controls
                         loop
                         muted
                         className="w-full h-full object-cover"
                         aria-label="ITC Right Shift Social Media Content 1"
+                        onError={(e) => {
+                          console.log("[v0] Static video failed to load")
+                          e.currentTarget.style.display = "none"
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -276,12 +289,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2FTrend%20-%20RS_Thumka.mp4?alt=media&token=4d7a96ff-5b5c-4799-8d1c-137c4c23cc51"
-                        autoPlay
+                        playsInline
+                        preload="metadata"
                         controls
                         loop
                         muted
                         className="w-full h-full object-cover"
                         aria-label="ITC Right Shift Social Media Content 2"
+                        onError={(e) => {
+                          console.log("[v0] Static video failed to load")
+                          e.currentTarget.style.display = "none"
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -900,12 +918,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   <div className="relative w-full aspect-[9/16]">
                     <video
                       src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2FA%20things%20indian%20moms%20say.mp4?alt=media&token=cc116fe2-915d-4fd4-a3da-cc14812ec164"
-                      autoPlay
+                      playsInline
+                      preload="metadata"
                       controls
                       loop
                       muted
                       className="w-full h-full object-cover"
                       aria-label="Tify Social Media Content 1"
+                      onError={(e) => {
+                        console.log("[v0] Static video failed to load")
+                        e.currentTarget.style.display = "none"
+                      }}
                     >
                       Your browser does not support the video tag.
                     </video>

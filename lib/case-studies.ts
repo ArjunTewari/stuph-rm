@@ -25,8 +25,8 @@ export const caseStudies = [
     title: "FLIPKART",
     category: "Film & Production",
     brief: "We launched Flipkart’s influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
-    mainImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-T9MgzqzPAiWXMCnAnf1utk91E3TP2A.png", // Laptop image
-    logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-UiEf00tZpG88Uh9yP8vjJ1BE0JjgVW.png", // Flipkart logo image
+    mainImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988", // Laptop image
+    logoImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988", // Flipkart logo image
     problem:
       "Flipkart was launching its Affluencer Program: a creator-driven initiative aimed at building a new community of influencers on the platform. But to cut through the clutter and attract attention, the launch needed more than just a poster and an emailer. It needed a hook. A film. A moment.",
     role: [
@@ -267,7 +267,7 @@ export const caseStudies = [
       "Created the launch video for the official CSK Jersey launch.",
     ],
     outcome: [
-      "Boldfit saw a 120% followers growth during IPL 2025",
+      "Boldfit saw a 120% followers growth during IPL 2025."
     ],
   },
 ]
