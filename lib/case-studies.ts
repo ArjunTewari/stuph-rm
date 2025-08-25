@@ -267,7 +267,7 @@ export const caseStudies = [
       "Created the launch video for the official CSK Jersey launch.",
     ],
     outcome: [
-      "Boldfit saw a 120% followers growth during IPL 2025."
+      "Boldfit saw a 120% followers growth during IPL 2025",
     ],
   },
 ]
