@@ -140,88 +140,103 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {uploadedMedia.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  {item.type === "image" ? (
-                    <div className="relative w-full aspect-[9/16]">
-                      <Image
-                        src={item.url || "/placeholder.svg"}
-                        alt={item.alt || item.subheading || "Project gallery image"}
-                        width={400}
-                        height={500}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          console.error("[v0] Image failed to load:", item.url)
-                          e.currentTarget.style.display = "none"
-                        }}
-                        onLoad={() => {
-                          console.log("[v0] Image loaded successfully:", item.url)
-                        }}
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
-                        <div className="text-center">
-                          <div className="mb-2">📷</div>
-                          <div>Image unavailable</div>
+              {uploadedMedia.map((item) => {
+                const getMediaType = (url: string, storedType: string) => {
+                  const extension = url.toLowerCase().split(".").pop()?.split("?")[0]
+                  if (extension && ["mp4", "webm", "ogg", "mov", "avi"].includes(extension)) {
+                    return "video"
+                  }
+                  if (extension && ["jpg", "jpeg", "png", "gif", "webp", "svg"].includes(extension)) {
+                    return "image"
+                  }
+                  return storedType
+                }
+
+                const actualType = getMediaType(item.url, item.type)
+
+                return (
+                  <div
+                    key={item.id}
+                    className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  >
+                    {actualType === "image" ? (
+                      <div className="relative w-full aspect-[9/16]">
+                        <Image
+                          src={item.url || "/placeholder.svg"}
+                          alt={item.alt || item.subheading || "Project gallery image"}
+                          width={400}
+                          height={500}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            console.error("[v0] Image failed to load:", item.url)
+                            e.currentTarget.style.display = "none"
+                          }}
+                          onLoad={() => {
+                            console.log("[v0] Image loaded successfully:", item.url)
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
+                          <div className="text-center">
+                            <div className="mb-2">📷</div>
+                            <div>Image unavailable</div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ) : (
-                    <div className="relative w-full aspect-[9/16]">
-                      <video
-                        src={item.url}
-                        playsInline
-                        preload="metadata"
-                        controls
-                        loop
-                        muted
-                        className="w-full h-full object-cover"
-                        aria-label={item.subheading || "Project gallery video"}
-                        onError={(e) => {
-                          console.error("[v0] Video failed to load:", item.url)
-                          console.error("[v0] Video error details:", e.currentTarget.error)
-                          e.currentTarget.style.display = "none"
-                          const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
-                          if (fallback) {
-                            fallback.classList.remove("hidden")
-                          }
-                        }}
-                        onLoadStart={(e) => {
-                          console.log("[v0] Video loading started:", e.currentTarget.src)
-                        }}
-                        onCanPlay={(e) => {
-                          console.log("[v0] Video can play:", item.url)
-                          e.currentTarget.style.display = "block"
-                          const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
-                          if (fallback) {
-                            fallback.classList.add("hidden")
-                          }
-                        }}
-                        onLoadedData={(e) => {
-                          console.log("[v0] Video loaded successfully:", item.url)
-                          e.currentTarget.style.display = "block"
-                        }}
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
-                        <div className="text-center">
-                          <div className="mb-2">🎥</div>
-                          <div>Video unavailable</div>
-                          <div className="text-xs mt-1">Check network connection</div>
+                    ) : (
+                      <div className="relative w-full aspect-[9/16]">
+                        <video
+                          src={item.url}
+                          playsInline
+                          preload="metadata"
+                          controls
+                          loop
+                          muted
+                          className="w-full h-full object-cover"
+                          aria-label={item.subheading || "Project gallery video"}
+                          onError={(e) => {
+                            console.error("[v0] Video failed to load:", item.url)
+                            console.error("[v0] Video error details:", e.currentTarget.error)
+                            e.currentTarget.style.display = "none"
+                            const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
+                            if (fallback) {
+                              fallback.classList.remove("hidden")
+                            }
+                          }}
+                          onLoadStart={(e) => {
+                            console.log("[v0] Video loading started:", e.currentTarget.src)
+                          }}
+                          onCanPlay={(e) => {
+                            console.log("[v0] Video can play:", item.url)
+                            e.currentTarget.style.display = "block"
+                            const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
+                            if (fallback) {
+                              fallback.classList.add("hidden")
+                            }
+                          }}
+                          onLoadedData={(e) => {
+                            console.log("[v0] Video loaded successfully:", item.url)
+                            e.currentTarget.style.display = "block"
+                          }}
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
+                          <div className="text-center">
+                            <div className="mb-2">🎥</div>
+                            <div>Video unavailable</div>
+                            <div className="text-xs mt-1">Check network connection</div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                  {item.subheading && (
-                    <div className="p-4">
-                      <h3 className="font-semibold text-gray-800">{item.subheading}</h3>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    )}
+                    {item.subheading && (
+                      <div className="p-4">
+                        <h3 className="font-semibold text-gray-800">{item.subheading}</h3>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </section>
         )}
