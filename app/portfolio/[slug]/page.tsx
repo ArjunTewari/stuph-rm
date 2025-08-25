@@ -214,15 +214,36 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         />
                         <div className="error-fallback hidden absolute inset-0 bg-gray-100 rounded-lg flex items-center justify-center">
                           <div className="text-center p-4">
-                            <p className="text-sm text-gray-600 mb-2">Video unavailable</p>
-                            <p className="text-xs text-gray-500">Check Firebase Storage configuration</p>
+                            <p className="text-sm text-red-600 font-medium mb-2">Video unavailable</p>
+                            <p className="text-xs text-gray-600 mb-3">
+                              CORS error: Firebase Storage not configured for production domain
+                            </p>
+                            <div className="text-xs text-gray-500 mb-3 text-left">
+                              <p className="font-medium mb-1">To fix this:</p>
+                              <ol className="list-decimal list-inside space-y-1">
+                                <li>Create cors.json file:</li>
+                                <pre className="bg-gray-200 p-2 rounded text-xs mt-1 mb-2">
+                                  {`[{
+  "origin": ["https://www.stuph.co"],
+  "method": ["GET"],
+  "maxAgeSeconds": 3600
+}]`}
+                                </pre>
+                                <li>
+                                  Run:{" "}
+                                  <code className="bg-gray-200 px-1 rounded">
+                                    gsutil cors set cors.json gs://stuph-studio.firebasestorage.app
+                                  </code>
+                                </li>
+                              </ol>
+                            </div>
                             <a
                               href={item.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-xs text-blue-500 hover:underline mt-2 block"
+                              className="text-xs text-blue-500 hover:underline block"
                             >
-                              Open direct link
+                              Test direct link
                             </a>
                           </div>
                         </div>
@@ -1231,7 +1252,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div className="relative w-full aspect-[9/16]">
                       <video
-                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2F14300974-0DB2-4FE0-B966-AD87013A873F.MP4?alt=media&token=50cf090e-91dd-439f-862a-60fb8ba0366a?height=800&width=450"
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2F14300974-0DB2-4FE0-B966-AD87013A873F.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2F14300974-0DB2-4FE0-B966-AD87013A873F.MP4?alt=media&token=50cf090e-91dd-439f-862a-60fb8ba0366a?height=800&width=450"
                         autoPlay
                         controls
                         loop
