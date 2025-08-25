@@ -183,15 +183,22 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         </div>
                       </div>
                     ) : (
-                      <div className="relative w-full aspect-[9/16]">
+                      <div className="relative w-full aspect-[9/16] cursor-pointer group">
                         <video
                           src={item.url}
                           playsInline
                           preload="metadata"
-                          controls
                           loop
                           muted
                           className="w-full h-full object-cover rounded-lg"
+                          onClick={(e) => {
+                            const video = e.currentTarget
+                            if (video.paused) {
+                              video.play()
+                            } else {
+                              video.pause()
+                            }
+                          }}
                           onLoadStart={() => {
                             console.log("[v0] Video loading started:", item.url)
                           }}
@@ -212,6 +219,13 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                           }}
                           crossOrigin="anonymous"
                         />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                          <div className="bg-black bg-opacity-50 rounded-full p-3">
+                            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        </div>
                         <div className="error-fallback hidden absolute inset-0 bg-gray-100 rounded-lg flex items-center justify-center">
                           <div className="text-center p-4">
                             <p className="text-sm text-red-600 font-medium mb-2">Video unavailable</p>
@@ -1030,12 +1044,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   <div className="relative w-full aspect-[9/16]">
                     <video
                       src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2FInfluencer%20Collab.mp4?alt=media&token=3df65395-3471-4b49-8acb-4611a0068b3a"
-                      autoPlay
-                      controls
+                      playsInline
+                      preload="metadata"
                       loop
                       muted
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover cursor-pointer"
                       aria-label="Tify Social Media Content 2"
+                      onClick={(e) => {
+                        const video = e.currentTarget
+                        if (video.paused) {
+                          video.play()
+                        } else {
+                          video.pause()
+                        }
+                      }}
                     >
                       Your browser does not support the video tag.
                     </video>
@@ -1046,12 +1068,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   <div className="relative w-full aspect-[9/16]">
                     <video
                       src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2FProfile%20visit%20ad.mp4?alt=media&token=4041835c-7cce-4fb7-b2f7-3e916e1a1e42"
-                      autoPlay
-                      controls
+                      playsInline
+                      preload="metadata"
                       loop
                       muted
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover cursor-pointer"
                       aria-label="Tify Social Media Content 3"
+                      onClick={(e) => {
+                        const video = e.currentTarget
+                        if (video.paused) {
+                          video.play()
+                        } else {
+                          video.pause()
+                        }
+                      }}
                     >
                       Your browser does not support the video tag.
                     </video>
@@ -1095,12 +1125,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Voyaah%2F26250D88-276C-47B1-B81F-F6346542A71D%202.MP4?alt=media&token=d7bd1309-5e7c-4f88-b1ff-ecf194f4f8ca"
-                        autoPlay
-                        controls
+                        playsInline
+                        preload="metadata"
                         loop
                         muted
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover cursor-pointer"
                         aria-label="Voyaah Aviation Content"
+                        onClick={(e) => {
+                          const video = e.currentTarget
+                          if (video.paused) {
+                            video.play()
+                          } else {
+                            video.pause()
+                          }
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -1111,12 +1149,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Voyaah%2F341FE2E7-F43A-4C5B-B2B3-75EC2D3E0D2F%202.MP4?alt=media&token=90f75826-f28c-4c73-8db0-55efcd8d27fe"
-                        autoPlay
-                        controls
+                        playsInline
+                        preload="metadata"
                         loop
                         muted
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover cursor-pointer"
                         aria-label="Voyaah Norway Travel Experience"
+                        onClick={(e) => {
+                          const video = e.currentTarget
+                          if (video.paused) {
+                            video.play()
+                          } else {
+                            video.pause()
+                          }
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -1130,12 +1176,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Voyaah%2F834C1460-47E4-424E-B8D3-EC8297B4D864%202.MP4?alt=media&token=5cc4caa9-108e-42da-bf49-a44904f52f80"
-                        autoPlay
-                        controls
+                        playsInline
+                        preload="metadata"
                         loop
                         muted
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover cursor-pointer"
                         aria-label="Voyaah Airline Experience"
+                        onClick={(e) => {
+                          const video = e.currentTarget
+                          if (video.paused) {
+                            video.play()
+                          } else {
+                            video.pause()
+                          }
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -1146,12 +1200,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Voyaah%2FE181347C-A1F4-4641-B404-AE1FF3FB3A5B%202.MP4?alt=media&token=3c327ffe-1c0a-4315-b562-2b34d4e90ba3"
-                        autoPlay
-                        controls
+                        playsInline
+                        preload="metadata"
                         loop
                         muted
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover cursor-pointer"
                         aria-label="Voyaah Beyond Travel Content"
+                        onClick={(e) => {
+                          const video = e.currentTarget
+                          if (video.paused) {
+                            video.play()
+                          } else {
+                            video.pause()
+                          }
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -1237,12 +1299,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2F0DE99943-5779-4B82-8BBE-5A8581737F8B.MP4?alt=media&token=3147c70d-5b6a-4a15-a229-b3cf3c7edf4e?height=800&width=450"
-                        autoPlay
-                        controls
+                        playsInline
+                        preload="metadata"
                         loop
                         muted
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover cursor-pointer"
                         aria-label="Nippu Kodi Content 1"
+                        onClick={(e) => {
+                          const video = e.currentTarget
+                          if (video.paused) {
+                            video.play()
+                          } else {
+                            video.pause()
+                          }
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -1253,12 +1323,20 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="relative w-full aspect-[9/16]">
                       <video
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2F14300974-0DB2-4FE0-B966-AD87013A873F.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2F14300974-0DB2-4FE0-B966-AD87013A873F.MP4?alt=media&token=50cf090e-91dd-439f-862a-60fb8ba0366a?height=800&width=450"
-                        autoPlay
-                        controls
+                        playsInline
+                        preload="metadata"
                         loop
                         muted
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover cursor-pointer"
                         aria-label="Nippu Kodi Content 2"
+                        onClick={(e) => {
+                          const video = e.currentTarget
+                          if (video.paused) {
+                            video.play()
+                          } else {
+                            video.pause()
+                          }
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
@@ -1271,11 +1349,18 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2FC490FC2A-271B-4656-8191-ABE08CF2E192.MP4?alt=media&token=c6e4ec2b-95aa-41ed-9a8a-d73cb1ec743d"
                         playsInline
                         preload="metadata"
-                        controls
                         loop
                         muted
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover cursor-pointer"
                         aria-label="Nippu Kodi Content 3"
+                        onClick={(e) => {
+                          const video = e.currentTarget
+                          if (video.paused) {
+                            video.play()
+                          } else {
+                            video.pause()
+                          }
+                        }}
                         onError={(e) => {
                           console.error("[v0] Video failed to load:", e.currentTarget.src)
                           e.currentTarget.style.display = "none"
