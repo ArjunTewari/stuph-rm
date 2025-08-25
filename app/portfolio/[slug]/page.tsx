@@ -29,6 +29,16 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       const portfolioMedia = storedMedia.filter((item) => item.portfolioSlug === params.slug)
       setUploadedMedia(portfolioMedia)
       console.log("[v0] Loaded media for portfolio:", params.slug, portfolioMedia)
+
+      if (portfolioMedia.length === 0) {
+        console.log("[v0] No media found for portfolio:", params.slug)
+        console.log("[v0] All stored media:", storedMedia)
+      } else {
+        console.log(
+          "[v0] Media URLs to load:",
+          portfolioMedia.map((item) => ({ type: item.type, url: item.url })),
+        )
+      }
     } catch (error) {
       console.error("[v0] Error loading media:", error)
     }
@@ -119,13 +129,28 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   {item.type === "image" ? (
-                    <Image
-                      src={item.url || "/placeholder.svg"}
-                      alt={item.alt || item.subheading || "Project gallery image"}
-                      width={400}
-                      height={500}
-                      className="w-full aspect-[9/16] object-cover"
-                    />
+                    <div className="relative w-full aspect-[9/16]">
+                      <Image
+                        src={item.url || "/placeholder.svg"}
+                        alt={item.alt || item.subheading || "Project gallery image"}
+                        width={400}
+                        height={500}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          console.error("[v0] Image failed to load:", item.url)
+                          e.currentTarget.style.display = "none"
+                        }}
+                        onLoad={() => {
+                          console.log("[v0] Image loaded successfully:", item.url)
+                        }}
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
+                        <div className="text-center">
+                          <div className="mb-2">📷</div>
+                          <div>Image unavailable</div>
+                        </div>
+                      </div>
+                    </div>
                   ) : (
                     <div className="relative w-full aspect-[9/16]">
                       <video
@@ -137,9 +162,34 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         muted
                         className="w-full h-full object-cover"
                         aria-label={item.subheading || "Project gallery video"}
+                        onError={(e) => {
+                          console.error("[v0] Video failed to load:", item.url)
+                          console.error("[v0] Video error details:", e.currentTarget.error)
+                          e.currentTarget.style.display = "none"
+                          const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
+                          if (fallback) {
+                            fallback.classList.remove("hidden")
+                          }
+                        }}
+                        onLoadStart={(e) => {
+                          console.log("[v0] Video loading started:", e.currentTarget.src)
+                        }}
+                        onCanPlay={() => {
+                          console.log("[v0] Video can play:", item.url)
+                        }}
+                        onLoadedData={() => {
+                          console.log("[v0] Video loaded successfully:", item.url)
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
+                        <div className="text-center">
+                          <div className="mb-2">🎥</div>
+                          <div>Video unavailable</div>
+                          <div className="text-xs mt-1">Check network connection</div>
+                        </div>
+                      </div>
                     </div>
                   )}
                   {item.subheading && (
@@ -1160,153 +1210,35 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div className="relative w-full aspect-[9/16]">
                       <video
-                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2FC490FC2A-271B-4656-8191-ABE08CF2E192.MP4?alt=media&token=c6e4ec2b-95aa-41ed-9a8a-d73cb1ec743d?height=800&width=450"
-                        autoPlay
+                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2FC490FC2A-271B-4656-8191-ABE08CF2E192.MP4?alt=media&token=c6e4ec2b-95aa-41ed-9a8a-d73cb1ec743d"
+                        playsInline
+                        preload="metadata"
                         controls
                         loop
                         muted
                         className="w-full h-full object-cover"
                         aria-label="Nippu Kodi Content 3"
+                        onError={(e) => {
+                          console.error("[v0] Video failed to load:", e.currentTarget.src)
+                          e.currentTarget.style.display = "none"
+                          const fallback = e.currentTarget.parentElement?.querySelector(".error-fallback")
+                          if (fallback) {
+                            fallback.classList.remove("hidden")
+                          }
+                        }}
+                        onLoadStart={(e) => {
+                          console.log("[v0] Video loading started:", e.currentTarget.src)
+                        }}
                       >
                         Your browser does not support the video tag.
                       </video>
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
+                        <div className="text-center">
+                          <div className="mb-2">🎥</div>
+                          <div>Video unavailable</div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div className="relative w-full aspect-[9/16]">
-                      <video
-                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Nippu_kodi%2FF86D0082-6DD8-492B-B410-8C0955ECC3DB.MP4?alt=media&token=283d3c97-dbf3-4090-b562-59f74c55f9d7?height=800&width=450"
-                        autoPlay
-                        controls
-                        loop
-                        muted
-                        className="w-full h-full object-cover"
-                        aria-label="Nippu Kodi Content 4"
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* El Chaapo Section */}
-            <section className="animate-fade-in-up animate-delay-700">
-              <div className="flex items-center space-x-3 mb-8">
-                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h2 className="text-3xl font-bold text-black">El Chaapo</h2>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-lg mb-8">
-                El Chaapo represents our affordable yet delicious approach to Mexican-inspired cuisine. Our campaign
-                focused on delivering authentic flavors at accessible prices, making quality food available to everyone.
-              </p>
-
-              {/* El Chaapo Videos */}
-              <div className="mb-12">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">El Chaapo Videos</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div className="relative w-full aspect-[9/16]">
-                      <video
-                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/El_chaapo%2F1A4A8C8A-7F5C-4F5E-9F5E-1A4A8C8A7F5C.MP4?alt=media&token=example-token"
-                        autoPlay
-                        controls
-                        loop
-                        muted
-                        className="w-full h-full object-cover"
-                        aria-label="El Chaapo Content 1"
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  </div>
-
-                  <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <div className="relative w-full aspect-[9/16]">
-                      <video
-                        src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/El_chaapo%2F2B5B9D9B-8G6D-5G6F-AG6F-2B5B9D9B8G6D.MP4?alt=media&token=example-token"
-                        autoPlay
-                        controls
-                        loop
-                        muted
-                        className="w-full h-full object-cover"
-                        aria-label="El Chaapo Content 2"
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </>
-        )}
-
-        {/* Boom Pizza specific sections */}
-        {study.slug === "boom-pizza" && (
-          <>
-            {/* Boom Pizza Videos */}
-            <section className="animate-fade-in-up animate-delay-600">
-              <div className="flex items-center space-x-3 mb-8">
-                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"
-                    />
-                  </svg>
-                </div>
-                <h2 className="text-3xl font-bold text-black">Content & Videos</h2>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-lg mb-8">
-                Boom Pizza's content strategy focuses on showcasing the explosive flavors and fresh ingredients that
-                make each pizza special. Our video content captures the energy and excitement of the brand while
-                highlighting the quality and taste.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative w-full aspect-[9/16]">
-                    <video
-                      src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2Fvideo1.mp4?alt=media&token=example-token"
-                      autoPlay
-                      controls
-                      loop
-                      muted
-                      className="w-full h-full object-cover"
-                      aria-label="Boom Pizza Content 1"
-                    >
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                </div>
-
-                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative w-full aspect-[9/16]">
-                    <video
-                      src="https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2Fvideo2.mp4?alt=media&token=example-token"
-                      autoPlay
-                      controls
-                      loop
-                      muted
-                      className="w-full h-full object-cover"
-                      aria-label="Boom Pizza Content 2"
-                    >
-                      Your browser does not support the video tag.
-                    </video>
                   </div>
                 </div>
               </div>

@@ -14,14 +14,33 @@ export default function HeroVideo() {
           controlsList="nodownload nofullscreen noremoteplayback"
           className="w-full h-full object-cover"
           onError={(e) => {
-            console.log("[v0] Hero video failed to load")
+            console.error("[v0] Hero video failed to load:", e.currentTarget.src)
+            console.error("[v0] Hero video error details:", e.currentTarget.error)
             e.currentTarget.style.display = "none"
+            const parent = e.currentTarget.parentElement
+            if (parent) {
+              parent.innerHTML = `
+                <div class="w-full h-full bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center">
+                  <div class="text-center text-gray-600">
+                    <div class="text-4xl mb-2">🎬</div>
+                    <div class="font-medium">Video Loading...</div>
+                  </div>
+                </div>
+              `
+            }
           }}
           onCanPlay={(e) => {
-            e.currentTarget.play().catch(() => {
-              console.log("[v0] Autoplay prevented, showing controls")
+            console.log("[v0] Hero video can play")
+            e.currentTarget.play().catch((playError) => {
+              console.log("[v0] Autoplay prevented:", playError)
               e.currentTarget.controls = true
             })
+          }}
+          onLoadStart={() => {
+            console.log("[v0] Hero video loading started")
+          }}
+          onLoadedData={() => {
+            console.log("[v0] Hero video loaded successfully")
           }}
         >
           <source
