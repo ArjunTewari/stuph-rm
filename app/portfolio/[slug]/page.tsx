@@ -25,7 +25,18 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     window.scrollTo(0, 0)
 
     console.log("[v0] Portfolio page mounted for slug:", params.slug)
-    console.log("[v0] Checking localStorage...")
+    console.log("[v0] Current domain:", window.location.hostname)
+    console.log("[v0] Current protocol:", window.location.protocol)
+    console.log("[v0] localStorage available:", typeof Storage !== "undefined")
+
+    // Check all localStorage keys
+    console.log("[v0] All localStorage keys:", Object.keys(localStorage))
+    console.log("[v0] localStorage length:", localStorage.length)
+
+    // Check specifically for our key
+    const hasPortfolioMedia = localStorage.getItem("portfolio-media")
+    console.log("[v0] portfolio-media exists:", !!hasPortfolioMedia)
+    console.log("[v0] portfolio-media length:", hasPortfolioMedia?.length || 0)
 
     try {
       const rawData = localStorage.getItem("portfolio-media")
@@ -33,11 +44,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
       if (!rawData) {
         console.log("[v0] No portfolio-media found in localStorage")
+        console.log("[v0] This could mean:")
+        console.log("[v0] 1. No media was ever uploaded")
+        console.log("[v0] 2. localStorage was cleared")
+        console.log("[v0] 3. Different domain/subdomain")
+        console.log("[v0] 4. Incognito/private browsing mode")
         return
       }
 
       const storedMedia = JSON.parse(rawData) as StoredMediaItem[]
       console.log("[v0] Parsed stored media:", storedMedia)
+      console.log("[v0] Total stored items:", storedMedia.length)
       console.log("[v0] Looking for portfolio slug:", params.slug)
 
       const portfolioMedia = storedMedia.filter((item) => {
@@ -58,6 +75,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       }
     } catch (error) {
       console.error("[v0] Error loading media from localStorage:", error)
+      console.error("[v0] This could indicate corrupted localStorage data")
     }
   }, [params.slug])
 
