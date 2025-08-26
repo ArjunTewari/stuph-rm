@@ -2,14 +2,14 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Trash2, Plus, Upload, ImageIcon, Video, Eye, CheckCircle } from "lucide-react"
+import { Trash2, Plus, Upload, ImageIcon, Video, Eye, CheckCircle, AlertTriangle } from "lucide-react"
 import { caseStudies } from "@/lib/case-studies"
 
 interface MediaItem {
@@ -32,6 +32,13 @@ export default function MediaUploadPage() {
   const [uploadSuccess, setUploadSuccess] = useState(false)
   const [existingMedia, setExistingMedia] = useState<StoredMediaItem[]>([])
   const [selectedPortfolioForManagement, setSelectedPortfolioForManagement] = useState<string>("")
+  const [debugInfo, setDebugInfo] = useState<{
+    domain: string
+    protocol: string
+    localStorageAvailable: boolean
+    totalStoredItems: number
+    storageSize: number
+  } | null>(null)
 
   // Portfolio options from existing case studies
   const portfolioOptions = caseStudies.map((study) => ({
@@ -39,6 +46,32 @@ export default function MediaUploadPage() {
     label: study.title,
     category: study.category,
   }))
+
+  useEffect(() => {
+    try {
+      const rawData = localStorage.getItem("portfolio-media")
+      const storedItems = rawData ? JSON.parse(rawData) : []
+
+      setDebugInfo({
+        domain: window.location.hostname,
+        protocol: window.location.protocol,
+        localStorageAvailable: typeof Storage !== "undefined",
+        totalStoredItems: storedItems.length,
+        storageSize: rawData ? rawData.length : 0,
+      })
+
+      console.log("[v0] Media Upload Page Debug Info:", {
+        domain: window.location.hostname,
+        protocol: window.location.protocol,
+        localStorageAvailable: typeof Storage !== "undefined",
+        totalStoredItems: storedItems.length,
+        storageSize: rawData ? rawData.length : 0,
+        rawData: rawData?.substring(0, 200) + "...", // First 200 chars
+      })
+    } catch (error) {
+      console.error("[v0] Error gathering debug info:", error)
+    }
+  }, [])
 
   const loadExistingMedia = (portfolioSlug: string) => {
     try {
@@ -64,6 +97,16 @@ export default function MediaUploadPage() {
       }
 
       console.log("[v0] Removed media item:", mediaId)
+
+      setDebugInfo((prev) =>
+        prev
+          ? {
+              ...prev,
+              totalStoredItems: updatedMedia.length,
+              storageSize: JSON.stringify(updatedMedia).length,
+            }
+          : null,
+      )
     } catch (error) {
       console.error("[v0] Error removing media:", error)
     }
@@ -90,7 +133,14 @@ export default function MediaUploadPage() {
 
   const saveMediaToStorage = (portfolioSlug: string, mediaItems: MediaItem[]) => {
     try {
+      console.log("[v0] Attempting to save media to localStorage...")
+      console.log("[v0] Portfolio slug:", portfolioSlug)
+      console.log("[v0] Media items to save:", mediaItems)
+      console.log("[v0] Current domain:", window.location.hostname)
+      console.log("[v0] Current protocol:", window.location.protocol)
+
       const existingMedia = JSON.parse(localStorage.getItem("portfolio-media") || "[]") as StoredMediaItem[]
+      console.log("[v0] Existing media in localStorage:", existingMedia.length, "items")
 
       const newMediaItems: StoredMediaItem[] = mediaItems
         .filter((item) => item.url) // Only save items with URLs
@@ -100,13 +150,39 @@ export default function MediaUploadPage() {
           timestamp: Date.now(),
         }))
 
-      const updatedMedia = [...existingMedia, ...newMediaItems]
-      localStorage.setItem("portfolio-media", JSON.stringify(updatedMedia))
+      console.log("[v0] New media items to add:", newMediaItems)
 
-      console.log("[v0] Saved media to localStorage:", newMediaItems)
+      const updatedMedia = [...existingMedia, ...newMediaItems]
+      const serializedData = JSON.stringify(updatedMedia)
+
+      console.log("[v0] Total media after update:", updatedMedia.length, "items")
+      console.log("[v0] Serialized data size:", serializedData.length, "characters")
+
+      localStorage.setItem("portfolio-media", serializedData)
+
+      const verifyData = localStorage.getItem("portfolio-media")
+      const verifyParsed = verifyData ? JSON.parse(verifyData) : []
+      console.log("[v0] Verification: localStorage now contains", verifyParsed.length, "items")
+
+      setDebugInfo((prev) =>
+        prev
+          ? {
+              ...prev,
+              totalStoredItems: verifyParsed.length,
+              storageSize: verifyData ? verifyData.length : 0,
+            }
+          : null,
+      )
+
+      console.log("[v0] Successfully saved media to localStorage:", newMediaItems)
       return true
     } catch (error) {
       console.error("[v0] Error saving media:", error)
+      console.error("[v0] This could be due to:")
+      console.error("[v0] 1. localStorage quota exceeded")
+      console.error("[v0] 2. Private browsing mode restrictions")
+      console.error("[v0] 3. Browser security policies")
+      console.error("[v0] 4. Domain/subdomain mismatch")
       return false
     }
   }
@@ -200,6 +276,45 @@ export default function MediaUploadPage() {
             select the target portfolio.
           </p>
         </div>
+
+        {debugInfo && (
+          <Card className="mb-6 border-blue-200 bg-blue-50">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-blue-800">
+                <AlertTriangle className="h-5 w-5" />
+                Debug Information
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <span className="font-medium text-blue-700">Domain:</span>
+                  <p className="text-blue-600">{debugInfo.domain}</p>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-700">Protocol:</span>
+                  <p className="text-blue-600">{debugInfo.protocol}</p>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-700">localStorage:</span>
+                  <p className="text-blue-600">{debugInfo.localStorageAvailable ? "Available" : "Not Available"}</p>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-700">Stored Items:</span>
+                  <p className="text-blue-600">{debugInfo.totalStoredItems}</p>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-700">Storage Size:</span>
+                  <p className="text-blue-600">{(debugInfo.storageSize / 1024).toFixed(1)} KB</p>
+                </div>
+              </div>
+              <div className="mt-3 p-3 bg-blue-100 rounded text-xs text-blue-700">
+                <strong>Note:</strong> If media disappears between sessions, check if you're using incognito mode,
+                different domains (www vs non-www), or if browser is clearing localStorage on exit.
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {uploadSuccess && (
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
