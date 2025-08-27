@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Upload, ImageIcon, Video, Trash2, ExternalLink } from "lucide-react"
@@ -16,8 +15,6 @@ interface MediaItem {
   id: string
   type: "image" | "video"
   url: string
-  title: string
-  description: string
   portfolioSlug: string
   timestamp: number
 }
@@ -26,8 +23,6 @@ export default function PortfolioMediaPage() {
   const [selectedPortfolio, setSelectedPortfolio] = useState("all")
   const [mediaType, setMediaType] = useState<"image" | "video">("image")
   const [mediaUrl, setMediaUrl] = useState("")
-  const [mediaTitle, setMediaTitle] = useState("")
-  const [mediaDescription, setMediaDescription] = useState("")
   const [existingMedia, setExistingMedia] = useState<MediaItem[]>([])
   const [isUploading, setIsUploading] = useState(false)
 
@@ -44,7 +39,7 @@ export default function PortfolioMediaPage() {
   const loadExistingMedia = () => {}
 
   const saveMedia = () => {
-    if (!selectedPortfolio || !mediaUrl || !mediaTitle) {
+    if (!selectedPortfolio || !mediaUrl) {
       alert("Please fill in all required fields")
       return
     }
@@ -65,8 +60,6 @@ export default function PortfolioMediaPage() {
             id: Date.now().toString(),
             type: mediaType,
             url: mediaUrl,
-            title: mediaTitle,
-            description: mediaDescription,
             portfolioSlug: selectedPortfolio,
             timestamp: Date.now(),
           },
@@ -77,8 +70,6 @@ export default function PortfolioMediaPage() {
 
     // Reset form
     setMediaUrl("")
-    setMediaTitle("")
-    setMediaDescription("")
     setIsUploading(false)
   }
 
@@ -151,27 +142,6 @@ export default function PortfolioMediaPage() {
                 </p>
               </div>
 
-              <div>
-                <Label htmlFor="mediaTitle">Title *</Label>
-                <Input
-                  id="mediaTitle"
-                  value={mediaTitle}
-                  onChange={(e) => setMediaTitle(e.target.value)}
-                  placeholder="Enter media title"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="mediaDescription">Description</Label>
-                <Textarea
-                  id="mediaDescription"
-                  value={mediaDescription}
-                  onChange={(e) => setMediaDescription(e.target.value)}
-                  placeholder="Optional description"
-                  rows={3}
-                />
-              </div>
-
               <Button onClick={saveMedia} disabled={isUploading} className="w-full">
                 {isUploading ? "Uploading..." : "Upload Media"}
               </Button>
@@ -214,9 +184,7 @@ export default function PortfolioMediaPage() {
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-sm">{item.title}</p>
                         <p className="text-xs text-gray-500 truncate">{item.url}</p>
-                        {item.description && <p className="text-xs text-gray-600 mt-1">{item.description}</p>}
                         <div className="flex items-center space-x-2 mt-2">
                           <Badge variant="outline" className="text-xs">
                             {caseStudies.find((s) => s.slug === item.portfolioSlug)?.title || item.portfolioSlug}
