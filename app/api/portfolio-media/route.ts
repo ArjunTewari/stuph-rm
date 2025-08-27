@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { promises as fs } from "fs"
 import path from "path"
 
-const MEDIA_FILE_PATH = path.join(process.cwd(), "lib", "portfolio-media.json")
+const MEDIA_FILE_PATH = path.join(process.cwd(), "public", "portfolio-media.json")
 
 export async function POST(request: NextRequest) {
   try {

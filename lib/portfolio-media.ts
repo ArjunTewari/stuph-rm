@@ -1,5 +1,3 @@
-import portfolioMediaData from "./portfolio-media.json"
-
 export interface MediaItem {
   id: string
   type: "image" | "video"
@@ -8,10 +6,23 @@ export interface MediaItem {
   timestamp: number
 }
 
-export function getPortfolioMedia(slug: string): MediaItem[] {
-  return portfolioMediaData[slug as keyof typeof portfolioMediaData] || []
+export async function getPortfolioMedia(slug: string): Promise<MediaItem[]> {
+  try {
+    const response = await fetch("/portfolio-media.json")
+    const portfolioMediaData = await response.json()
+    return portfolioMediaData[slug] || []
+  } catch (error) {
+    console.error("Error loading portfolio media:", error)
+    return []
+  }
 }
 
-export function getAllPortfolioMedia(): Record<string, MediaItem[]> {
-  return portfolioMediaData
+export async function getAllPortfolioMedia(): Promise<Record<string, MediaItem[]>> {
+  try {
+    const response = await fetch("/portfolio-media.json")
+    return await response.json()
+  } catch (error) {
+    console.error("Error loading portfolio media:", error)
+    return {}
+  }
 }
