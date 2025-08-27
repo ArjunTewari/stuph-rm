@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Upload, ImageIcon, Video, Trash2, ExternalLink } from "lucide-react"
+import { Upload, ImageIcon, Video, Trash2, ExternalLink, Plus, Minus } from "lucide-react"
 import { caseStudies } from "@/lib/case-studies"
 import { getAllPortfolioMedia } from "@/lib/portfolio-media"
 
@@ -19,12 +19,18 @@ interface MediaItem {
   timestamp: number
 }
 
+interface MediaUpload {
+  id: string
+  type: "image" | "video"
+  url: string
+}
+
 export default function PortfolioMediaPage() {
-  const [selectedPortfolio, setSelectedPortfolio] = useState("all")
-  const [mediaType, setMediaType] = useState<"image" | "video">("image")
-  const [mediaUrl, setMediaUrl] = useState("")
+  const [selectedPortfolio, setSelectedPortfolio] = useState("")
+  const [mediaUploads, setMediaUploads] = useState<MediaUpload[]>([{ id: "1", type: "image", url: "" }])
   const [existingMedia, setExistingMedia] = useState<MediaItem[]>([])
   const [isUploading, setIsUploading] = useState(false)
+  const [uploadStatus, setUploadStatus] = useState<string>("")
 
   // Load existing media from JSON file instead of localStorage
   useEffect(() => {
@@ -38,39 +44,94 @@ export default function PortfolioMediaPage() {
 
   const loadExistingMedia = () => {}
 
-  const saveMedia = () => {
-    if (!selectedPortfolio || !mediaUrl) {
-      alert("Please fill in all required fields")
+  const addMediaRow = () => {
+    setMediaUploads([
+      ...mediaUploads,
+      {
+        id: Date.now().toString(),
+        type: "image",
+        url: "",
+      },
+    ])
+  }
+
+  const removeMediaRow = (id: string) => {
+    if (mediaUploads.length > 1) {
+      setMediaUploads(mediaUploads.filter((upload) => upload.id !== id))
+    }
+  }
+
+  const updateMediaUpload = (id: string, field: keyof MediaUpload, value: string) => {
+    setMediaUploads(mediaUploads.map((upload) => (upload.id === id ? { ...upload, [field]: value } : upload)))
+  }
+
+  const saveMedia = async () => {
+    if (!selectedPortfolio) {
+      setUploadStatus("Please select a portfolio")
+      return
+    }
+
+    const validUploads = mediaUploads.filter((upload) => upload.url.trim())
+    if (validUploads.length === 0) {
+      setUploadStatus("Please add at least one media URL")
       return
     }
 
     setIsUploading(true)
+    setUploadStatus("Validating and uploading media...")
 
-    // Validate Firebase Storage URL
-    if (!mediaUrl.includes("firebasestorage.googleapis.com")) {
-      alert("Please use a valid Firebase Storage URL")
+    try {
+      // Validate all Firebase Storage URLs
+      const invalidUrls = validUploads.filter((upload) => !upload.url.includes("firebasestorage.googleapis.com"))
+
+      if (invalidUrls.length > 0) {
+        setUploadStatus(`${invalidUrls.length} invalid Firebase Storage URLs found`)
+        setIsUploading(false)
+        return
+      }
+
+      // Create media items
+      const newMediaItems = validUploads.map((upload) => ({
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        type: upload.type,
+        url: upload.url,
+        portfolioSlug: selectedPortfolio,
+        timestamp: Date.now(),
+      }))
+
+      const response = await fetch("/api/portfolio-media", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newMediaItems),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setUploadStatus(`✅ Successfully uploaded ${result.addedItems} media items to ${selectedPortfolio} portfolio!`)
+
+        // Reset form
+        setMediaUploads([{ id: "1", type: "image", url: "" }])
+        setSelectedPortfolio("")
+
+        // Reload existing media to show new items
+        const allMedia = getAllPortfolioMedia()
+        const mediaArray: MediaItem[] = []
+        Object.entries(allMedia).forEach(([slug, items]) => {
+          mediaArray.push(...items)
+        })
+        setExistingMedia(mediaArray)
+      } else {
+        setUploadStatus(`❌ Error: ${result.error}`)
+      }
+    } catch (error) {
+      setUploadStatus("❌ Error: Failed to upload media. Please try again.")
+      console.error("Upload error:", error)
+    } finally {
       setIsUploading(false)
-      return
     }
-
-    alert(
-      "Media validated! Please manually add this entry to lib/portfolio-media.json:\n\n" +
-        JSON.stringify(
-          {
-            id: Date.now().toString(),
-            type: mediaType,
-            url: mediaUrl,
-            portfolioSlug: selectedPortfolio,
-            timestamp: Date.now(),
-          },
-          null,
-          2,
-        ),
-    )
-
-    // Reset form
-    setMediaUrl("")
-    setIsUploading(false)
   }
 
   const deleteMedia = (id: string) => {
@@ -86,7 +147,9 @@ export default function PortfolioMediaPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Portfolio Media Manager</h1>
-          <p className="text-gray-600">Upload and manage media content for portfolio pages using Firebase Storage</p>
+          <p className="text-gray-600">
+            Upload and manage multiple media files for portfolio pages using Firebase Storage
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -95,7 +158,7 @@ export default function PortfolioMediaPage() {
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Upload className="h-5 w-5" />
-                <span>Upload New Media</span>
+                <span>Upload Multiple Media</span>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -115,35 +178,79 @@ export default function PortfolioMediaPage() {
                 </Select>
               </div>
 
-              <div>
-                <Label htmlFor="mediaType">Media Type *</Label>
-                <Select value={mediaType} onValueChange={(value: "image" | "video") => setMediaType(value)}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="image">Image</SelectItem>
-                    <SelectItem value="video">Video</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <Label>Media Items ({mediaUploads.length})</Label>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={addMediaRow}
+                    className="flex items-center space-x-1 bg-transparent"
+                  >
+                    <Plus className="h-4 w-4" />
+                    <span>Add More</span>
+                  </Button>
+                </div>
+
+                {mediaUploads.map((upload, index) => (
+                  <div key={upload.id} className="flex items-end space-x-2 p-3 border rounded-lg bg-gray-50">
+                    <div className="flex-1 space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <Select
+                          value={upload.type}
+                          onValueChange={(value: "image" | "video") => updateMediaUpload(upload.id, "type", value)}
+                        >
+                          <SelectTrigger className="w-24">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="image">Image</SelectItem>
+                            <SelectItem value="video">Video</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <span className="text-sm text-gray-500">#{index + 1}</span>
+                      </div>
+                      <Input
+                        value={upload.url}
+                        onChange={(e) => updateMediaUpload(upload.id, "url", e.target.value)}
+                        placeholder="https://firebasestorage.googleapis.com/..."
+                        className="font-mono text-sm"
+                      />
+                    </div>
+                    {mediaUploads.length > 1 && (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => removeMediaRow(upload.id)}
+                        className="text-red-500 hover:text-red-700"
+                      >
+                        <Minus className="h-4 w-4" />
+                      </Button>
+                    )}
+                  </div>
+                ))}
               </div>
 
-              <div>
-                <Label htmlFor="mediaUrl">Firebase Storage URL *</Label>
-                <Input
-                  id="mediaUrl"
-                  value={mediaUrl}
-                  onChange={(e) => setMediaUrl(e.target.value)}
-                  placeholder="https://firebasestorage.googleapis.com/..."
-                  className="font-mono text-sm"
-                />
-                <p className="text-xs text-gray-500 mt-1">
-                  Must be a valid Firebase Storage URL with proper CORS configuration
-                </p>
-              </div>
+              {uploadStatus && (
+                <div
+                  className={`p-3 rounded-lg text-sm ${
+                    uploadStatus.includes("✅")
+                      ? "bg-green-50 text-green-700"
+                      : uploadStatus.includes("Error")
+                        ? "bg-red-50 text-red-700"
+                        : "bg-blue-50 text-blue-700"
+                  }`}
+                >
+                  {uploadStatus}
+                </div>
+              )}
 
               <Button onClick={saveMedia} disabled={isUploading} className="w-full">
-                {isUploading ? "Uploading..." : "Upload Media"}
+                {isUploading
+                  ? "Processing..."
+                  : `Upload ${mediaUploads.filter((u) => u.url.trim()).length} Media Items`}
               </Button>
             </CardContent>
           </Card>
