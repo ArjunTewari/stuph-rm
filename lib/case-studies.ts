@@ -3,9 +3,9 @@ export const caseStudies = [
     slug: "itc-right-shift",
     title: "ITC RIGHT SHIFT",
     category: "Health Food Segment",
-    brief: "We managed the launch of ITC’s foray into Health Food segment by launching and scaling Right Shift.",
-    mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "/images/ITC_Right_Shift_Logo.png",
+    brief: "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
+    mainImage: "/placeholder.svg?height=300&width=400&text=ITC+Right+Shift",
+    logoImage: "/placeholder.svg?height=100&width=200&text=ITC+Logo",
     problem:
       "ITC was entering the clean food space with a new brand for health-conscious adults over 40. The challenge? Most players in the category looked and sounded the same. The brand needed to cut through with relevance, recall, and a strong visual identity.",
     role: [
@@ -24,9 +24,11 @@ export const caseStudies = [
     slug: "flipkart",
     title: "FLIPKART",
     category: "Film & Production",
-    brief: "We launched Flipkart’s influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
-    mainImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988", // Laptop image
-    logoImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988", // Flipkart logo image
+    brief: "We launched Flipkart's influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
+    mainImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988", // Laptop image
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988", // Flipkart logo image
     problem:
       "Flipkart was launching its Affluencer Program: a creator-driven initiative aimed at building a new community of influencers on the platform. But to cut through the clutter and attract attention, the launch needed more than just a poster and an emailer. It needed a hook. A film. A moment.",
     role: [
@@ -47,8 +49,8 @@ export const caseStudies = [
     title: "VOYAAH",
     category: "Luxury Travel",
     brief: "We took this luxury holiday brand from 500 followers to 50k followers in a year!",
-    mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "/images/voyaah-logo.png",
+    mainImage: "/placeholder.svg?height=300&width=400&text=Voyaah",
+    logoImage: "/placeholder.svg?height=100&width=200&text=Voyaah+Logo",
     problem:
       "Voyaah, a boutique travel planning brand, had a premium product but very little online traction initially. The task at hand was to increase social awareness.",
     role: [
@@ -63,8 +65,8 @@ export const caseStudies = [
     category: "Organic Food & Dairy",
     brief:
       "This Shark Tank brand needed a makeover - and voilà, we created the new brand identity, new packaging, and also took their social media off the charts.",
-    mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "/images/humpy-farms-logo.png",
+    mainImage: "/placeholder.svg?height=300&width=400&text=Humpy+Farms",
+    logoImage: "/placeholder.svg?height=100&width=200&text=Humpy+Farms+Logo",
     problem:
       "Humpy Farms had a strong product: ethically sourced A2 milk and organic pantry essentials, but their visual identity didn’t match the trust and warmth they represented. The challenge was to reposition the brand without losing its grassroots soul.",
     role: [
@@ -106,7 +108,7 @@ export const caseStudies = [
     brief:
       "A legacy food business was looking to enter the D2C game. We crafted their new identity, new packaging and on the way to making them a household name.",
     mainImage:
-      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2Ftify%20logo.jpg?alt=media&token=c76c7f3b-71e3-44cd-a789-b59d0a965176?height=300&width=400",
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2Ftify%20logo.jpg?alt=media&token=c76c7f3b-71e3-44cd-a789-b59d0a965176",
     logoImage:
       "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2Ftify%20logo.jpg?alt=media&token=c76c7f3b-71e3-44cd-a789-b59d0a965176",
     problem:
@@ -126,7 +128,7 @@ export const caseStudies = [
     title: "HDFC SKY",
     category: "Financial Services",
     brief: "Akshaya Tritiya Print Ad but make it sexy. Stuph: Hold my beer..",
-    mainImage: "/placeholder.svg?height=300&width=400",
+    mainImage: "/placeholder.svg?height=300&width=400&text=HDFC+Sky",
     logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%2015-4BekrRdISgSrxw8J72Da5q4i1WC7Zu.png",
     problem:
       "HDFC Sky wanted a sharp print campaign for Akshaya Tritiya- one that would celebrate tradition, while challenging HDFC SKY's biggest competitor during the festival: Gold Shops.",
@@ -145,7 +147,7 @@ export const caseStudies = [
     title: "TANISHQ",
     category: "Luxury Jewelry",
     brief: "Can you give us something 'naaice' but we dont have time. Stuph: Well…anything for our clients",
-    mainImage: "/placeholder.svg?height=300&width=400",
+    mainImage: "/placeholder.svg?height=300&width=400&text=Tanishq",
     logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%2014-H8mxoQMyetDJZr0gyD8t0Sxchzm3MN.png",
     problem:
       "Tanishq needed high-quality catalogue designs on a tight timeline that would reflect their premium brand positioning and showcase their jewelry collections effectively.",
@@ -164,7 +166,7 @@ export const caseStudies = [
     title: "GREAT INDIAN GIN",
     category: "Alcoholic Beverages",
     brief: "We married Art with Mass for one of the sexiest Alco-bev brand in recent years",
-    mainImage: "/placeholder.svg?height=300&width=400",
+    mainImage: "/placeholder.svg?height=300&width=400&text=Great+Indian+Gin",
     logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%206-NPbvewIyQOh58qyIIPUc7a3lCjDVRW.png",
     problem:
       "Great Indian Gin needed a brand identity that would stand out in the crowded premium spirits market while celebrating its Indian heritage and appealing to contemporary consumers.",
@@ -183,7 +185,7 @@ export const caseStudies = [
     title: "DISCO PANDA",
     category: "Alcoholic Beverages",
     brief: "Yaar, kuch UP-Rajasthan ke laundo ke liye banana hai. Stuph: Ho jayega!",
-    mainImage: "/placeholder.svg?height=300&width=400",
+    mainImage: "/placeholder.svg?height=300&width=400&text=Disco+Panda",
     logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%207-ZsRwxsEROLAPUFEPPHSPQ2pk0jf5aB.png",
     problem:
       "Disco Panda, a beer-wine hybrid, needed to connect with the 2-tier student crowd in UP-Rajasthan with packaging and communication that matched their party-first lifestyle.",
@@ -203,7 +205,7 @@ export const caseStudies = [
     title: "RENUE MINERALS",
     category: "Beauty & Cosmetics",
     brief: "A young startup wanted a brand identity and packaging that stands apart.",
-    mainImage: "/placeholder.svg?height=300&width=400",
+    mainImage: "/placeholder.svg?height=300&width=400&text=Renue+Minerals",
     logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%209-4b3Gz1GsT97JOP7ud9CWeI9n8U46B7.png",
     problem:
       "Renue Minerals, a startup in the competitive beauty space, needed a distinctive brand identity and packaging system that would differentiate them from established players.",
@@ -222,7 +224,7 @@ export const caseStudies = [
     title: "BEYOND THE SUGAR",
     category: "Food & Beverage",
     brief: "A couple of young BITS folks are working on the next big thing in food. We made them look the part.",
-    mainImage: "/placeholder.svg?height=300&width=400",
+    mainImage: "/placeholder.svg?height=300&width=400&text=Beyond+The+Sugar",
     logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%2012-2sttqbbpBhNnLHIIaxwLvkSVJ5ASnh.png",
     problem:
       "Beyond The Sugar, a food startup founded by young BITS graduates, needed professional brand identity and packaging to compete with established food brands.",
@@ -245,20 +247,23 @@ export const caseStudies = [
       "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2FBoom%20Pizza_Logo_2000x2000.png?alt=media&token=c92f3517-25af-4cc3-b2fd-46a0cf7fe639?height=300&width=400",
     logoImage:
       "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2FBoom%20Pizza_Logo_2000x2000.png?alt=media&token=c92f3517-25af-4cc3-b2fd-46a0cf7fe639",
+    problem: "",
     role: [
       "Created the brand identity from the scratch.",
       "Designed the Menu, the Pizza box and all launch collaterals",
       "Executed Photoshoots of each of the Pizzas and the new outlets.",
       "Launched Social Media marketing with a quirky yet effective campaign",
     ],
+    outcome: [],
   },
   {
     slug: "boldfit",
     title: "BOLDFIT",
     category: "Food & Beverage",
     brief: "Boldfit saw a 120% followers growth during IPL 2025",
-    mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2Flogo%2011.png?alt=media&token=5d68591a-5e31-4b73-a54c-2bd8cacdf397",
+    mainImage: "/placeholder.svg?height=300&width=400&text=Boldfit",
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2Flogo%2011.png?alt=media&token=5d68591a-5e31-4b73-a54c-2bd8cacdf397",
     problem:
       "Boldfit wanted to amp up their social content game during IPL 2025. They were the official merchandize sponsor for RCB, MI and CSK teams.",
     role: [
@@ -266,8 +271,6 @@ export const caseStudies = [
       "We created daily topical content during the IPL matches.",
       "Created the launch video for the official CSK Jersey launch.",
     ],
-    outcome: [
-      "Boldfit saw a 120% followers growth during IPL 2025."
-    ],
+    outcome: ["Boldfit saw a 120% followers growth during IPL 2025."],
   },
 ]

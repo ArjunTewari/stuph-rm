@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Upload, ImageIcon, Video, Trash2, ExternalLink, CheckCircle, XCircle } from "lucide-react"
+import { Upload, ImageIcon, Video, Trash2, ExternalLink, Plus, Copy, Check } from "lucide-react"
 import { caseStudies } from "@/lib/case-studies"
 import { getAllPortfolioMedia } from "@/lib/portfolio-media"
 
@@ -19,14 +19,18 @@ interface MediaItem {
   timestamp: number
 }
 
+interface BulkMediaItem {
+  id: string
+  type: "image" | "video"
+  url: string
+}
+
 export default function PortfolioMediaPage() {
-  const [selectedPortfolio, setSelectedPortfolio] = useState("")
-  const [mediaType, setMediaType] = useState<"image" | "video">("image")
-  const [mediaUrl, setMediaUrl] = useState("")
+  const [selectedPortfolio, setSelectedPortfolio] = useState("all")
+  const [bulkMediaItems, setBulkMediaItems] = useState<BulkMediaItem[]>([{ id: "1", type: "image", url: "" }])
   const [existingMedia, setExistingMedia] = useState<MediaItem[]>([])
-  const [isUploading, setIsUploading] = useState(false)
-  const [uploadStatus, setUploadStatus] = useState<"idle" | "success" | "error">("idle")
-  const [statusMessage, setStatusMessage] = useState("")
+  const [isValidating, setIsValidating] = useState(false)
+  const [clipboardCopied, setClipboardCopied] = useState(false)
 
   useEffect(() => {
     const allMedia = getAllPortfolioMedia()
@@ -37,82 +41,101 @@ export default function PortfolioMediaPage() {
     setExistingMedia(mediaArray)
   }, [])
 
-  const loadExistingMedia = () => {}
-
-  const saveMedia = async () => {
-    if (!selectedPortfolio || !mediaUrl) {
-      setUploadStatus("error")
-      setStatusMessage("Please fill in all required fields")
-      return
+  const addMediaItem = () => {
+    const newItem: BulkMediaItem = {
+      id: Date.now().toString(),
+      type: "image",
+      url: "",
     }
+    setBulkMediaItems([...bulkMediaItems, newItem])
+  }
 
-    setIsUploading(true)
-    setUploadStatus("idle")
-
-    if (!mediaUrl.includes("firebasestorage.googleapis.com")) {
-      setUploadStatus("error")
-      setStatusMessage("Please use a valid Firebase Storage URL")
-      setIsUploading(false)
-      return
-    }
-
-    try {
-      const newMediaItem = {
-        id: Date.now().toString(),
-        type: mediaType,
-        url: mediaUrl,
-        portfolioSlug: selectedPortfolio,
-        timestamp: Date.now(),
-      }
-
-      const response = await fetch("/api/portfolio-media", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newMediaItem),
-      })
-
-      if (response.ok) {
-        setUploadStatus("success")
-        setStatusMessage("Media uploaded successfully!")
-
-        setMediaUrl("")
-        setSelectedPortfolio("")
-
-        loadExistingMedia()
-      } else {
-        throw new Error("Failed to upload media")
-      }
-    } catch (error) {
-      setUploadStatus("error")
-      setStatusMessage("Failed to upload media. Please try again.")
-    } finally {
-      setIsUploading(false)
+  const removeMediaItem = (id: string) => {
+    if (bulkMediaItems.length > 1) {
+      setBulkMediaItems(bulkMediaItems.filter((item) => item.id !== id))
     }
   }
 
-  const deleteMedia = async (id: string) => {
-    try {
-      const response = await fetch("/api/portfolio-media", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      })
+  const updateMediaItem = (id: string, field: keyof BulkMediaItem, value: string) => {
+    setBulkMediaItems(bulkMediaItems.map((item) => (item.id === id ? { ...item, [field]: value } : item)))
+  }
 
-      if (response.ok) {
-        loadExistingMedia()
-        setStatusMessage("Media deleted successfully!")
-        setUploadStatus("success")
-      } else {
-        throw new Error("Failed to delete media")
-      }
-    } catch (error) {
-      setStatusMessage("Failed to delete media. Please try again.")
-      setUploadStatus("error")
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setClipboardCopied(true)
+      setTimeout(() => setClipboardCopied(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy to clipboard:", err)
+      // Fallback for older browsers
+      const textArea = document.createElement("textarea")
+      textArea.value = text
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand("copy")
+      document.body.removeChild(textArea)
+      setClipboardCopied(true)
+      setTimeout(() => setClipboardCopied(false), 2000)
     }
+  }
+
+  const validateAndGenerateJSON = async () => {
+    if (!selectedPortfolio || selectedPortfolio === "all") {
+      alert("Please select a specific portfolio")
+      return
+    }
+
+    // Validate all media items
+    const validItems = bulkMediaItems.filter((item) => {
+      if (!item.url) return false
+      if (!item.url.includes("firebasestorage.googleapis.com")) return false
+      return true
+    })
+
+    if (validItems.length === 0) {
+      alert("Please fill in at least one valid Firebase Storage URL")
+      return
+    }
+
+    setIsValidating(true)
+
+    try {
+      // Generate JSON entries for manual pasting
+      const mediaItems = validItems.map((item) => ({
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        type: item.type,
+        url: item.url,
+        portfolioSlug: selectedPortfolio,
+        timestamp: Date.now(),
+      }))
+
+      // Create JSON string for clipboard
+      const jsonEntries = mediaItems
+        .map((item) => `    ${JSON.stringify(item, null, 2).replace(/\n/g, "\n    ")}`)
+        .join(",\n")
+
+      const jsonOutput = `Media validated! Please manually add these entries to lib/portfolio-media.json under "${selectedPortfolio}" array:\n\n${jsonEntries}`
+
+      await copyToClipboard(jsonOutput)
+
+      alert(
+        `✅ Media validated! ${validItems.length} items copied to clipboard.\n\nPlease manually paste the JSON entries into lib/portfolio-media.json`,
+      )
+
+      // Reset form
+      setBulkMediaItems([{ id: "1", type: "image", url: "" }])
+    } catch (error) {
+      console.error("Validation error:", error)
+      alert(
+        `❌ Error: Failed to validate media. Please try again.\n\n${error instanceof Error ? error.message : "Unknown error"}`,
+      )
+    } finally {
+      setIsValidating(false)
+    }
+  }
+
+  const deleteMedia = (id: string) => {
+    alert("To delete this media, please manually remove the entry from lib/portfolio-media.json")
   }
 
   const portfolioMedia = existingMedia.filter((item) =>
@@ -124,7 +147,9 @@ export default function PortfolioMediaPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Portfolio Media Manager</h1>
-          <p className="text-gray-600">Upload and manage media content for portfolio pages using Firebase Storage</p>
+          <p className="text-gray-600">
+            Upload and manage multiple media files for portfolio pages using Firebase Storage
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -133,7 +158,7 @@ export default function PortfolioMediaPage() {
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Upload className="h-5 w-5" />
-                <span>Upload New Media</span>
+                <span>Upload Multiple Media</span>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -153,46 +178,81 @@ export default function PortfolioMediaPage() {
                 </Select>
               </div>
 
-              <div>
-                <Label htmlFor="mediaType">Media Type *</Label>
-                <Select value={mediaType} onValueChange={(value: "image" | "video") => setMediaType(value)}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="image">Image</SelectItem>
-                    <SelectItem value="video">Video</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <Label htmlFor="mediaUrl">Firebase Storage URL *</Label>
-                <Input
-                  id="mediaUrl"
-                  value={mediaUrl}
-                  onChange={(e) => setMediaUrl(e.target.value)}
-                  placeholder="https://firebasestorage.googleapis.com/..."
-                  className="font-mono text-sm"
-                />
-                <p className="text-xs text-gray-500 mt-1">
-                  Must be a valid Firebase Storage URL with proper CORS configuration
-                </p>
-              </div>
-
-              {uploadStatus !== "idle" && (
-                <div
-                  className={`flex items-center space-x-2 p-3 rounded-lg ${
-                    uploadStatus === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
-                  }`}
-                >
-                  {uploadStatus === "success" ? <CheckCircle className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
-                  <span className="text-sm">{statusMessage}</span>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <Label>Media Items ({bulkMediaItems.length})</Label>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={addMediaItem}
+                    className="flex items-center space-x-1 bg-transparent"
+                  >
+                    <Plus className="h-4 w-4" />
+                    <span>Add More</span>
+                  </Button>
                 </div>
-              )}
 
-              <Button onClick={saveMedia} disabled={isUploading} className="w-full">
-                {isUploading ? "Uploading..." : "Upload Media"}
+                {bulkMediaItems.map((item, index) => (
+                  <div key={item.id} className="border rounded-lg p-4 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Label className="text-sm font-medium">#{index + 1}</Label>
+                      {bulkMediaItems.length > 1 && (
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => removeMediaItem(item.id)}
+                          className="text-red-500 hover:text-red-700"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      )}
+                    </div>
+
+                    <div>
+                      <Label className="text-xs">Media Type *</Label>
+                      <Select
+                        value={item.type}
+                        onValueChange={(value: "image" | "video") => updateMediaItem(item.id, "type", value)}
+                      >
+                        <SelectTrigger className="h-8">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="image">Image</SelectItem>
+                          <SelectItem value="video">Video</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <Label className="text-xs">Firebase Storage URL *</Label>
+                      <Input
+                        value={item.url}
+                        onChange={(e) => updateMediaItem(item.id, "url", e.target.value)}
+                        placeholder="https://firebasestorage.googleapis.com/..."
+                        className="font-mono text-xs h-8"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">
+                        Must be a valid Firebase Storage URL with proper CORS configuration
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Button onClick={validateAndGenerateJSON} disabled={isValidating} className="w-full">
+                <div className="flex items-center space-x-2">
+                  {clipboardCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  <span>
+                    {isValidating
+                      ? "Validating..."
+                      : clipboardCopied
+                        ? "Copied to Clipboard!"
+                        : `Validate & Copy ${bulkMediaItems.length} Media Items`}
+                  </span>
+                </div>
               </Button>
             </CardContent>
           </Card>

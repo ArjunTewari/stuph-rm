@@ -102,6 +102,10 @@ const LogoCarousel = () => {
   // Duplicate logos for seamless infinite scroll
   const duplicatedLogos = [...logos, ...logos]
 
+  const handleImageError = (logoName: string) => {
+    console.log(`[v0] Failed to load logo image: ${logoName}`)
+  }
+
   return (
     <section className="bg-white overflow-hidden my-0 py-0.5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -136,6 +140,9 @@ const LogoCarousel = () => {
                     fill
                     className="object-contain transition-all duration-300 group-hover:scale-105"
                     sizes="(max-width: 768px) 160px, (max-width: 1024px) 192px, 224px"
+                    onError={() => handleImageError(logo.name)}
+                    placeholder="blur"
+                    blurDataURL="/placeholder.svg?height=100&width=200"
                   />
                 </div>
               </div>

@@ -17,6 +17,10 @@ export default function Navigation() {
     { href: "/contact", label: "Contact" },
   ]
 
+  const handleLogoError = () => {
+    console.log("[v0] Failed to load logo image: /images/stuph-logo.png")
+  }
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white shadow-lg transition-all duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +28,15 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center group bg-white text-center gap-x-2 justify-start mx-0 px-2">
             <div className="relative w-10 h-10 mr-2 transition-transform duration-300 group-hover:scale-110">
-              <Image src="/images/stuph-logo.png" alt="stuph studio" fill className="object-contain" />
+              <Image
+                src="/placeholder.svg?height=40&width=40&text=STUPH"
+                alt="stuph studio"
+                fill
+                className="object-contain"
+                onError={handleLogoError}
+                placeholder="blur"
+                blurDataURL="/placeholder.svg?height=40&width=40&text=STUPH"
+              />
             </div>
             <span className="text-lg font-semibold text-black group-hover:text-gray-600 transition-colors duration-300 text-left">
               STUPH STUDIO

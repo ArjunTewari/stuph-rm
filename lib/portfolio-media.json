@@ -8,6 +8,41 @@
       "description": "Flipkart AC promotional thumbnail",
       "portfolioSlug": "flipkart",
       "timestamp": 1756276950672
+    },
+    {
+      "id": "17562899971014ywo8oi85",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FAC_Flipkart_9-16_Buy%20Now.mp4?alt=media&token=c641c8f4-a146-41e6-86ca-b02d54d73a5f",
+      "portfolioSlug": "flipkart",
+      "timestamp": 1756289997101
+    },
+    {
+      "id": "175629030409898smobc61",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FFlipkart%20Affluencers.mp4?alt=media&token=fc3a6ded-56a3-4551-9b35-1ba147510815",
+      "portfolioSlug": "flipkart",
+      "timestamp": 1756290304098
+    },
+    {
+      "id": "1756290304098zygqupx3g",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FFlipkart%20Print%20Ads.jpg?alt=media&token=a23fa144-7f1f-4537-96e0-4ed19bbaa964",
+      "portfolioSlug": "flipkart",
+      "timestamp": 1756290304098
+    },
+    {
+      "id": "1756290304098gvokmdkyk",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FPressure%20Cooker_Flipkart_9-16.mp4?alt=media&token=97ca97f1-f06a-4fca-a43b-45d711e0e122",
+      "portfolioSlug": "flipkart",
+      "timestamp": 1756290304098
+    },
+    {
+      "id": "1756290304098jzvv30rxe",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FSkincare_Flipkart_9-16_Buy%20Now.mp4?alt=media&token=4c52c265-58fc-4783-a8eb-d7408e7cbb9a",
+      "portfolioSlug": "flipkart",
+      "timestamp": 1756290304098
     }
   ],
   "itc-right-shift": [],
