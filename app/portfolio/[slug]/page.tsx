@@ -3,9 +3,10 @@
 import { notFound } from "next/navigation"
 import { caseStudies } from "@/lib/case-studies"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle } from "lucide-react"
+import { CheckCircle, ExternalLink, RefreshCw } from "lucide-react"
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
 
 interface StoredMediaItem {
   id: string
@@ -17,9 +18,15 @@ interface StoredMediaItem {
   timestamp: number
 }
 
+interface MediaLoadState {
+  [key: string]: "loading" | "loaded" | "error"
+}
+
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
   const study = caseStudies.find((s) => s.slug === params.slug)
   const [uploadedMedia, setUploadedMedia] = useState<StoredMediaItem[]>([])
+  const [mediaLoadState, setMediaLoadState] = useState<MediaLoadState>({})
+  const [retryCount, setRetryCount] = useState<{ [key: string]: number }>({})
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -27,16 +34,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     console.log("[v0] Portfolio page mounted for slug:", params.slug)
     console.log("[v0] Current domain:", window.location.hostname)
     console.log("[v0] Current protocol:", window.location.protocol)
-    console.log("[v0] localStorage available:", typeof Storage !== "undefined")
-
-    // Check all localStorage keys
-    console.log("[v0] All localStorage keys:", Object.keys(localStorage))
-    console.log("[v0] localStorage length:", localStorage.length)
-
-    // Check specifically for our key
-    const hasPortfolioMedia = localStorage.getItem("portfolio-media")
-    console.log("[v0] portfolio-media exists:", !!hasPortfolioMedia)
-    console.log("[v0] portfolio-media length:", hasPortfolioMedia?.length || 0)
 
     try {
       const rawData = localStorage.getItem("portfolio-media")
@@ -44,18 +41,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
       if (!rawData) {
         console.log("[v0] No portfolio-media found in localStorage")
-        console.log("[v0] This could mean:")
-        console.log("[v0] 1. No media was ever uploaded")
-        console.log("[v0] 2. localStorage was cleared")
-        console.log("[v0] 3. Different domain/subdomain")
-        console.log("[v0] 4. Incognito/private browsing mode")
         return
       }
 
       const storedMedia = JSON.parse(rawData) as StoredMediaItem[]
       console.log("[v0] Parsed stored media:", storedMedia)
       console.log("[v0] Total stored items:", storedMedia.length)
-      console.log("[v0] Looking for portfolio slug:", params.slug)
 
       const portfolioMedia = storedMedia.filter((item) => {
         console.log("[v0] Checking item:", item.portfolioSlug, "against", params.slug)
@@ -64,20 +55,57 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
       console.log("[v0] Filtered portfolio media:", portfolioMedia)
       setUploadedMedia(portfolioMedia)
-      console.log("[v0] Set uploadedMedia state with", portfolioMedia.length, "items")
 
-      if (portfolioMedia.length === 0) {
-        console.log("[v0] No media found for portfolio:", params.slug)
-        console.log(
-          "[v0] Available portfolio slugs:",
-          storedMedia.map((item) => item.portfolioSlug),
-        )
-      }
+      // Initialize media load states
+      const initialLoadState: MediaLoadState = {}
+      portfolioMedia.forEach((item) => {
+        initialLoadState[item.id] = "loading"
+      })
+      setMediaLoadState(initialLoadState)
     } catch (error) {
       console.error("[v0] Error loading media from localStorage:", error)
-      console.error("[v0] This could indicate corrupted localStorage data")
     }
   }, [params.slug])
+
+  const handleMediaError = (mediaId: string, url: string) => {
+    console.error("[v0] Media failed to load:", url)
+    setMediaLoadState((prev) => ({ ...prev, [mediaId]: "error" }))
+  }
+
+  const handleMediaLoad = (mediaId: string, url: string) => {
+    console.log("[v0] Media loaded successfully:", url)
+    setMediaLoadState((prev) => ({ ...prev, [mediaId]: "loaded" }))
+  }
+
+  const retryMediaLoad = (mediaId: string) => {
+    const currentRetries = retryCount[mediaId] || 0
+    if (currentRetries < 3) {
+      setRetryCount((prev) => ({ ...prev, [mediaId]: currentRetries + 1 }))
+      setMediaLoadState((prev) => ({ ...prev, [mediaId]: "loading" }))
+
+      // Force reload by adding timestamp
+      setTimeout(() => {
+        const mediaElement = document.querySelector(`[data-media-id="${mediaId}"]`) as
+          | HTMLImageElement
+          | HTMLVideoElement
+        if (mediaElement) {
+          const originalSrc = mediaElement.src.split("&_retry=")[0]
+          mediaElement.src = `${originalSrc}&_retry=${Date.now()}`
+        }
+      }, 100)
+    }
+  }
+
+  const processFirebaseUrl = (url: string): string => {
+    if (!url.includes("firebasestorage.googleapis.com")) {
+      return url
+    }
+
+    // Add CORS headers and cache busting for Firebase URLs
+    const urlObj = new URL(url)
+    urlObj.searchParams.set("_cb", Date.now().toString())
+    return urlObj.toString()
+  }
 
   if (!study) {
     notFound()
@@ -138,164 +166,227 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </section>
 
+        {/* Enhanced Project Gallery Section */}
         {uploadedMedia.length > 0 && (
-          <section className="animate-fade-in-up animate-delay-600">
-            <div className="flex items-center space-x-3 mb-8">
-              <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-3xl font-bold text-black">Project Gallery</h2>
-            </div>
-            <p className="text-gray-700 leading-relaxed text-lg mb-8">
-              Additional media content showcasing various aspects of this project.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {uploadedMedia.map((item) => {
-                const getMediaType = (url: string, storedType: string) => {
-                  const extension = url.toLowerCase().split(".").pop()?.split("?")[0]
-                  if (extension && ["mp4", "webm", "ogg", "mov", "avi"].includes(extension)) {
-                    return "video"
-                  }
-                  if (extension && ["jpg", "jpeg", "png", "gif", "webp", "svg"].includes(extension)) {
-                    return "image"
-                  }
-                  return storedType
-                }
-
-                const actualType = getMediaType(item.url, item.type)
-
-                return (
-                  <div
-                    key={item.id}
-                    className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-                  >
-                    {actualType === "image" ? (
-                      <div className="relative w-full aspect-[9/16]">
-                        <Image
-                          src={item.url || "/placeholder.svg"}
-                          alt={item.alt || item.subheading || "Project gallery image"}
-                          width={400}
-                          height={500}
-                          className="w-full h-full object-cover"
-                          crossOrigin="anonymous"
-                          onError={(e) => {
-                            console.error("[v0] Image failed to load:", item.url)
-                            const errorDiv = e.currentTarget.parentElement?.querySelector(
-                              ".error-fallback",
-                            ) as HTMLElement
-                            if (errorDiv) {
-                              errorDiv.classList.remove("hidden")
-                              errorDiv.innerHTML = `
-                                <div class="text-center p-4">
-                                  <div class="mb-2 text-2xl">📷</div>
-                                  <div class="font-medium text-red-600 mb-2">Image unavailable</div>
-                                  <div class="text-xs text-gray-600 mb-2">Check Firebase Storage configuration</div>
-                                  <a href="${item.url}" target="_blank" class="text-blue-500 text-xs underline">Open direct link</a>
-                                </div>
-                              `
-                            }
-                            e.currentTarget.style.display = "none"
-                          }}
-                          onLoad={() => {
-                            console.log("[v0] Image loaded successfully:", item.url)
-                          }}
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden error-fallback">
-                          <div className="text-center">
-                            <div className="mb-2">📷</div>
-                            <div>Image unavailable</div>
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="relative w-full aspect-[9/16] cursor-pointer group">
-                        <video
-                          src={item.url}
-                          playsInline
-                          preload="metadata"
-                          loop
-                          muted
-                          crossOrigin="anonymous"
-                          className="w-full h-full object-cover rounded-lg"
-                          onClick={(e) => {
-                            const video = e.currentTarget
-                            if (video.paused) {
-                              video.play()
-                            } else {
-                              video.pause()
-                            }
-                          }}
-                          onError={(e) => {
-                            console.error("[v0] Video failed to load:", item.url)
-                            const errorDiv = e.currentTarget.parentElement?.querySelector(
-                              ".video-error-fallback",
-                            ) as HTMLElement
-                            if (errorDiv) {
-                              errorDiv.classList.remove("hidden")
-                              errorDiv.innerHTML = `
-                                <div class="text-center p-4">
-                                  <div class="mb-2 text-2xl">🎥</div>
-                                  <div class="font-medium text-red-600 mb-2">Video unavailable</div>
-                                  <div class="text-xs text-gray-600 mb-2">Check Firebase Storage configuration</div>
-                                  <a href="${item.url}" target="_blank" class="text-blue-500 text-xs underline">Open direct link</a>
-                                </div>
-                              `
-                            }
-                            e.currentTarget.style.display = "none"
-                          }}
-                          onLoadStart={() => {
-                            console.log("[v0] Video loading started:", item.url)
-                          }}
-                          onCanPlay={() => {
-                            console.log("[v0] Video can play:", item.url)
-                          }}
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden video-error-fallback">
-                          <div className="text-center">
-                            <div className="mb-2">🎥</div>
-                            <div>Video unavailable</div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {item.subheading && (
-                      <div className="p-4">
-                        <p className="text-gray-800 font-medium text-sm">{item.subheading}</p>
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-
-            <div className="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <h3 className="font-semibold text-yellow-800 mb-2">📋 Firebase Storage CORS Configuration Required</h3>
-              <p className="text-yellow-700 text-sm mb-3">
-                If media isn't displaying in production, configure Firebase Storage CORS:
-              </p>
-              <div className="bg-yellow-100 p-3 rounded text-xs font-mono text-yellow-800 mb-3">
-                <div className="mb-2">1. Create cors.json:</div>
-                <div className="bg-white p-2 rounded mb-2">
-                  {`[{
-  "origin": ["https://www.stuph.co"],
-  "method": ["GET"],
-  "maxAgeSeconds": 3600
-}]`}
+          <section className="py-20 bg-gray-50 animate-fade-in-up animate-delay-500">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z"
+                    />
+                  </svg>
                 </div>
-                <div>2. Apply: gsutil cors set cors.json gs://stuph-studio.firebasestorage.app</div>
+                <h2 className="text-3xl font-bold text-black">Project Gallery</h2>
               </div>
-              <p className="text-yellow-600 text-xs">
-                This allows your production domain to access Firebase Storage media files.
+              <p className="text-gray-700 leading-relaxed text-lg mb-8">
+                Additional media content showcasing various aspects of this project.
               </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {uploadedMedia.map((item) => {
+                  const getMediaType = (url: string, storedType: string) => {
+                    const extension = url.toLowerCase().split(".").pop()?.split("?")[0]
+                    if (extension && ["mp4", "webm", "ogg", "mov", "avi"].includes(extension)) {
+                      return "video"
+                    }
+                    if (extension && ["jpg", "jpeg", "png", "gif", "webp", "svg"].includes(extension)) {
+                      return "image"
+                    }
+                    return storedType
+                  }
+
+                  const actualType = getMediaType(item.url, item.type)
+                  const processedUrl = processFirebaseUrl(item.url)
+                  const loadState = mediaLoadState[item.id] || "loading"
+                  const retries = retryCount[item.id] || 0
+
+                  return (
+                    <div
+                      key={item.id}
+                      className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    >
+                      {actualType === "image" ? (
+                        <div className="relative w-full aspect-[9/16]">
+                          {loadState === "loading" && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                              <div className="text-center">
+                                <RefreshCw className="h-6 w-6 animate-spin text-gray-400 mx-auto mb-2" />
+                                <p className="text-sm text-gray-500">Loading image...</p>
+                              </div>
+                            </div>
+                          )}
+
+                          <Image
+                            data-media-id={item.id}
+                            src={processedUrl || "/placeholder.svg"}
+                            alt={item.alt || item.subheading || "Project gallery image"}
+                            width={400}
+                            height={500}
+                            className={`w-full h-full object-cover transition-opacity duration-300 ${
+                              loadState === "loaded" ? "opacity-100" : "opacity-0"
+                            }`}
+                            crossOrigin="anonymous"
+                            onError={() => handleMediaError(item.id, item.url)}
+                            onLoad={() => handleMediaLoad(item.id, item.url)}
+                          />
+
+                          {loadState === "error" && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                              <div className="text-center p-4">
+                                <div className="mb-3 text-3xl">📷</div>
+                                <div className="font-medium text-gray-700 mb-2">Image unavailable</div>
+                                <div className="text-xs text-gray-500 mb-3">
+                                  {item.url.includes("firebasestorage.googleapis.com")
+                                    ? "Firebase Storage access issue"
+                                    : "Media loading failed"}
+                                </div>
+                                <div className="space-y-2">
+                                  {retries < 3 && (
+                                    <Button
+                                      onClick={() => retryMediaLoad(item.id)}
+                                      variant="outline"
+                                      size="sm"
+                                      className="text-xs"
+                                    >
+                                      <RefreshCw className="h-3 w-3 mr-1" />
+                                      Retry ({retries}/3)
+                                    </Button>
+                                  )}
+                                  <Button
+                                    onClick={() => window.open(item.url, "_blank")}
+                                    variant="outline"
+                                    size="sm"
+                                    className="text-xs ml-2"
+                                  >
+                                    <ExternalLink className="h-3 w-3 mr-1" />
+                                    Open Direct
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="relative w-full aspect-[9/16] cursor-pointer group">
+                          {loadState === "loading" && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+                              <div className="text-center">
+                                <RefreshCw className="h-6 w-6 animate-spin text-gray-400 mx-auto mb-2" />
+                                <p className="text-sm text-gray-500">Loading video...</p>
+                              </div>
+                            </div>
+                          )}
+
+                          <video
+                            data-media-id={item.id}
+                            src={processedUrl}
+                            playsInline
+                            preload="metadata"
+                            loop
+                            muted
+                            crossOrigin="anonymous"
+                            className={`w-full h-full object-cover rounded-lg transition-opacity duration-300 ${
+                              loadState === "loaded" ? "opacity-100" : "opacity-0"
+                            }`}
+                            onClick={(e) => {
+                              if (loadState === "loaded") {
+                                const video = e.currentTarget
+                                if (video.paused) {
+                                  video.play()
+                                } else {
+                                  video.pause()
+                                }
+                              }
+                            }}
+                            onError={() => handleMediaError(item.id, item.url)}
+                            onLoadStart={() => console.log("[v0] Video loading started:", item.url)}
+                            onCanPlay={() => handleMediaLoad(item.id, item.url)}
+                          />
+
+                          {loadState === "error" && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                              <div className="text-center p-4">
+                                <div className="mb-3 text-3xl">🎥</div>
+                                <div className="font-medium text-gray-700 mb-2">Video unavailable</div>
+                                <div className="text-xs text-gray-500 mb-3">
+                                  {item.url.includes("firebasestorage.googleapis.com")
+                                    ? "Firebase Storage access issue"
+                                    : "Video loading failed"}
+                                </div>
+                                <div className="space-y-2">
+                                  {retries < 3 && (
+                                    <Button
+                                      onClick={() => retryMediaLoad(item.id)}
+                                      variant="outline"
+                                      size="sm"
+                                      className="text-xs"
+                                    >
+                                      <RefreshCw className="h-3 w-3 mr-1" />
+                                      Retry ({retries}/3)
+                                    </Button>
+                                  )}
+                                  <Button
+                                    onClick={() => window.open(item.url, "_blank")}
+                                    variant="outline"
+                                    size="sm"
+                                    className="text-xs ml-2"
+                                  >
+                                    <ExternalLink className="h-3 w-3 mr-1" />
+                                    Open Direct
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {item.subheading && (
+                        <div className="p-4">
+                          <p className="text-gray-800 font-medium text-sm">{item.subheading}</p>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                <h3 className="font-semibold text-blue-800 mb-2">🔧 Firebase Storage Configuration</h3>
+                <p className="text-blue-700 text-sm mb-3">
+                  If media fails to load, verify your Firebase Storage CORS configuration matches your production
+                  domain.
+                </p>
+                <div className="bg-blue-100 p-4 rounded text-xs font-mono text-blue-800 mb-4">
+                  <div className="mb-3 font-bold">Current CORS Configuration Check:</div>
+                  <div className="mb-2">Your cors.json should include:</div>
+                  <div className="bg-white p-2 rounded mb-2 text-black">
+                    {`[{
+    "origin": ["https://www.stuph.co", "https://stuph.co", "http://localhost:3000"],
+    "method": ["GET", "HEAD", "OPTIONS"],
+    "maxAgeSeconds": 3600,
+    "responseHeader": ["Content-Type", "Access-Control-Allow-Origin", "Authorization"]
+  }]`}
+                  </div>
+                  <div className="mb-2">Apply with:</div>
+                  <div className="bg-white p-2 rounded text-black">
+                    gsutil cors set cors.json gs://stuph-studio.firebasestorage.app
+                  </div>
+                </div>
+                <div className="text-blue-600 text-xs mb-2">
+                  <strong>Troubleshooting:</strong> Use the "Open Direct" button to test if Firebase URLs work in a new
+                  tab. If they work directly but not embedded, it's a CORS issue.
+                </div>
+                <div className="text-blue-600 text-xs">
+                  <strong>Alternative:</strong> Consider migrating to Vercel Blob storage for better integration with
+                  your deployment.
+                </div>
+              </div>
             </div>
           </section>
         )}
@@ -303,6 +394,100 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         {/* ITC Right Shift specific sections */}
         {study.slug === "itc-right-shift" && (
           <>
+            <section className="animate-fade-in-up animate-delay-600">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-black">Social</h2>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-lg mb-8">
+                Our innovative social media campaign for ITC Right Shift featured creative toy package-style personas
+                representing different lifestyle segments. This unique approach made healthy eating relatable and
+                engaging across diverse demographics, from fitness enthusiasts to busy professionals.
+              </p>
+
+              {/* Social Media Videos with Enhanced Error Handling */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">Social Media Videos</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  {[
+                    {
+                      id: "social-video-1",
+                      src: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2F50%20Strong%20Series.MP4?alt=media&token=33f98570-377c-47d1-bf76-9f3e1f2c3da1",
+                      title: "50 Strong Series",
+                    },
+                    {
+                      id: "social-video-2",
+                      src: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2FTrend%20-%20RS_Thumka.mp4?alt=media&token=4d7a96ff-5b5c-4799-8d1c-137c4c23cc51",
+                      title: "Trend - RS Thumka",
+                    },
+                  ].map((video) => (
+                    <div
+                      key={video.id}
+                      className="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    >
+                      <div className="relative w-full aspect-[9/16]">
+                        <video
+                          src={processFirebaseUrl(video.src)}
+                          playsInline
+                          preload="metadata"
+                          controls
+                          loop
+                          muted
+                          crossOrigin="anonymous"
+                          className="w-full h-full object-cover"
+                          aria-label={`ITC Right Shift ${video.title}`}
+                          onError={(e) => {
+                            console.error("[v0] Firebase video failed to load:", video.src)
+                            const fallback = e.currentTarget.parentElement?.querySelector(".video-error-fallback")
+                            if (fallback) {
+                              fallback.classList.remove("hidden")
+                              e.currentTarget.style.display = "none"
+                            }
+                          }}
+                          onLoadStart={() => {
+                            console.log("[v0] Firebase video loading:", video.src)
+                          }}
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500 text-sm hidden video-error-fallback">
+                          <div className="text-center p-4">
+                            <div className="mb-3 text-3xl">🎥</div>
+                            <div className="font-medium text-gray-700 mb-2">{video.title}</div>
+                            <div className="text-xs text-gray-500 mb-3">Firebase video unavailable</div>
+                            <Button
+                              onClick={() => window.open(video.src, "_blank")}
+                              variant="outline"
+                              size="sm"
+                              className="text-xs"
+                            >
+                              <ExternalLink className="h-3 w-3 mr-1" />
+                              Open Direct Link
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             {/* Social Section */}
             <section className="animate-fade-in-up animate-delay-600">
               <div className="flex items-center space-x-3 mb-8">
