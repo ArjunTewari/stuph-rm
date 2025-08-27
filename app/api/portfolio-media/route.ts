@@ -13,17 +13,32 @@ interface MediaItem {
 export async function POST(request: NextRequest) {
   try {
     const mediaItems: MediaItem[] = await request.json()
+    console.log("[v0] API: Received media items:", mediaItems.length)
 
-    // Read current portfolio media
-    const filePath = path.join(process.cwd(), "lib", "portfolio-media.json")
+    const filePath = path.join(process.cwd(), "public", "portfolio-media.json")
+    console.log("[v0] API: File path:", filePath)
+
     let portfolioMedia: Record<string, MediaItem[]> = {}
 
     try {
       const fileContent = await fs.readFile(filePath, "utf8")
       portfolioMedia = JSON.parse(fileContent)
+      console.log("[v0] API: Loaded existing data")
     } catch (error) {
-      // File doesn't exist or is empty, start with empty object
-      console.log("Creating new portfolio-media.json file")
+      console.log("[v0] API: Creating new file, error:", error)
+      // Initialize with empty arrays for all portfolios
+      portfolioMedia = {
+        flipkart: [],
+        "itc-right-shift": [],
+        "hdfc-sky": [],
+        voyaah: [],
+        gastronomix: [],
+        tify: [],
+        boldfit: [],
+        "boom-pizza": [],
+        "humpy-farms": [],
+        "disco-panda": [],
+      }
     }
 
     // Add new media items to their respective portfolios
@@ -32,10 +47,16 @@ export async function POST(request: NextRequest) {
         portfolioMedia[item.portfolioSlug] = []
       }
       portfolioMedia[item.portfolioSlug].push(item)
+      console.log("[v0] API: Added item to", item.portfolioSlug)
     }
 
-    // Write updated data back to file
-    await fs.writeFile(filePath, JSON.stringify(portfolioMedia, null, 2))
+    try {
+      await fs.writeFile(filePath, JSON.stringify(portfolioMedia, null, 2))
+      console.log("[v0] API: Successfully wrote file")
+    } catch (writeError) {
+      console.error("[v0] API: Write error:", writeError)
+      throw new Error(`Failed to write file: ${writeError}`)
+    }
 
     return NextResponse.json({
       success: true,
@@ -43,7 +64,14 @@ export async function POST(request: NextRequest) {
       addedItems: mediaItems.length,
     })
   } catch (error) {
-    console.error("Error updating portfolio media:", error)
-    return NextResponse.json({ success: false, error: "Failed to update portfolio media" }, { status: 500 })
+    console.error("[v0] API: Full error:", error)
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to update portfolio media",
+        details: error instanceof Error ? error.message : String(error),
+      },
+      { status: 500 },
+    )
   }
 }

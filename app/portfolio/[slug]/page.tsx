@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { caseStudies } from "@/lib/case-studies"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle } from "lucide-react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { getPortfolioMedia } from "@/lib/portfolio-media"
 
@@ -12,19 +12,33 @@ interface MediaItem {
   id: string
   type: "image" | "video"
   url: string
-  title: string
-  description: string
   portfolioSlug: string
   timestamp: number
 }
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
   const study = caseStudies.find((s) => s.slug === params.slug)
-  const uploadedMedia = getPortfolioMedia(params.slug)
+  const [uploadedMedia, setUploadedMedia] = useState<MediaItem[]>([])
+  const [mediaLoading, setMediaLoading] = useState(true)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+
+    const loadMedia = async () => {
+      try {
+        console.log("[v0] Loading media for portfolio:", params.slug)
+        const media = await getPortfolioMedia(params.slug)
+        console.log("[v0] Loaded media items:", media.length)
+        setUploadedMedia(media)
+      } catch (error) {
+        console.error("[v0] Error loading media:", error)
+      } finally {
+        setMediaLoading(false)
+      }
+    }
+
+    loadMedia()
+  }, [params.slug])
 
   if (!study) {
     notFound()
@@ -85,7 +99,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </section>
 
-        {uploadedMedia.length > 0 && (
+        {!mediaLoading && uploadedMedia.length > 0 && (
           <section className="animate-fade-in-up animate-delay-600">
             <h2 className="text-3xl font-bold text-black mb-8">Portfolio Media</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -93,20 +107,41 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 <div key={item.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
                   <div className="aspect-[9/16] relative">
                     {item.type === "image" ? (
-                      <Image src={item.url || "/placeholder.svg"} alt={item.title} fill className="object-cover" />
+                      <Image
+                        src={item.url || "/placeholder.svg"}
+                        alt="Portfolio media"
+                        fill
+                        className="object-cover"
+                        onError={(e) => {
+                          console.log("[v0] Image failed to load:", item.url)
+                          e.currentTarget.style.display = "none"
+                        }}
+                      />
                     ) : (
-                      <video src={item.url} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                      <video
+                        src={item.url}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          console.log("[v0] Video failed to load:", item.url)
+                          e.currentTarget.style.display = "none"
+                        }}
+                      />
                     )}
                   </div>
-                  {(item.title || item.description) && (
-                    <div className="p-4">
-                      {item.title && <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>}
-                      {item.description && <p className="text-sm text-gray-600">{item.description}</p>}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
+          </section>
+        )}
+
+        {mediaLoading && (
+          <section className="animate-fade-in-up animate-delay-600">
+            <h2 className="text-3xl font-bold text-black mb-8">Portfolio Media</h2>
+            <p className="text-gray-600">Loading media...</p>
           </section>
         )}
       </div>
