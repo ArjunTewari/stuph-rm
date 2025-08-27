@@ -5,7 +5,7 @@ export const caseStudies = [
     category: "Health Food Segment",
     brief: "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
     mainImage: "/placeholder.svg?height=300&width=400&text=ITC+Right+Shift",
-    logoImage: "/placeholder.svg?height=100&width=200&text=ITC+Logo",
+    logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%201-uWX2jyEARuXMQKDsxIkPiusvw4Pjjo.png",
     problem:
       "ITC was entering the clean food space with a new brand for health-conscious adults over 40. The challenge? Most players in the category looked and sounded the same. The brand needed to cut through with relevance, recall, and a strong visual identity.",
     role: [
@@ -50,7 +50,7 @@ export const caseStudies = [
     category: "Luxury Travel",
     brief: "We took this luxury holiday brand from 500 followers to 50k followers in a year!",
     mainImage: "/placeholder.svg?height=300&width=400&text=Voyaah",
-    logoImage: "/placeholder.svg?height=100&width=200&text=Voyaah+Logo",
+    logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%202-eXW191V6I6WM8ypprMYgCGLlrI2UzU.png",
     problem:
       "Voyaah, a boutique travel planning brand, had a premium product but very little online traction initially. The task at hand was to increase social awareness.",
     role: [
@@ -66,7 +66,7 @@ export const caseStudies = [
     brief:
       "This Shark Tank brand needed a makeover - and voilà, we created the new brand identity, new packaging, and also took their social media off the charts.",
     mainImage: "/placeholder.svg?height=300&width=400&text=Humpy+Farms",
-    logoImage: "/placeholder.svg?height=100&width=200&text=Humpy+Farms+Logo",
+    logoImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%208-Wxz6JJtDfh9vICivRJ5FmsDBhWzx8v.png",
     problem:
       "Humpy Farms had a strong product: ethically sourced A2 milk and organic pantry essentials, but their visual identity didn’t match the trust and warmth they represented. The challenge was to reposition the brand without losing its grassroots soul.",
     role: [

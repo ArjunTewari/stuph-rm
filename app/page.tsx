@@ -74,14 +74,14 @@ export default function HomePage() {
       title: "ITC RIGHT SHIFT",
       description:
         "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
-      imageSrc: "/images/ITC_Right_Shift_Logo.png", // Updated image path
+      imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%201-uWX2jyEARuXMQKDsxIkPiusvw4Pjjo.png",
       slug: "itc-right-shift",
     },
     {
       title: "FLIPKART",
       description:
         "We launched Flipkart's influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
-      imageSrc: "/images/Flipkart-Logo.wine.png",
+      imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%204-5yLp8Odj3gYdJcArVjQabwM5HOFki2.png",
       slug: "flipkart",
     },
     {

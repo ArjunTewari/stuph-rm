@@ -186,7 +186,7 @@
       "timestamp": 1756296634297
     }
   ],
-  "great-indian-gin":[
+  "great-indian-gin": [
     {
       "id": "17562960554775cogxwp8u",
       "type": "image",
@@ -259,7 +259,6 @@
     }
   ],
   "tify": [
-
     {
       "id": "17562968673296qallw39d",
       "type": "video",
@@ -465,9 +464,9 @@
       "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/beyond%20the%20sugar%2FWhatsApp%20Image%202025-05-26%20at%204.48.12%20PM%20(1).jpeg?alt=media&token=ea93ea96-1de8-4624-ba6c-2286585c5b94",
       "portfolioSlug": "beyond-the-sugar",
       "timestamp": 1756296732686
-    },
+    }
   ],
-  "revenue-minerals": [
+  "renue-minerals": [
     {
       "id": "17562974360112zonr4agq",
       "type": "image",

@@ -29,13 +29,13 @@ export default function Navigation() {
           <Link href="/" className="flex items-center group bg-white text-center gap-x-2 justify-start mx-0 px-2">
             <div className="relative w-10 h-10 mr-2 transition-transform duration-300 group-hover:scale-110">
               <Image
-                src="/placeholder.svg?height=40&width=40&text=STUPH"
+                src="/images/stuph-logo.png"
                 alt="stuph studio"
                 fill
                 className="object-contain"
                 onError={handleLogoError}
                 placeholder="blur"
-                blurDataURL="/placeholder.svg?height=40&width=40&text=STUPH"
+                blurDataURL="/placeholder.svg?height=40&width=40&text=STU"
               />
             </div>
             <span className="text-lg font-semibold text-black group-hover:text-gray-600 transition-colors duration-300 text-left">
