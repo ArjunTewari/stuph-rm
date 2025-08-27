@@ -3,7 +3,7 @@ export const caseStudies = [
     slug: "itc-right-shift",
     title: "ITC RIGHT SHIFT",
     category: "Health Food Segment",
-    brief: "We managed the launch of ITC’s foray into Health Food segment by launching and scaling Right Shift.",
+    brief: "We managed the launch of ITC's foray into Health Food segment by launching and scaling Right Shift.",
     mainImage: "/placeholder.svg?height=300&width=400",
     logoImage: "/images/ITC_Right_Shift_Logo.png",
     problem:
@@ -11,8 +11,8 @@ export const caseStudies = [
     role: [
       "Defined the brand persona, tone of voice, and communication system from scratch. We ran a lot of A/B tests for it, ensuring we were headed in the right direction.",
       "Designed packaging across SKUs that stood out both online and on shelf.",
-      "Created a distinctive content strategy: including skits, vox pops, and visual storytelling - “Don’t shift, just change.” being the key brand communication.",
-      "Led topical campaigns around Christmas, New Year’s, and Women’s Day with a fresh, relatable tone.",
+      'Created a distinctive content strategy: including skits, vox pops, and visual storytelling - "Don\'t shift, just change." being the key brand communication.',
+      "Led topical campaigns around Christmas, New Year's, and Women's Day with a fresh, relatable tone.",
       "Crafted A+ and listing content for Amazon and other e-commerce platforms.",
     ],
     outcome: [
@@ -24,9 +24,11 @@ export const caseStudies = [
     slug: "flipkart",
     title: "FLIPKART",
     category: "Film & Production",
-    brief: "We launched Flipkart’s influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
-    mainImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988", // Laptop image
-    logoImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988", // Flipkart logo image
+    brief: "We launched Flipkart's influencer affiliate program with a banger of a film. Shot & Edited in 72 hours!",
+    mainImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988",
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988",
     problem:
       "Flipkart was launching its Affluencer Program: a creator-driven initiative aimed at building a new community of influencers on the platform. But to cut through the clutter and attract attention, the launch needed more than just a poster and an emailer. It needed a hook. A film. A moment.",
     role: [
@@ -66,7 +68,7 @@ export const caseStudies = [
     mainImage: "/placeholder.svg?height=300&width=400",
     logoImage: "/images/humpy-farms-logo.png",
     problem:
-      "Humpy Farms had a strong product: ethically sourced A2 milk and organic pantry essentials, but their visual identity didn’t match the trust and warmth they represented. The challenge was to reposition the brand without losing its grassroots soul.",
+      "Humpy Farms had a strong product: ethically sourced A2 milk and organic pantry essentials, but their visual identity didn't match the trust and warmth they represented. The challenge was to reposition the brand without losing its grassroots soul.",
     role: [
       "Led a complete rebranding, giving the brand a fresher, more premium yet grounded look.",
       "Revamped packaging across SKUs, making it shelf-ready and storytelling-driven.",
@@ -85,7 +87,7 @@ export const caseStudies = [
     brief:
       "Great Food but Low Budgets. We made them viral in Bengaluru..organically! (yes, it still happens) Also, co-built their new brand - Boom Pizza.",
     mainImage:
-      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/gastronomix%2Fgastronomix%20logo.png?alt=media&token=babb5cad-3118-4462-8196-9a0cd273db6b?height=300&width=400",
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/gastronomix%2Fgastronomix%20logo.png?alt=media&token=babb5cad-3118-4462-8196-9a0cd273db6b",
     logoImage:
       "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/gastronomix%2Fgastronomix%20logo.png?alt=media&token=babb5cad-3118-4462-8196-9a0cd273db6b",
     problem:
@@ -106,7 +108,7 @@ export const caseStudies = [
     brief:
       "A legacy food business was looking to enter the D2C game. We crafted their new identity, new packaging and on the way to making them a household name.",
     mainImage:
-      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2Ftify%20logo.jpg?alt=media&token=c76c7f3b-71e3-44cd-a789-b59d0a965176?height=300&width=400",
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2Ftify%20logo.jpg?alt=media&token=c76c7f3b-71e3-44cd-a789-b59d0a965176",
     logoImage:
       "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/tiffy_social%2Ftify%20logo.jpg?alt=media&token=c76c7f3b-71e3-44cd-a789-b59d0a965176",
     problem:
@@ -242,7 +244,7 @@ export const caseStudies = [
     category: "Food & Beverage",
     brief: "Created the brand identity from the scratch.",
     mainImage:
-      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2FBoom%20Pizza_Logo_2000x2000.png?alt=media&token=c92f3517-25af-4cc3-b2fd-46a0cf7fe639?height=300&width=400",
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2FBoom%20Pizza_Logo_2000x2000.png?alt=media&token=c92f3517-25af-4cc3-b2fd-46a0cf7fe639",
     logoImage:
       "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/boom-pizza%2FBoom%20Pizza_Logo_2000x2000.png?alt=media&token=c92f3517-25af-4cc3-b2fd-46a0cf7fe639",
     role: [
@@ -256,9 +258,10 @@ export const caseStudies = [
     slug: "boldfit",
     title: "BOLDFIT",
     category: "Food & Beverage",
-    brief: "Boldfit saw a 120% followers growth during IPL 2025",
+    brief: "Boldfit saw a 120% followers growth during IPL 2025",
     mainImage: "/placeholder.svg?height=300&width=400",
-    logoImage: "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2Flogo%2011.png?alt=media&token=5d68591a-5e31-4b73-a54c-2bd8cacdf397",
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2Flogo%2011.png?alt=media&token=5d68591a-5e31-4b73-a54c-2bd8cacdf397",
     problem:
       "Boldfit wanted to amp up their social content game during IPL 2025. They were the official merchandize sponsor for RCB, MI and CSK teams.",
     role: [
@@ -266,8 +269,6 @@ export const caseStudies = [
       "We created daily topical content during the IPL matches.",
       "Created the launch video for the official CSK Jersey launch.",
     ],
-    outcome: [
-      "Boldfit saw a 120% followers growth during IPL 2025."
-    ],
+    outcome: ["Boldfit saw a 120% followers growth during IPL 2025."],
   },
 ]
