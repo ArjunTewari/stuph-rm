@@ -43,14 +43,179 @@
       "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FSkincare_Flipkart_9-16_Buy%20Now.mp4?alt=media&token=4c52c265-58fc-4783-a8eb-d7408e7cbb9a",
       "portfolioSlug": "flipkart",
       "timestamp": 1756290304098
+    },
+    {
+      "id": "1756290682166g4fbrde4a",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FSmartwatch%20Vertical%20Thumbnail.png?alt=media&token=5c2f9098-17aa-4b3b-88e0-b13d6be968eb",
+      "portfolioSlug": "flipkart",
+      "timestamp": 1756290682166
+    },
+    {
+      "id": "17562906821661shzytj3f",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FTablets_Flipkart_9-16.mp4?alt=media&token=484083e2-93fe-40c5-ae08-c78f02e2fba6",
+      "portfolioSlug": "flipkart",
+      "timestamp": 1756290682166
     }
   ],
-  "itc-right-shift": [],
+  "itc-right-shift": [
+    {
+      "id": "1756290825213pltrw90jn",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2F50%20Strong%20Series.MP4?alt=media&token=33f98570-377c-47d1-bf76-9f3e1f2c3da1",
+      "portfolioSlug": "itc-right-shift",
+      "timestamp": 1756290825213
+    },
+    {
+      "id": "1756290825213bqo9uabct",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2FTrend%20-%20RS_Thumka.mp4?alt=media&token=4d7a96ff-5b5c-4799-8d1c-137c4c23cc51",
+      "portfolioSlug": "itc-right-shift",
+      "timestamp": 1756290825213
+    },
+    {
+      "id": "1756290825213z59ri6okz",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC%20Social%2FWomen_s%20day%20Campaign%20.MP4?alt=media&token=8014eaa7-de4d-4cae-9929-c74f0cd77039",
+      "portfolioSlug": "itc-right-shift",
+      "timestamp": 1756290825213
+    },
+    {
+      "id": "1756290936073j572s9rlm",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC_E-COMMERCE%2FRS_PCA_Namkeen_9x16_June06%2010.36.10%E2%80%AFAM.mp4?alt=media&token=b2148ef1-a9e7-40b6-9ba6-3efd8828d94b",
+      "portfolioSlug": "itc-right-shift",
+      "timestamp": 1756290936073
+    },
+    {
+      "id": "17562909360734gn0sbd75",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ITC_E-COMMERCE%2FRS_SBV_ATTA_2025_May15.mp4?alt=media&token=58120bf8-07a7-4fd8-94b7-dcb1fb6c48fc",
+      "portfolioSlug": "itc-right-shift",
+      "timestamp": 1756290936073
+    }
+  ],
   "hdfc-sky": [],
   "voyaah": [],
   "gastronomix": [],
+  "great-indian-gin":[
+    {
+      "id": "17562960554775cogxwp8u",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FBar%20Setup%20Mockup2.jpg?alt=media&token=8a52c921-792e-49d8-8d5a-aee5c25e6cbd",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "1756296055477g389asg1e",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FBihar-%20Jaljeera%20Gin%20%26%20Tonic%E2%9C%A8Celebrating%20India%E2%80%99s%20opulence%20with%20indigenous%20(or%20should%20we%20say%2C%20indi.mp4?alt=media&token=cff7cf79-0b69-46ac-9064-1038c10ea610",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "1756296055477b305nnbac",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FFlipkart%20Print%20Ads.jpg?alt=media&token=59361a33-d459-4463-b495-ce021e7dc6cc",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "1756296055477yq2ltoeyl",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FGIG%20packaging%202.png?alt=media&token=25464730-9239-407b-9ff6-7f356f4e15d9",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "17562960554778u9q4od9u",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FGig%20Packaging.png?alt=media&token=6f74d5f7-1c69-41e5-846d-a90308c7fa68",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "1756296055477t997e4yfe",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FPick%20up%20your%20friends%20and%20at%20bottle%20of%20Great%20India%20Gin%2C%20let%20the%20long%20weekend%20begin!%F0%9F%A5%B3%F0%9F%92%83%F0%9F%AA%A9.....%23Gr.mp4?alt=media&token=2699291d-45f9-4793-9ccd-47153da65616",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "17562960554778xbsggq59",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FRoses%20are%20red%2C%20violets%20are%20blue%2C%20but%20this%20cocktail%E2%80%99s%20for%20me%20and%20you!%20%23SorryNotSorry%20-p%20%23DateNigh.mp4?alt=media&token=44726d69-6572-4939-b8c5-419d341b5ffb",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "17562960554774wnr6te2j",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FWhatsApp%20Video%202023-09-14%20at%208.55.40%20PM.mp4?alt=media&token=fe143da8-e438-4c22-81a2-eaaf8aa0032d",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "1756296055477istz2bdxh",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2FWhat%E2%80%99s%20the%20best%20hack%20to%20pick%20yourself%20up%20from%20the%20Mid-week%20Blues%20Pick%20up%20your%20GiG%20and%20end%20your%20d.mp4?alt=media&token=b0770c1b-7657-4314-a60d-e92ff9a65eaf",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    },
+    {
+      "id": "17562960554776nifeobhn",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Great%20indian%20Gin%2F%E2%80%9CI%20like%20to%20believe%20that%20relaxing%20is%20an%20art%20form%20and%20everybody%20has%20their%20own%20way%20of%20unwinding.%20Af.mp4?alt=media&token=a0f87664-d0c8-43c8-9321-7d822775cfa0",
+      "portfolioSlug": "great-indian-gin",
+      "timestamp": 1756296055477
+    }
+  ],
   "tify": [],
-  "boldfit": [],
+  "boldfit": [
+    {
+      "id": "1756295472656ymd6rbqjc",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2F1.mp4?alt=media&token=d2f876da-4757-4656-b55d-fc1041641816",
+      "portfolioSlug": "boldfit",
+      "timestamp": 1756295472656
+    },
+    {
+      "id": "1756295472656wipej38jf",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2FBoldfit_IG_Reel%20cover_Every%20MI%20fan%20ever_1%20(2).png?alt=media&token=118f7732-859d-4a00-a95c-ab3c074e858a",
+      "portfolioSlug": "boldfit",
+      "timestamp": 1756295472656
+    },
+    {
+      "id": "1756295472656pyhq3ucwe",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2FBoldfit_chugger_revised.mp4?alt=media&token=e9ecddfc-7f52-4ede-beac-bfdad46eda84",
+      "portfolioSlug": "boldfit",
+      "timestamp": 1756295472656
+    },
+    {
+      "id": "17562954726565m9vypyqg",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2FEvery%20RCB%20Fan%20Ever_v3.mp4?alt=media&token=eccf9997-4793-484d-84f2-d9d209d1494f",
+      "portfolioSlug": "boldfit",
+      "timestamp": 1756295472656
+    },
+    {
+      "id": "175629547265646kwlz0ef",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2FKlassen%20x%20Boldfit%20V9%20With%20Asmr%20Audio.mp4?alt=media&token=e2179652-0d97-4f4d-be63-06a2a1d84dcf",
+      "portfolioSlug": "boldfit",
+      "timestamp": 1756295472656
+    },
+    {
+      "id": "1756295472656ocu6tgehx",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2FThe%20Bold%20League%20%231_CSK%20vs%20MI%20_v3.mp4?alt=media&token=ee323ce1-2219-424a-8a39-f623ec25e1d5",
+      "portfolioSlug": "boldfit",
+      "timestamp": 1756295472656
+    }
+  ],
   "boom-pizza": [],
   "humpy-farms": [],
   "disco-panda": []
