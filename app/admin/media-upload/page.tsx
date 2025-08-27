@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Upload, ImageIcon, Video, Trash2, ExternalLink } from "lucide-react"
 import { caseStudies } from "@/lib/case-studies"
+import { getAllPortfolioMedia } from "@/lib/portfolio-media"
 
 interface MediaItem {
   id: string
@@ -30,22 +31,17 @@ export default function PortfolioMediaPage() {
   const [existingMedia, setExistingMedia] = useState<MediaItem[]>([])
   const [isUploading, setIsUploading] = useState(false)
 
-  // Load existing media from Firebase Storage URLs
+  // Load existing media from JSON file instead of localStorage
   useEffect(() => {
-    loadExistingMedia()
+    const allMedia = getAllPortfolioMedia()
+    const mediaArray: MediaItem[] = []
+    Object.entries(allMedia).forEach(([slug, items]) => {
+      mediaArray.push(...items)
+    })
+    setExistingMedia(mediaArray)
   }, [])
 
-  const loadExistingMedia = () => {
-    try {
-      const stored = localStorage.getItem("firebase-portfolio-media")
-      if (stored) {
-        const media = JSON.parse(stored) as MediaItem[]
-        setExistingMedia(media)
-      }
-    } catch (error) {
-      console.error("Error loading media:", error)
-    }
-  }
+  const loadExistingMedia = () => {}
 
   const saveMedia = () => {
     if (!selectedPortfolio || !mediaUrl || !mediaTitle) {
@@ -62,41 +58,32 @@ export default function PortfolioMediaPage() {
       return
     }
 
-    const newMedia: MediaItem = {
-      id: Date.now().toString(),
-      type: mediaType,
-      url: mediaUrl,
-      title: mediaTitle,
-      description: mediaDescription,
-      portfolioSlug: selectedPortfolio,
-      timestamp: Date.now(),
-    }
+    alert(
+      "Media validated! Please manually add this entry to lib/portfolio-media.json:\n\n" +
+        JSON.stringify(
+          {
+            id: Date.now().toString(),
+            type: mediaType,
+            url: mediaUrl,
+            title: mediaTitle,
+            description: mediaDescription,
+            portfolioSlug: selectedPortfolio,
+            timestamp: Date.now(),
+          },
+          null,
+          2,
+        ),
+    )
 
-    try {
-      const updatedMedia = [...existingMedia, newMedia]
-      localStorage.setItem("firebase-portfolio-media", JSON.stringify(updatedMedia))
-      setExistingMedia(updatedMedia)
-
-      // Reset form
-      setMediaUrl("")
-      setMediaTitle("")
-      setMediaDescription("")
-
-      alert("Media uploaded successfully!")
-    } catch (error) {
-      console.error("Error saving media:", error)
-      alert("Error saving media")
-    } finally {
-      setIsUploading(false)
-    }
+    // Reset form
+    setMediaUrl("")
+    setMediaTitle("")
+    setMediaDescription("")
+    setIsUploading(false)
   }
 
   const deleteMedia = (id: string) => {
-    if (confirm("Are you sure you want to delete this media item?")) {
-      const updatedMedia = existingMedia.filter((item) => item.id !== id)
-      localStorage.setItem("firebase-portfolio-media", JSON.stringify(updatedMedia))
-      setExistingMedia(updatedMedia)
-    }
+    alert("To delete this media, please manually remove the entry from lib/portfolio-media.json")
   }
 
   const portfolioMedia = existingMedia.filter((item) =>
