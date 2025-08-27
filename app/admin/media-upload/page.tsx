@@ -5,10 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Upload, ImageIcon, Video, Trash2, ExternalLink } from "lucide-react"
+import { Upload, ImageIcon, Video, Trash2, ExternalLink, CheckCircle, XCircle } from "lucide-react"
 import { caseStudies } from "@/lib/case-studies"
 import { getAllPortfolioMedia } from "@/lib/portfolio-media"
 
@@ -16,22 +15,19 @@ interface MediaItem {
   id: string
   type: "image" | "video"
   url: string
-  title: string
-  description: string
   portfolioSlug: string
   timestamp: number
 }
 
 export default function PortfolioMediaPage() {
-  const [selectedPortfolio, setSelectedPortfolio] = useState("all")
+  const [selectedPortfolio, setSelectedPortfolio] = useState("")
   const [mediaType, setMediaType] = useState<"image" | "video">("image")
   const [mediaUrl, setMediaUrl] = useState("")
-  const [mediaTitle, setMediaTitle] = useState("")
-  const [mediaDescription, setMediaDescription] = useState("")
   const [existingMedia, setExistingMedia] = useState<MediaItem[]>([])
   const [isUploading, setIsUploading] = useState(false)
+  const [uploadStatus, setUploadStatus] = useState<"idle" | "success" | "error">("idle")
+  const [statusMessage, setStatusMessage] = useState("")
 
-  // Load existing media from JSON file instead of localStorage
   useEffect(() => {
     const allMedia = getAllPortfolioMedia()
     const mediaArray: MediaItem[] = []
@@ -43,47 +39,80 @@ export default function PortfolioMediaPage() {
 
   const loadExistingMedia = () => {}
 
-  const saveMedia = () => {
-    if (!selectedPortfolio || !mediaUrl || !mediaTitle) {
-      alert("Please fill in all required fields")
+  const saveMedia = async () => {
+    if (!selectedPortfolio || !mediaUrl) {
+      setUploadStatus("error")
+      setStatusMessage("Please fill in all required fields")
       return
     }
 
     setIsUploading(true)
+    setUploadStatus("idle")
 
-    // Validate Firebase Storage URL
     if (!mediaUrl.includes("firebasestorage.googleapis.com")) {
-      alert("Please use a valid Firebase Storage URL")
+      setUploadStatus("error")
+      setStatusMessage("Please use a valid Firebase Storage URL")
       setIsUploading(false)
       return
     }
 
-    alert(
-      "Media validated! Please manually add this entry to lib/portfolio-media.json:\n\n" +
-        JSON.stringify(
-          {
-            id: Date.now().toString(),
-            type: mediaType,
-            url: mediaUrl,
-            title: mediaTitle,
-            description: mediaDescription,
-            portfolioSlug: selectedPortfolio,
-            timestamp: Date.now(),
-          },
-          null,
-          2,
-        ),
-    )
+    try {
+      const newMediaItem = {
+        id: Date.now().toString(),
+        type: mediaType,
+        url: mediaUrl,
+        portfolioSlug: selectedPortfolio,
+        timestamp: Date.now(),
+      }
 
-    // Reset form
-    setMediaUrl("")
-    setMediaTitle("")
-    setMediaDescription("")
-    setIsUploading(false)
+      const response = await fetch("/api/portfolio-media", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newMediaItem),
+      })
+
+      if (response.ok) {
+        setUploadStatus("success")
+        setStatusMessage("Media uploaded successfully!")
+
+        setMediaUrl("")
+        setSelectedPortfolio("")
+
+        loadExistingMedia()
+      } else {
+        throw new Error("Failed to upload media")
+      }
+    } catch (error) {
+      setUploadStatus("error")
+      setStatusMessage("Failed to upload media. Please try again.")
+    } finally {
+      setIsUploading(false)
+    }
   }
 
-  const deleteMedia = (id: string) => {
-    alert("To delete this media, please manually remove the entry from lib/portfolio-media.json")
+  const deleteMedia = async (id: string) => {
+    try {
+      const response = await fetch("/api/portfolio-media", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      })
+
+      if (response.ok) {
+        loadExistingMedia()
+        setStatusMessage("Media deleted successfully!")
+        setUploadStatus("success")
+      } else {
+        throw new Error("Failed to delete media")
+      }
+    } catch (error) {
+      setStatusMessage("Failed to delete media. Please try again.")
+      setUploadStatus("error")
+    }
   }
 
   const portfolioMedia = existingMedia.filter((item) =>
@@ -151,26 +180,16 @@ export default function PortfolioMediaPage() {
                 </p>
               </div>
 
-              <div>
-                <Label htmlFor="mediaTitle">Title *</Label>
-                <Input
-                  id="mediaTitle"
-                  value={mediaTitle}
-                  onChange={(e) => setMediaTitle(e.target.value)}
-                  placeholder="Enter media title"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="mediaDescription">Description</Label>
-                <Textarea
-                  id="mediaDescription"
-                  value={mediaDescription}
-                  onChange={(e) => setMediaDescription(e.target.value)}
-                  placeholder="Optional description"
-                  rows={3}
-                />
-              </div>
+              {uploadStatus !== "idle" && (
+                <div
+                  className={`flex items-center space-x-2 p-3 rounded-lg ${
+                    uploadStatus === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
+                  }`}
+                >
+                  {uploadStatus === "success" ? <CheckCircle className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
+                  <span className="text-sm">{statusMessage}</span>
+                </div>
+              )}
 
               <Button onClick={saveMedia} disabled={isUploading} className="w-full">
                 {isUploading ? "Uploading..." : "Upload Media"}
@@ -214,9 +233,7 @@ export default function PortfolioMediaPage() {
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-sm">{item.title}</p>
                         <p className="text-xs text-gray-500 truncate">{item.url}</p>
-                        {item.description && <p className="text-xs text-gray-600 mt-1">{item.description}</p>}
                         <div className="flex items-center space-x-2 mt-2">
                           <Badge variant="outline" className="text-xs">
                             {caseStudies.find((s) => s.slug === item.portfolioSlug)?.title || item.portfolioSlug}

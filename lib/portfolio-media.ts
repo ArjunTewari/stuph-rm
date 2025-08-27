@@ -4,8 +4,6 @@ export interface MediaItem {
   id: string
   type: "image" | "video"
   url: string
-  title: string
-  description: string
   portfolioSlug: string
   timestamp: number
 }
