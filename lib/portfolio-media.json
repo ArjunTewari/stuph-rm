@@ -414,7 +414,43 @@
       "timestamp": 1756296358893
     }
   ],
-  "disco-panda": [],
+  "disco-panda": [
+    {
+      "id": "1756297136677i9m2d7t5i",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/disco-panda%2FBhai%20ne%20prove%20kar%20dya...3%20is%20NOT%20always%20a%20charm.......%23DiscoPanda%20%23DPTeaser%20%23DiscoPandareview%20%23D.mp4?alt=media&token=f6e11dba-2c43-40ec-8669-e78620fc0c87",
+      "portfolioSlug": "disco-panda",
+      "timestamp": 1756297136677
+    },
+    {
+      "id": "1756297136677f4aegaud5",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/disco-panda%2FDid%20we%20miss%20any%20Comment%20below!.....%23DiscoPanda%20%23Dance%20%23Chill%20%23Daaru%20%23Vibehai.mp4?alt=media&token=1f5a727e-c1f2-4001-b37d-97135746c070",
+      "portfolioSlug": "disco-panda",
+      "timestamp": 1756297136677
+    },
+    {
+      "id": "1756297136677fjsz6pv0x",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/disco-panda%2FLightings%20may%20change%2C%20but%20Disco%20Panda%20remains%20constant%20%F0%9F%A4%AA%F0%9F%A4%AATag%20a%20friend%20that%20you%20can%20enjoy%20Disco.mp4?alt=media&token=1263f782-03f7-4af0-b777-e50497e6a051",
+      "portfolioSlug": "disco-panda",
+      "timestamp": 1756297136677
+    },
+    {
+      "id": "17562971366771ph79rbl9",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/disco-panda%2FStatic%20Posts-01.jpg?alt=media&token=4ebf1ec2-18dc-4968-859f-7d9e19c544cb",
+      "portfolioSlug": "disco-panda",
+      "timestamp": 1756297136677
+    },
+    {
+      "id": "1756297136677zq5a4b033",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/disco-panda%2FThis%20one%20is%20bound%20to%20blow-up%20the%20party.%20%F0%9F%98%89%20Share%20this%20with%20your%20gang.%20%23DiscoPanda%20%23DiscoPandaBoy.mp4?alt=media&token=bc1cb419-1911-4fc6-bb5f-ded578f32114",
+      "portfolioSlug": "disco-panda",
+      "timestamp": 1756297136677
+    }
+  ],
   "beyond-the-sugar": [
     {
       "id": "17562967326865lds952fw",
@@ -429,6 +465,36 @@
       "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/beyond%20the%20sugar%2FWhatsApp%20Image%202025-05-26%20at%204.48.12%20PM%20(1).jpeg?alt=media&token=ea93ea96-1de8-4624-ba6c-2286585c5b94",
       "portfolioSlug": "beyond-the-sugar",
       "timestamp": 1756296732686
+    },
+  ],
+  "revenue-minerals": [
+    {
+      "id": "17562974360112zonr4agq",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/revenue%20minerals%2FRenue%20packaging%201.png?alt=media&token=454e63d8-2727-4899-8101-49dc6fcc1a42",
+      "portfolioSlug": "renue-minerals",
+      "timestamp": 1756297436011
+    },
+    {
+      "id": "1756297436011mtu0vqz3y",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/revenue%20minerals%2Frenue%20packaging%202.png?alt=media&token=c95062e2-44ed-424f-9768-b89f91be0bbe",
+      "portfolioSlug": "renue-minerals",
+      "timestamp": 1756297436011
+    },
+    {
+      "id": "1756297436011j6kk9z5tk",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/revenue%20minerals%2FRenue%20packaging%204.png?alt=media&token=0dec0875-f237-4fcf-9ae6-afa57f9bab4f",
+      "portfolioSlug": "renue-minerals",
+      "timestamp": 1756297436011
+    },
+    {
+      "id": "1756297436011c4x2r4ydj",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/revenue%20minerals%2Frenue%20packaging%203.png?alt=media&token=760266e0-c95d-42a0-b6d3-73d2b77a82f9",
+      "portfolioSlug": "renue-minerals",
+      "timestamp": 1756297436011
     }
   ]
 }
