@@ -85,6 +85,21 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </section>
 
+        {params.slug === "humpy-farms" && (
+          <section className="animate-fade-in-up animate-delay-550 -mx-4 sm:-mx-6 lg:-mx-8">
+            <div className="w-full">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Humpy%20repackaging-er3vX2VuHErvQL3RsKDHukzgXWmPkX.png"
+                alt="Humpy Farms Product Showcase - Complete organic product line with repackaging"
+                width={1600}
+                height={800}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
+          </section>
+        )}
+
         {uploadedMedia.length > 0 && (
           <section className="animate-fade-in-up animate-delay-600">
             <h2 className="text-3xl font-bold text-black mb-8">Portfolio Media</h2>
