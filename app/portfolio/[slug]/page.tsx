@@ -106,9 +106,18 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {uploadedMedia.map((item) => (
                 <div key={item.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                  <div className="aspect-[9/16] relative">
+                  <div
+                    className={`relative ${item.type === "image" ? "flex items-center justify-center" : "aspect-[9/16]"}`}
+                  >
                     {item.type === "image" ? (
-                      <Image src={item.url || "/placeholder.svg"} alt={item.title} fill className="object-cover" />
+                      <Image
+                        src={item.url || "/placeholder.svg"}
+                        alt={item.title}
+                        width={400}
+                        height={400}
+                        className="w-full h-auto object-contain rounded-t-lg max-h-96"
+                        style={{ aspectRatio: "auto" }}
+                      />
                     ) : (
                       <video src={item.url} autoPlay muted loop playsInline className="w-full h-full object-cover" />
                     )}
