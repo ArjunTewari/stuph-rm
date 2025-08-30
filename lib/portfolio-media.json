@@ -1,118 +1,11 @@
 {
   "flipkart": [
     {
-      "id": "1756276950672",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FAC%20Vertical%20Thumbnail.png?alt=media&token=f6c38f-e305-4353-81a4-...",
-      "title": "AC Vertical Thumbnail",
-      "description": "Flipkart AC promotional thumbnail",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756276950672
-    },
-    {
-      "id": "17562899971014ywo8oi85",
-      "type": "video",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FAC_Flipkart_9-16_Buy%20Now.mp4?alt=media&token=c641c8f4-a146-41e6-86ca-b02d54d73a5f",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756289997101
-    },
-    {
-      "id": "175629030409898smobc61",
+      "id": "1756554372904ng5rdv5k0",
       "type": "video",
       "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FFlipkart%20Affluencers.mp4?alt=media&token=fc3a6ded-56a3-4551-9b35-1ba147510815",
       "portfolioSlug": "flipkart",
-      "timestamp": 1756290304098
-    },
-    {
-      "id": "1756290304098zygqupx3g",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FFlipkart%20Print%20Ads.jpg?alt=media&token=a23fa144-7f1f-4537-96e0-4ed19bbaa964",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756290304098
-    },
-    {
-      "id": "1756290304098gvokmdkyk",
-      "type": "video",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FPressure%20Cooker_Flipkart_9-16.mp4?alt=media&token=97ca97f1-f06a-4fca-a43b-45d711e0e122",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756290304098
-    },
-    {
-      "id": "1756290304098jzvv30rxe",
-      "type": "video",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FSkincare_Flipkart_9-16_Buy%20Now.mp4?alt=media&token=4c52c265-58fc-4783-a8eb-d7408e7cbb9a",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756290304098
-    },
-    {
-      "id": "1756290682166g4fbrde4a",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FSmartwatch%20Vertical%20Thumbnail.png?alt=media&token=5c2f9098-17aa-4b3b-88e0-b13d6be968eb",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756290682166
-    },
-    {
-      "id": "17562906821661shzytj3f",
-      "type": "video",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FTablets_Flipkart_9-16.mp4?alt=media&token=484083e2-93fe-40c5-ae08-c78f02e2fba6",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756290682166
-    },
-    {
-      "id": "1756475413837okvjgblbq",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2F1.png?alt=media&token=a3458fbe-e2a8-4bf9-8394-c763530f6bb2",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756475413837
-    },
-    {
-      "id": "1756475413837itq7dq1tz",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2FBlue%20tshirt%5B1%5D.png?alt=media&token=23206d8c-f089-40cb-bb82-c69e06d38439",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756475413837
-    },
-    {
-      "id": "17564754138371uorb4r4j",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2FBox%20Sleeve%204-16.png?alt=media&token=a2e6d13d-1d80-48af-b8d0-287b1404bcd9",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756475413837
-    },
-    {
-      "id": "1756475413837nrli2s9g8",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2FExchange%20Expert.png?alt=media&token=c1d7dfab-88f4-4452-827d-afde39a817e2",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756475413837
-    },
-    {
-      "id": "17564754138376wnis37rs",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2FID%20card_fk%20reset%5B1%5D.PNG?alt=media&token=44948ecb-79ad-4206-bc9f-3fa122f5ad04",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756475413837
-    },
-    {
-      "id": "1756475413837bzmxhvdz3",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2Fcap%204.png?alt=media&token=d9bd1fc8-5be0-4699-b755-a87f1bebe44a",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756475413837
-    },
-    {
-      "id": "175647541383728h9x9cxn",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2Fdanglers-11.png?alt=media&token=fe75ae74-2d51-4683-aa98-7ed0960ee878",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756475413837
-    },
-    {
-      "id": "1756475413837meg3rf1ot",
-      "type": "image",
-      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2Fflipkart%20reset%20logo%20colour%20(1)%5B1%5D.png?alt=media&token=412cf2db-760d-4ac6-bac3-45549e2d2493",
-      "portfolioSlug": "flipkart",
-      "timestamp": 1756475413837
+      "timestamp": 1756554372904
     }
   ],
   "itc-right-shift": [
@@ -804,6 +697,108 @@
       "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Tanishq%2FB22.png?alt=media&token=92af11f7-0fea-4ff7-8ea5-7353d90709e4",
       "portfolioSlug": "tanishq",
       "timestamp": 1756390149160
+    }
+  ],
+  "flipkart-reset": [
+    {
+      "id": "1756554549751eqg63wvrh",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2F1.png?alt=media&token=a3458fbe-e2a8-4bf9-8394-c763530f6bb2",
+      "portfolioSlug": "flipkart-reset",
+      "timestamp": 1756554549751
+    },
+    {
+      "id": "1756554549751q4b7nam7e",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2FBlue%20tshirt%5B1%5D.png?alt=media&token=23206d8c-f089-40cb-bb82-c69e06d38439",
+      "portfolioSlug": "flipkart-reset",
+      "timestamp": 1756554549751
+    },
+    {
+      "id": "1756554549751l41w1np7y",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2FBox%20Sleeve%204-16.png?alt=media&token=a2e6d13d-1d80-48af-b8d0-287b1404bcd9",
+      "portfolioSlug": "flipkart-reset",
+      "timestamp": 1756554549751
+    },
+    {
+      "id": "1756554549751qh1c73db7",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2FExchange%20Expert.png?alt=media&token=c1d7dfab-88f4-4452-827d-afde39a817e2",
+      "portfolioSlug": "flipkart-reset",
+      "timestamp": 1756554549751
+    },
+    {
+      "id": "1756554549751ggf81ah20",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2FID%20card_fk%20reset%5B1%5D.PNG?alt=media&token=44948ecb-79ad-4206-bc9f-3fa122f5ad04",
+      "portfolioSlug": "flipkart-reset",
+      "timestamp": 1756554549751
+    },
+    {
+      "id": "17565545497515smxy2k9v",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2Fcap%204.png?alt=media&token=d9bd1fc8-5be0-4699-b755-a87f1bebe44a",
+      "portfolioSlug": "flipkart-reset",
+      "timestamp": 1756554549751
+    },
+    {
+      "id": "1756554549751p8rq5uj59",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2Fdanglers-11.png?alt=media&token=fe75ae74-2d51-4683-aa98-7ed0960ee878",
+      "portfolioSlug": "flipkart-reset",
+      "timestamp": 1756554549751
+    }
+  ],
+  "flipkart-sale-events": [
+    {
+      "id": "1756554830305pama72qs7",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FAC%20Vertical%20Thumbnail.png?alt=media&token=f7e2a3f7-e795-4252-91e4-c83cf7efdbdf",
+      "portfolioSlug": "flipkart-sale-events",
+      "timestamp": 1756554830305
+    },
+    {
+      "id": "1756554830305g5m3o5pwf",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FAC_Flipkart_9-16_Buy%20Now.mp4?alt=media&token=c641c8f4-a146-41e6-86ca-b02d54d73a5f",
+      "portfolioSlug": "flipkart-sale-events",
+      "timestamp": 1756554830305
+    },
+    {
+      "id": "1756554830305f7vnzijrc",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FFlipkart%20Print%20Ads.jpg?alt=media&token=a23fa144-7f1f-4537-96e0-4ed19bbaa964",
+      "portfolioSlug": "flipkart-sale-events",
+      "timestamp": 1756554830305
+    },
+    {
+      "id": "17565548303051jlnhmzag",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FPressure%20Cooker_Flipkart_9-16.mp4?alt=media&token=97ca97f1-f06a-4fca-a43b-45d711e0e122",
+      "portfolioSlug": "flipkart-sale-events",
+      "timestamp": 1756554830305
+    },
+    {
+      "id": "1756554830305asd0wut2g",
+      "type": "video",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FSkincare_Flipkart_9-16_Buy%20Now.mp4?alt=media&token=4c52c265-58fc-4783-a8eb-d7408e7cbb9a",
+      "portfolioSlug": "flipkart-sale-events",
+      "timestamp": 1756554830305
+    },
+    {
+      "id": "17565548303055vuk5hwkj",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FSmartwatch%20Vertical%20Thumbnail.png?alt=media&token=5c2f9098-17aa-4b3b-88e0-b13d6be968eb",
+      "portfolioSlug": "flipkart-sale-events",
+      "timestamp": 1756554830305
+    },
+    {
+      "id": "1756554830305ac93rmyv4",
+      "type": "image",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FTablets_Flipkart_9-16.mp4?alt=media&token=484083e2-93fe-40c5-ae08-c78f02e2fba6",
+      "portfolioSlug": "flipkart-sale-events",
+      "timestamp": 1756554830305
     }
   ]
 }

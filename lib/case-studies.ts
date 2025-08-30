@@ -45,6 +45,32 @@ export const caseStudies = [
     ],
   },
   {
+    slug: "flipkart-reset",
+    title: "FLIPKART RESET",
+    category: "Brand Refresh",
+    brief: "Fresh positioning, fresh visual language + print ad for Flipkart's brand reset campaign.",
+    mainImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2Fflipkart%20reset%20logo%20colour%20(1)%5B1%5D.png?alt=media&token=412cf2db-760d-4ac6-bac3-45549e2d2493",
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2FReset%2Fflipkart%20reset%20logo%20colour%20(1)%5B1%5D.png?alt=media&token=412cf2db-760d-4ac6-bac3-45549e2d2493",
+    problem: "",
+    role: [],
+    outcome: [],
+  },
+  {
+    slug: "flipkart-sale-events",
+    title: "FLIPKART SALE EVENTS",
+    category: "Campaign Design",
+    brief: "Creative campaigns and visual assets for Flipkart's major sale events and promotional campaigns.",
+    mainImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988",
+    logoImage:
+      "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/flipkart%2Flogo%204.png?alt=media&token=08b72869-eed5-4a9d-aaaa-11ac930db988",
+    problem: "",
+    role: [],
+    outcome: [],
+  },
+  {
     slug: "voyaah",
     title: "VOYAAH",
     category: "Luxury Travel",
@@ -260,7 +286,7 @@ export const caseStudies = [
     slug: "boldfit",
     title: "BOLDFIT",
     category: "Food & Beverage",
-    brief: "Boldfit saw a 120% followers growth during IPL 2025",
+    brief: "Boldfit saw a 120% followers growth during IPL 2025",
     mainImage: "/placeholder.svg?height=300&width=400&text=Boldfit",
     logoImage:
       "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Boldfit%2Flogo%2011.png?alt=media&token=5d68591a-5e31-4b73-a54c-2bd8cacdf397",
@@ -271,6 +297,6 @@ export const caseStudies = [
       "We created daily topical content during the IPL matches.",
       "Created the launch video for the official CSK Jersey launch.",
     ],
-    outcome: ["Boldfit saw a 120% followers growth during IPL 2025."],
+    outcome: ["Boldfit saw a 120% followers growth during IPL 2025."],
   },
 ]
