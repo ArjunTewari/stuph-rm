@@ -8,14 +8,13 @@ export default function HeroVideo() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata" // Changed from "auto" to "metadata" for faster initial loading
           controls={false}
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
           className="w-full h-full object-cover"
+          poster="/placeholder.svg?height=400&width=225&text=Loading+Video" // Added poster for immediate visual feedback
           onError={(e) => {
-            console.error("[v0] Hero video failed to load:", e.currentTarget.src)
-            console.error("[v0] Hero video error details:", e.currentTarget.error)
             e.currentTarget.style.display = "none"
             const parent = e.currentTarget.parentElement
             if (parent) {
@@ -30,17 +29,9 @@ export default function HeroVideo() {
             }
           }}
           onCanPlay={(e) => {
-            console.log("[v0] Hero video can play")
-            e.currentTarget.play().catch((playError) => {
-              console.log("[v0] Autoplay prevented:", playError)
+            e.currentTarget.play().catch(() => {
               e.currentTarget.controls = true
             })
-          }}
-          onLoadStart={() => {
-            console.log("[v0] Hero video loading started")
-          }}
-          onLoadedData={() => {
-            console.log("[v0] Hero video loaded successfully")
           }}
         >
           <source
@@ -49,7 +40,8 @@ export default function HeroVideo() {
           />
         </video>
         {/* Subtle overlay for better video presentation */}
-        <div className="absolute inset-0 bg-black/10 rounded-2xl"></div>
+        <div className="absolute inset-0 bg-black/10 rounded-2xl pointer-events-none"></div>{" "}
+        {/* Added pointer-events-none for better interaction */}
       </div>
     </div>
   )
