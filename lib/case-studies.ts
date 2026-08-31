@@ -1,5 +1,24 @@
 export const caseStudies = [
   {
+    slug: "titan-eye-plus",
+    title: "TITAN EYE+",
+    category: "AI Films",
+    brief:
+      "We used AI to bring Titan Eye+'s eyewear collections to life through a series of refined, short films!",
+    problem:
+      "AI has democratised execution, but not taste. Titan Eye+ wanted to explore AI without looking like every other brand using the same technology. The films had to feel premium, intentional and unmistakably Titan.",
+    role: [
+      "Conceptualised and produced 15-second AI films across collections including Art Deco, Switchers and Rimless.",
+      "Built a distinct visual idea around each collection instead of applying one AI aesthetic across the board.",
+      "Extended the approach to topical communication, including an Onam film.",
+      "Directed the AI execution with the same attention to composition, product presentation and visual refinement as a conventional premium film.",
+    ],
+    outcome: [
+      "AI, with a point of view. Created a collection of films that used AI for what it could uniquely do—not simply as a faster way to make traditional advertising.",
+      "A premium visual benchmark. Helped Titan Eye+ explore an emerging medium without compromising the sophistication of the brand.",
+    ],
+  },
+  {
     slug: "itc-right-shift",
     title: "ITC RIGHT SHIFT",
     category: "Health Food Segment",
