@@ -19,6 +19,66 @@ export const caseStudies = [
     ],
   },
   {
+    slug: "fastrack",
+    title: "FASTRACK",
+    category: "AI Films",
+    brief:
+      "We used AI to create fast-moving, culture-led films that put Fastrack eyewear in the world of Gen Z self-expression.",
+    problem:
+      "Fastrack's audience doesn't have one fixed style. They switch moods, looks and personas constantly. The challenge was to make eyewear feel like part of that behaviour, not simply another product being advertised.",
+    role: [
+      "Created an AI-led film built around a Gen Z character switching personas with a simple swipe gesture.",
+      "Turned changing outfits, aesthetics and attitudes into the core storytelling device.",
+      "Created a Spider-Man topical film, using Fastrack eyewear to tap into a moment of pop-culture relevance.",
+      "Used AI to make the films feel dynamic, unexpected and native to the audience's visual world.",
+    ],
+    outcome: [
+      "Frames became a form of self-expression. Instead of showing different eyewear styles, we showed how quickly the person wearing them could change.",
+      "From product to pop culture. Created topical work that gave Fastrack a natural role in conversations its audience was already having.",
+    ],
+  },
+  {
+    slug: "ht-tech",
+    title: "HT TECH",
+    category: "Brand Identity",
+    brief:
+      "We refreshed HT Tech's identity to reflect its evolution from a technology publisher into a destination for discovery and smarter tech decisions.",
+    problem: "",
+    role: [],
+    outcome: [],
+  },
+  {
+    slug: "darwinbox",
+    title: "DARWINBOX",
+    category: "Brand Communication",
+    brief:
+      "What if the future of work actually put people first? We turned that question into a 44-page graphic novel for Darwinbox.",
+    problem:
+      "HR tech isn't exactly known for being a page-turner. Darwinbox wanted to communicate its vision of a more human, people-first workplace experience in a way that felt as forward-looking as the product itself.",
+    role: [
+      "Created The Explorers, a sci-fi graphic novel set in the year 2248.",
+      "We created the characters, visual world and illustrations, taking readers from an interplanetary adventure back to Darwinbox's present-day product.",
+    ],
+    outcome: [
+      "A product story people might actually want to read.",
+      "Instead of another HR tech brochure, Darwinbox got a full-blown sci-fi universe—complete with spaceships, crew charts, alien planets and a cliffhanger for Volume 2.",
+    ],
+  },
+  {
+    slug: "prana-ventures",
+    title: "PRANA VENTURES",
+    category: "Brand Identity & Website",
+    brief: "We gave Prana Ventures a brand identity and digital presence as bold as the founders it backs.",
+    problem:
+      "Prana wasn't trying to be another VC in an increasingly crowded category. Its thesis was specific: back founders solving essential problems for India's underserved, mass-market communities. But its existing communication wasn't expressing that energy clearly enough.",
+    role: [
+      "Developed a new brand identity rooted in growth, direction and progress.",
+      "Created a visual language that used geometric forms and subtle Indian references without falling into the usual VC clichés.",
+      "Extended the new identity into Prana's website, creating a digital home for its thesis, portfolio and point of view.",
+    ],
+    outcome: [],
+  },
+  {
     slug: "itc-right-shift",
     title: "ITC RIGHT SHIFT",
     category: "Health Food Segment",
