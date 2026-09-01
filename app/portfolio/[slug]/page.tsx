@@ -3,21 +3,34 @@
 import { notFound } from "next/navigation"
 import { caseStudies } from "@/lib/case-studies"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle } from "lucide-react"
-import { useEffect, useState } from "react"
+import { CheckCircle, ExternalLink, FileText } from "lucide-react"
+import { use, useEffect, useState } from "react"
 import Image from "next/image"
-import { getPortfolioMedia } from "@/lib/portfolio-media"
+import { getPortfolioMedia, type MediaItem } from "@/lib/portfolio-media"
 
-interface MediaItem {
-  id: string
-  type: "image" | "video"
-  url: string
-  portfolioSlug: string
-  timestamp: number
+function getMediaType(item: MediaItem): MediaItem["type"] {
+  if (item.type === "pdf" || /\.pdf(?:$|[?#])/i.test(item.url)) {
+    return "pdf"
+  }
+
+  return item.type
 }
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const study = caseStudies.find((s) => s.slug === params.slug)
+function getMediaLabel(item: MediaItem): string {
+  if (item.title) return item.title
+
+  try {
+    const objectPath = new URL(item.url).pathname.split("/o/").pop()
+    const fileName = decodeURIComponent(objectPath || "").split("/").pop()
+    return fileName || "Portfolio document"
+  } catch {
+    return "Portfolio document"
+  }
+}
+
+export default function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
+  const study = caseStudies.find((s) => s.slug === slug)
   const [uploadedMedia, setUploadedMedia] = useState<MediaItem[]>([])
   const [isLoadingMedia, setIsLoadingMedia] = useState(true)
 
@@ -26,8 +39,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
     const loadMedia = async () => {
       try {
-        console.log("[v0] Loading media for portfolio:", params.slug)
-        const media = await getPortfolioMedia(params.slug)
+        console.log("[v0] Loading media for portfolio:", slug)
+        const media = await getPortfolioMedia(slug)
         console.log("[v0] Loaded media items:", media.length)
         setUploadedMedia(media)
       } catch (error) {
@@ -39,7 +52,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     }
 
     loadMedia()
-  }, [params.slug])
+  }, [slug])
 
   if (!study) {
     notFound()
@@ -100,7 +113,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </section>
         )}
 
-        {params.slug === "humpy-farms" && (
+        {slug === "humpy-farms" && (
           <section className="animate-fade-in-up animate-delay-550 -mx-4 sm:-mx-6 lg:-mx-8">
             <div className="w-full">
               <Image
@@ -124,26 +137,73 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {uploadedMedia.map((item) => (
-                  <div key={item.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                {uploadedMedia.map((item) => {
+                  const mediaType = getMediaType(item)
+                  const mediaLabel = getMediaLabel(item)
+
+                  return (
                     <div
-                      className={`relative ${item.type === "image" ? "flex items-center justify-center" : "aspect-[9/16]"}`}
+                      key={item.id}
+                      className={`bg-white rounded-lg shadow-lg overflow-hidden ${
+                        mediaType === "pdf" ? "md:col-span-2 lg:col-span-3" : ""
+                      }`}
                     >
-                      {item.type === "image" ? (
+                      {mediaType === "pdf" ? (
+                        <div>
+                          <div className="flex items-center justify-between gap-4 border-b border-gray-200 px-4 py-3">
+                            <div className="flex min-w-0 items-center gap-2">
+                              <FileText className="h-5 w-5 flex-shrink-0 text-purple-600" />
+                              <span className="truncate font-medium text-gray-900">{mediaLabel}</span>
+                            </div>
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex flex-shrink-0 items-center gap-2 text-sm font-medium text-purple-600 hover:text-purple-800"
+                            >
+                              Open PDF
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          </div>
+                          <iframe
+                            src={`${item.url}#view=FitH`}
+                            title={mediaLabel}
+                            loading="lazy"
+                            className="h-[70vh] min-h-[520px] w-full bg-gray-100"
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          className={`relative ${
+                            mediaType === "image" ? "flex items-center justify-center" : "aspect-[9/16]"
+                          }`}
+                        >
+                          {mediaType === "image" ? (
                         <Image
                           src={item.url || "/placeholder.svg"}
-                          alt="Portfolio media"
+                          alt={mediaLabel}
                           width={400}
                           height={400}
                           className="w-full h-auto object-contain rounded-t-lg max-h-96"
                           style={{ aspectRatio: "auto" }}
                         />
-                      ) : (
-                        <video src={item.url} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                          ) : (
+                            <video
+                              src={item.url}
+                              title={mediaLabel}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              controls
+                              className="w-full h-full object-cover"
+                            />
+                          )}
+                        </div>
                       )}
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             )}
           </section>

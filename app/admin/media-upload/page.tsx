@@ -7,21 +7,13 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Upload, ImageIcon, Video, Trash2, ExternalLink, Plus, Copy, Check } from "lucide-react"
+import { Upload, ImageIcon, Video, FileText, Trash2, ExternalLink, Plus, Copy, Check } from "lucide-react"
 import { caseStudies } from "@/lib/case-studies"
-import { getAllPortfolioMedia } from "@/lib/portfolio-media"
-
-interface MediaItem {
-  id: string
-  type: "image" | "video"
-  url: string
-  portfolioSlug: string
-  timestamp: number
-}
+import { getAllPortfolioMedia, type MediaItem } from "@/lib/portfolio-media"
 
 interface BulkMediaItem {
   id: string
-  type: "image" | "video"
+  type: MediaItem["type"]
   url: string
 }
 
@@ -214,7 +206,7 @@ export default function PortfolioMediaPage() {
                       <Label className="text-xs">Media Type *</Label>
                       <Select
                         value={item.type}
-                        onValueChange={(value: "image" | "video") => updateMediaItem(item.id, "type", value)}
+                        onValueChange={(value: MediaItem["type"]) => updateMediaItem(item.id, "type", value)}
                       >
                         <SelectTrigger className="h-8">
                           <SelectValue />
@@ -222,6 +214,7 @@ export default function PortfolioMediaPage() {
                         <SelectContent>
                           <SelectItem value="image">Image</SelectItem>
                           <SelectItem value="video">Video</SelectItem>
+                          <SelectItem value="pdf">PDF</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -288,8 +281,10 @@ export default function PortfolioMediaPage() {
                       <div className="flex-shrink-0">
                         {item.type === "image" ? (
                           <ImageIcon className="h-5 w-5 text-blue-500" />
-                        ) : (
+                        ) : item.type === "video" ? (
                           <Video className="h-5 w-5 text-green-500" />
+                        ) : (
+                          <FileText className="h-5 w-5 text-purple-500" />
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
