@@ -854,9 +854,24 @@
       "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ht-tech%2FHT%20Tech%20Logo_White.png?alt=media&token=9d454607-d189-4abb-9d46-30f44d29a91a",
       "portfolioSlug": "ht-tech",
       "timestamp": 1788242646155
+    },
+    {
+      "id": "17882443073265uy44yvu4",
+      "type": "pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/ht-tech%2Fht%20tech%20logo%20new%20assets%20%26%20guidelines.pdf?alt=media&token=69db4707-fd58-40aa-9c63-798b4818b66a",
+      "portfolioSlug": "ht-tech",
+      "timestamp": 1788244307326
     }
   ],
-  "darwinbox": [],
+  "darwinbox": [
+    {
+      "id": "1788244229599cvx560o77",
+      "type": "pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/darwinbox%2FThe%20EXplorers_EX%20graphic%20novel_Darwinbox%20(1)_compressed%20(1).pdf?alt=media&token=22c95826-d18b-4535-bc81-c8c233a9fad7",
+      "portfolioSlug": "darwinbox",
+      "timestamp": 1788244229599
+    }
+  ],
   "prana-ventures": [
     {
       "id": "17882433855790nxbn98z9",
@@ -864,6 +879,13 @@
       "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Prana%20ventures%2FScreenshot%202026-09-01%20114152.png?alt=media&token=b6224878-1311-4a77-a4e6-3a2069f7faa5",
       "portfolioSlug": "prana-ventures",
       "timestamp": 1788243385579
+    },
+    {
+      "id": "1788244382325n3jt13owq",
+      "type": "pdf",
+      "url": "https://firebasestorage.googleapis.com/v0/b/stuph-studio.firebasestorage.app/o/Prana%20ventures%2FPrana%20Brandbook%20Version%202%20(2).pdf?alt=media&token=25992cd2-cc54-429c-ad09-c189ab184426",
+      "portfolioSlug": "prana-ventures",
+      "timestamp": 1788244382325
     }
   ]
 }
