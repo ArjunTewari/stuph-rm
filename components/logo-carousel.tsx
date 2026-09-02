@@ -8,6 +8,31 @@ const LogoCarousel = () => {
 
   const logos = [
     {
+      name: "HT Tech",
+      src: "/images/ht-tech-logo.png",
+      alt: "HT Tech",
+    },
+    {
+      name: "Fastrack",
+      src: "/images/fastrack-logo.png",
+      alt: "Fastrack",
+    },
+    {
+      name: "Prana Ventures",
+      src: "/images/prana-ventures-logo.png",
+      alt: "Prana Ventures",
+    },
+    {
+      name: "Darwinbox",
+      src: "/images/darwinbox-logo.png",
+      alt: "Darwinbox",
+    },
+    {
+      name: "Titan Eye+",
+      src: "/images/titan-eye-plus-logo.png",
+      alt: "Titan Eye+",
+    },
+    {
       name: "ITC Right Shift",
       src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%201-uWX2jyEARuXMQKDsxIkPiusvw4Pjjo.png",
       alt: "ITC Right Shift - Enduring Value",
