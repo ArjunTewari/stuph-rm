@@ -2,6 +2,7 @@ export const caseStudies = [
   {
     slug: "titan-eye-plus",
     title: "TITAN EYE+",
+    logoImage: "/images/titan-eye-plus-logo.png",
     category: "AI Films",
     brief:
       "We used AI to bring Titan Eye+'s eyewear collections to life through a series of refined, short films!",
@@ -21,6 +22,7 @@ export const caseStudies = [
   {
     slug: "fastrack",
     title: "FASTRACK",
+    logoImage: "/images/fastrack-logo.png",
     category: "AI Films",
     brief:
       "We used AI to create fast-moving, culture-led films that put Fastrack eyewear in the world of Gen Z self-expression.",
@@ -51,6 +53,7 @@ export const caseStudies = [
   {
     slug: "darwinbox",
     title: "DARWINBOX",
+    logoImage: "/images/darwinbox-logo.png",
     category: "Brand Communication",
     brief:
       "What if the future of work actually put people first? We turned that question into a 44-page graphic novel for Darwinbox.",
@@ -68,6 +71,7 @@ export const caseStudies = [
   {
     slug: "prana-ventures",
     title: "PRANA VENTURES",
+    logoImage: "/images/prana-ventures-logo.png",
     category: "Brand Identity & Website",
     brief: "We gave Prana Ventures a brand identity and digital presence as bold as the founders it backs.",
     problem:
