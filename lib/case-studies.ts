@@ -40,6 +40,7 @@ export const caseStudies = [
   {
     slug: "ht-tech",
     title: "HT TECH",
+    logoImage: "/images/ht-tech-logo.png",
     category: "Brand Identity",
     brief:
       "We refreshed HT Tech's identity to reflect its evolution from a technology publisher into a destination for discovery and smarter tech decisions.",
